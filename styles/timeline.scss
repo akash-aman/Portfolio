@@ -1,0 +1,321 @@
+.timeline .even-row.timeline-year,
+.timeline .odd-row.timeline-detail {
+	grid-column-start: 2;
+	display: flex;
+	justify-content: flex-start;
+	padding: 0 0 4rem 2rem;
+	border-left: 2.5px solid var(--dev-text-color6);
+	top: 0px;
+}
+
+.timeline .even-row.timeline-detail,
+.timeline .odd-row.timeline-year {
+	grid-column-start: 1;
+	display: flex;
+	justify-content: flex-end;
+	padding: 0 2rem 4rem 0;
+	border-right: 2.5px solid var(--dev-text-color6);
+	top: 0px;
+}
+
+.timeline .odd-row.timeline-year {
+	text-align: end;
+	& > div {
+		position: absolute;
+		top: 0;
+		transform: translate(0, -50%);
+	}
+	&::after {
+		top: -1rem;
+		content: "";
+		position: absolute;
+		right: -2px;
+		transform: translate(50%, 0);
+		width: 2rem;
+		height: 2rem;
+		border-radius: 50%;
+		background-color: var(--dev-text-color7);
+	}
+}
+
+.timeline .even-row.timeline-year {
+	& > h1 {
+		text-align: start;
+		width: fit-content;
+	}
+	& > div {
+		position: absolute;
+		top: 0;
+		transform: translate(0, -50%);
+	}
+	&::before {
+		top: -1rem;
+		content: "";
+		position: absolute;
+		left: -2px;
+		transform: translate(-50%, 0);
+		width: 2rem;
+		height: 2rem;
+		border-radius: 50%;
+		background-color: var(--dev-text-color7);
+	}
+}
+
+.timeline .odd-row.timeline-year.animate {
+	&.t-1::after {
+		background-color: rgba(0, 168, 247, 1);
+	}
+	&.t-3::after {
+		background-color: rgba(0, 197, 231, 1);
+	}
+	&.t-5::after {
+		background-color: rgba(0, 226, 216, 1);
+	}
+	&.t-7::after {
+		background-color: rgba(0, 255, 200, 1);
+	}
+}
+
+.timeline .even-row.timeline-year.animate {
+	&.t-0::before {
+		background-color: rgba(0, 153, 255, 1);
+	}
+	&.t-2::before {
+		background-color: rgba(0, 182, 239, 1);
+	}
+	&.t-4::before {
+		background-color: rgba(0, 211, 224, 1);
+	}
+	&.t-6::before {
+		background-color: rgba(0, 240, 208, 1);
+	}
+	&.t-8::before {
+		background-color: rgba(0, 255, 200, 1);
+	}
+}
+
+.timeline .even-row.timeline-year.animate,
+.timeline .odd-row.timeline-detail.animate {
+	animation: slide-in 0.5s ease-in-out;
+	animation-fill-mode: forwards;
+
+	&.t-0 {
+		border-left: 2.5px solid rgba(0, 153, 255, 0.8);
+	}
+	&.t-1 {
+		border-left: 2.5px solid rgba(0, 168, 247, 0.8);
+	}
+	&.t-2 {
+		border-left: 2.5px solid rgba(0, 182, 239, 0.8);
+	}
+	&.t-3 {
+		border-left: 2.5px solid rgba(0, 197, 231, 0.8);
+	}
+	&.t-4 {
+		border-left: 2.5px solid rgba(0, 211, 224, 0.8);
+	}
+	&.t-5 {
+		border-left: 2.5px solid rgba(0, 226, 216, 0.8);
+	}
+	&.t-6 {
+		border-left: 2.5px solid rgba(0, 240, 208, 0.8);
+	}
+	&.t-7 {
+		border-left: 2.5px solid rgba(0, 255, 200, 0.8);
+	}
+	&.t-8 {
+		border-left: 2.5px solid rgba(0, 255, 200, 0.8);
+	}
+}
+
+.timeline .even-row.timeline-detail.animate,
+.timeline .odd-row.timeline-year.animate {
+	&.t-0 {
+		border-right: 2.5px solid rgba(0, 153, 255, 0.8);
+	}
+	&.t-1 {
+		border-right: 2.5px solid rgba(0, 168, 247, 0.8);
+	}
+	&.t-2 {
+		border-right: 2.5px solid rgba(0, 182, 239, 0.8);
+	}
+	&.t-3 {
+		border-right: 2.5px solid rgba(0, 197, 231, 0.8);
+	}
+	&.t-4 {
+		border-right: 2.5px solid rgba(0, 211, 224, 0.8);
+	}
+	&.t-5 {
+		border-right: 2.5px solid rgba(0, 226, 216, 0.8);
+	}
+	&.t-6 {
+		border-right: 2.5px solid rgba(0, 240, 208, 0.8);
+	}
+	&.t-7 {
+		border-right: 2.5px solid rgba(0, 255, 200, 0.8);
+	}
+	&.t-8 {
+		border-right: 2.5px solid rgba(0, 255, 200, 0.8);
+	}
+}
+
+.projects .even-row.timeline-year,
+.projects .odd-row.timeline-detail {
+	grid-column-start: 2;
+	display: flex;
+	justify-content: flex-start;
+	padding: 0 0 4rem 2rem;
+	border-left: 2.5px solid var(--dev-text-color6);
+	top: 0px;
+}
+
+.projects .even-row.timeline-detail,
+.projects .odd-row.timeline-year {
+	grid-column-start: 1;
+	display: flex;
+	justify-content: flex-end;
+	padding: 0 2rem 4rem 0;
+	border-right: 2.5px solid var(--dev-text-color6);
+	top: 0px;
+}
+
+.projects .odd-row.timeline-year {
+	text-align: end;
+	& > div {
+		position: absolute;
+		top: 0;
+		transform: translate(0, -50%);
+	}
+	&::after {
+		top: -1rem;
+		content: "";
+		position: absolute;
+		right: -2px;
+		transform: translate(50%, 0);
+		width: 2rem;
+		height: 2rem;
+		border-radius: 50%;
+		background-color: var(--dev-text-color7);
+	}
+}
+
+.projects .even-row.timeline-year {
+	& > h1 {
+		text-align: start;
+		width: fit-content;
+	}
+	& > div {
+		position: absolute;
+		top: 0;
+		transform: translate(0, -50%);
+	}
+	&::before {
+		top: -1rem;
+		content: "";
+		position: absolute;
+		left: -2px;
+		transform: translate(-50%, 0);
+		width: 2rem;
+		height: 2rem;
+		border-radius: 50%;
+		background-color: var(--dev-text-color7);
+	}
+}
+
+.projects .odd-row.timeline-year.animate {
+	&.t-1::after {
+		background-color: rgba(0, 168, 247, 1);
+	}
+	&.t-3::after {
+		background-color: rgba(0, 197, 231, 1);
+	}
+	&.t-5::after {
+		background-color: rgba(0, 226, 216, 1);
+	}
+	&.t-7::after {
+		background-color: rgba(0, 255, 200, 1);
+	}
+}
+
+.projects .even-row.timeline-year.animate {
+	&.t-0::before {
+		background-color: rgba(0, 153, 255, 1);
+	}
+	&.t-2::before {
+		background-color: rgba(0, 182, 239, 1);
+	}
+	&.t-4::before {
+		background-color: rgba(0, 211, 224, 1);
+	}
+	&.t-6::before {
+		background-color: rgba(0, 240, 208, 1);
+	}
+	&.t-8::before {
+		background-color: rgba(0, 255, 200, 1);
+	}
+}
+
+.projects .even-row.timeline-year.animate,
+.projects .odd-row.timeline-detail.animate {
+	animation: slide-in 0.5s ease-in-out;
+	animation-fill-mode: forwards;
+
+	&.t-0 {
+		border-left: 2.5px solid rgba(0, 153, 255, 0.8);
+	}
+	&.t-1 {
+		border-left: 2.5px solid rgba(0, 168, 247, 0.8);
+	}
+	&.t-2 {
+		border-left: 2.5px solid rgba(0, 182, 239, 0.8);
+	}
+	&.t-3 {
+		border-left: 2.5px solid rgba(0, 197, 231, 0.8);
+	}
+	&.t-4 {
+		border-left: 2.5px solid rgba(0, 211, 224, 0.8);
+	}
+	&.t-5 {
+		border-left: 2.5px solid rgba(0, 226, 216, 0.8);
+	}
+	&.t-6 {
+		border-left: 2.5px solid rgba(0, 240, 208, 0.8);
+	}
+	&.t-7 {
+		border-left: 2.5px solid rgba(0, 255, 200, 0.8);
+	}
+	&.t-8 {
+		border-left: 2.5px solid rgba(0, 255, 200, 0.8);
+	}
+}
+
+.projects .even-row.timeline-detail.animate,
+.projects .odd-row.timeline-year.animate {
+	&.t-0 {
+		border-right: 2.5px solid rgba(0, 153, 255, 0.8);
+	}
+	&.t-1 {
+		border-right: 2.5px solid rgba(0, 168, 247, 0.8);
+	}
+	&.t-2 {
+		border-right: 2.5px solid rgba(0, 182, 239, 0.8);
+	}
+	&.t-3 {
+		border-right: 2.5px solid rgba(0, 197, 231, 0.8);
+	}
+	&.t-4 {
+		border-right: 2.5px solid rgba(0, 211, 224, 0.8);
+	}
+	&.t-5 {
+		border-right: 2.5px solid rgba(0, 226, 216, 0.8);
+	}
+	&.t-6 {
+		border-right: 2.5px solid rgba(0, 240, 208, 0.8);
+	}
+	&.t-7 {
+		border-right: 2.5px solid rgba(0, 255, 200, 0.8);
+	}
+	&.t-8 {
+		border-right: 2.5px solid rgba(0, 255, 200, 0.8);
+	}
+}

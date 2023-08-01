@@ -1,0 +1,36 @@
+.tab-switcher + .single-tab {
+	display: none;
+}
+
+@screen sm {
+	.prismjs {
+		&:hover > .ctc {
+			visibility: visible;
+		}
+		.ctc {
+			visibility: hidden;
+		}
+	}
+}
+
+.blockquote,
+.p,
+.code {
+	margin-bottom: 2rem;
+}
+
+.h1,
+.h2,
+.h3,
+.h4,
+.h5,
+.h6 {
+	margin-top: 1.8rem;
+	margin-bottom: 1.5rem;
+}
+
+// very first child of remote content.
+
+.remote-content > *:first-child {
+	margin-top: 0;
+}

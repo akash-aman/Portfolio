@@ -1,0 +1,23 @@
+query courseRoutes($page: Int = 1, $pageSize: Int = 100) {
+	courses(
+		sort: ["updatedAt:desc"]
+		pagination: { page: $page, pageSize: $pageSize }
+	) {
+		data {
+			attributes {
+				Slug
+				updatedAt
+				chapters {
+					chapter {
+						data {
+							attributes {
+								Slug
+								updatedAt
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

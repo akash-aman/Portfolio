@@ -1,0 +1,193 @@
+:root {
+
+	--heading-font-weight: 700;
+	--dev-theme-transition: all 0.2s ease;
+	--dev-theme-color: rgb(0, 0, 0);
+	--dev-box-fade: inset 120px 0px 30px -100px var(--dev-bg-colour);
+	--dev-box-fade-2: 0px 90px 10px 95px var(--dev-bg-colour);
+	--dev-bg-colour: var(--light-theme-500);
+	--dev-copyright: rgba(25, 25, 25, 0.248);
+	--dev-text-color1: #3a3a3a;
+	--dev-text-color2: #000;
+	--dev-text-color3: #515151;
+	--dev-text-color4: #000000e5;
+	--dev-text-color5: rgba(0, 0, 0, 0.5);
+	--dev-text-color6: #ececec;
+	--dev-text-color7: #848484;
+	--dev-line-height-1: 1.7rem;
+	--dev-line-height-2: 2.3rem;
+	--dev-font-size-1: 1.25rem;
+	--dev-font-size-2: 1.3rem;
+
+	--github: #000000;
+
+	--dark-theme-100: #121212;
+	--dark-theme-200: #222222;
+	/* #1A1A1A; */
+	--dark-theme-300: #2e2f33;
+
+	--light-theme-400: #ffffff;
+	--light-theme-500: #f6f6f6;
+	--light-theme-600: hsl(0, 0%, 96%, 0.25);
+
+	--code-color-1: #68c567; //s1 1
+	--code-color-2: #e66900; //nl 1
+	--code-color-3: #e45649; //nt 1
+	--code-color-4: #bb7512; //na 1
+	--code-color-5: #c9cbd6; //c1 1
+	--code-color-6: #9d5bb1; //kr 1
+	--code-color-7: #574c86; //nx
+	--code-color-8: #db928b; //kd
+	--code-color-9: #6d6a72; //nc
+	--code-color-10: #667efb; //nf 1
+	--code-color-11: #5c669b; //n
+	--code-color-12: #525564; //m
+	--code-color-13: #50a14f; //s
+	--code-color-14: #c2c6da; //o 1
+	font-size: 13px;
+	--content-font-color: rgb(90, 90, 90);
+	--heading-font-color: rgb(80, 80, 80);
+}
+
+* {
+	transition:
+		var(--dev-theme-transition),
+		background-image 0.001s ease-in-out;
+}
+
+.copyright {
+	color: rgba(25, 25, 25, 0.248);
+}
+
+.dark {
+	&:root {
+		--dev-theme-transition: all 0.4s ease;
+		--dev-theme-color: rgb(255, 255, 255);
+		--dev-box-fade: inset 120px 0px 40px -92px var(--dark-theme-100);
+		--dev-box-fade-2: 0px 90px 10px 95px var(--dark-theme-100);
+		--dev-bg-colour: var(--dark-theme-100);
+		--dev-copyright: rgba(230, 230, 230, 0.249);
+		--dev-text-color1: #fff;
+		--dev-text-color2: #fff;
+		--dev-text-color3: #eeeeee;
+		--dev-text-color4: #f0f0f0e4;
+		--dev-text-color5: rgba(255, 255, 255, 0.6);
+		--dev-text-color6: #c5c5c554;
+		--dev-text-color7: #b0b0b0;
+
+		--code-color-1: #a3eea0; //s1
+		--code-color-2: #fdce68; //nl
+		--code-color-3: #ff8276; //nt
+		--code-color-4: #eddc96; //na
+		--code-color-5: #63677e; //c1
+		--code-color-6: #e19ef5; //kr
+		--code-color-7: #dee2f7; //nx
+		--code-color-8: #e19ef5; //kd bold
+		--code-color-9: #fdce68; //nc
+		--code-color-10: #9fadf1; //nf
+		--code-color-11: #dee2f7; //n
+		--code-color-12: #eddc96; //m
+		--code-color-13: #a3eea0; //s
+		--code-color-14: #dee2f7; //o
+
+		--github: #ffffff;
+		--content-font-color: rgb(230, 230, 230);
+		--heading-font-color: rgb(255, 255, 255);
+	}
+
+	* {
+		transition:
+			var(--dev-theme-transition),
+			background-image 0.001s ease-in-out;
+	}
+
+	.bg-gray7 {
+		@apply bg-gray-700;
+	}
+
+	.bg-gray5 {
+		@apply bg-gray-500;
+	}
+
+	.bg-gray4 {
+		@apply bg-gray-400;
+	}
+
+	.copyright {
+		color: rgba(230, 230, 230, 0.249);
+	}
+}
+
+@screen sm {
+	:root {
+		font-size: 16px;
+	}
+
+	.fade {
+		transition:
+			var(--dev-theme-transition),
+			background-image 0.001s ease-in-out;
+		box-shadow: var(--dev-box-fade), var(--tw-ring-offset-shadow, 0 0 #0000),
+			var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+	}
+
+	.dark {
+		&:root {
+			--dev-box-fade: inset 120px 0px 40px -95px var(--dark-theme-100);
+			--dark-theme-100: #121212;
+			--dark-theme-200: #1a1a1a;
+			--dark-theme-300: #2e2f33;
+		}
+
+		&.fade {
+			transition:
+				var(--dev-theme-transition),
+				background-image 0.001s ease-in-out;
+			box-shadow: var(--dev-box-fade), var(--tw-ring-offset-shadow, 0 0 #0000),
+				var(--tw-ring-shadow, 0 0 #0000), var(--tw-shadow);
+		}
+	}
+}
+
+@mixin scrollbar() {
+
+	/* width */
+	&::-webkit-scrollbar {
+		@apply w-1.5 h-1.5;
+	}
+
+	/* Track */
+	&::-webkit-scrollbar-track {
+		@apply bg-gray7;
+	}
+
+	/* Handle */
+	&::-webkit-scrollbar-thumb {
+		@apply bg-gray5 rounded-sm;
+	}
+
+	/* Handle on hover */
+	&::-webkit-scrollbar-thumb:hover {
+		@apply bg-gray4 bg-opacity-90;
+	}
+}
+
+.scrollbar {
+	@include scrollbar;
+}
+
+.bg-gray7 {
+	@apply bg-gray-200;
+}
+
+.bg-gray5 {
+	@apply bg-gray-300;
+}
+
+.bg-gray4 {
+	@apply bg-gray-400;
+}
+
+iframe {
+	aspect-ratio: 16/9;
+}

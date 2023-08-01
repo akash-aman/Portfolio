@@ -1,0 +1,146 @@
+a,
+button {
+	-webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+	-webkit-tap-highlight-color: transparent;
+	-webkit-user-select: none;
+	-khtml-user-select: none;
+	-moz-user-select: none;
+	-ms-user-select: none;
+	user-select: none;
+}
+
+p,
+em,
+i,
+li,
+table,
+span,
+details,
+div {
+	font-weight: 400;
+	line-height: 2.3rem;
+	font-size: var(--dev-font-size-1);
+	color: var(--dev-text-color3);
+}
+
+i {
+	color: var(--dev-text-color4);
+}
+
+table {
+	width: 100%;
+}
+
+.sidebar-subheading {
+	font-size: 1.25rem;
+	font-weight: 370;
+	color: var(--dev-text-color5);
+}
+
+// transition.
+
+del,
+a,
+i,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+em,
+li,
+table,
+span,
+details,
+summary,
+th,
+td,
+code,
+pre,
+sub,
+strong,
+time,
+tr,
+tbody,
+thead,
+blockquote,
+sup {
+	transition: color 0.01s ease !important;
+}
+
+.dark {
+	del,
+	a,
+	i,
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6,
+	p,
+	em,
+	li,
+	table,
+	span,
+	details,
+	summary,
+	th,
+	td,
+	code,
+	pre,
+	sub,
+	strong,
+	time,
+	tr,
+	tbody,
+	thead,
+	blockquote,
+	sup {
+		transition: color 0.01s ease !important;
+	}
+}
+
+p,
+li,
+table,
+span,
+details,
+div {
+	font-size: 1.25rem;
+	/* equivalent to 20px */
+
+	color: var(--content-font-color);
+}
+
+em,
+i {
+	font-style: italic;
+}
+
+/* Additional styles for table and details */
+table {
+	border-collapse: collapse;
+}
+
+details {
+	margin-bottom: 1rem;
+}
+
+/* Example usage */
+
+p {
+	margin-bottom: 2rem;
+}
+
+br {
+	height: 2rem;
+	display: block;
+}
+
+li {
+	list-style: disc;
+	padding: 0 0 0 0.75rem;
+}

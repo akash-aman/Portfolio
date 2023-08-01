@@ -1,0 +1,4 @@
+User-agent: *
+Disallow: /
+
+Sitemap: https://akash.cx/sitemap.xml

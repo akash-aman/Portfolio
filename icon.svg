@@ -1,0 +1,52 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="1044" height="1044" viewBox="0 0 1044 1044">
+  <defs>
+    <filter id="Rectangle_1" x="0" y="0" width="1044" height="1044" filterUnits="userSpaceOnUse">
+      <feOffset dx="5" dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2.5" result="blur"/>
+      <feFlood flood-opacity="0.161"/>
+      <feComposite operator="in" in2="blur"/>
+    </filter>
+    <filter id="Rectangle_1-2" x="0" y="0" width="1044" height="1044" filterUnits="userSpaceOnUse">
+      <feOffset dx="5" dy="5" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="2.5" result="blur-2"/>
+      <feFlood flood-color="#a7a7a7" flood-opacity="0.161" result="color"/>
+      <feComposite operator="out" in="SourceGraphic" in2="blur-2"/>
+      <feComposite operator="in" in="color"/>
+      <feComposite operator="in" in2="SourceGraphic"/>
+    </filter>
+    <filter id="Ellipse_1" x="201.5" y="201.5" width="680" height="680" filterUnits="userSpaceOnUse">
+      <feOffset dx="25" dy="25" input="SourceAlpha"/>
+      <feGaussianBlur stdDeviation="12.5" result="blur-3"/>
+      <feFlood flood-opacity="0.729"/>
+      <feComposite operator="in" in2="blur-3"/>
+      <feComposite in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g id="icon" transform="translate(166 166)">
+    <g data-type="innerShadowGroup">
+      <g transform="matrix(1, 0, 0, 1, -166, -166)" filter="url(#Rectangle_1)">
+        <g id="Rectangle_1-3" data-name="Rectangle 1" transform="translate(2.5 2.5)" fill="#111" stroke="#707070" stroke-width="1">
+          <rect width="1029" height="1029" stroke="none"/>
+          <rect x="0.5" y="0.5" width="1028" height="1028" fill="none"/>
+        </g>
+      </g>
+      <rect id="Rectangle_1-4" data-name="Rectangle 1" width="1029" height="1029" transform="translate(-163.5 -163.5)" fill="#111"/>
+      <g transform="matrix(1, 0, 0, 1, -166, -166)" filter="url(#Rectangle_1-2)">
+        <rect id="Rectangle_1-5" data-name="Rectangle 1" width="1029" height="1029" transform="translate(2.5 2.5)" fill="#fff"/>
+      </g>
+      <g id="Rectangle_1-6" data-name="Rectangle 1" transform="translate(-163.5 -163.5)" fill="none" stroke="#707070" stroke-width="1">
+        <rect width="1029" height="1029" stroke="none"/>
+        <rect x="0.5" y="0.5" width="1028" height="1028" fill="none"/>
+      </g>
+    </g>
+    <g id="Group_1" data-name="Group 1" transform="translate(48 48)">
+      <g transform="matrix(1, 0, 0, 1, -214, -214)" filter="url(#Ellipse_1)">
+        <g id="Ellipse_1-2" data-name="Ellipse 1" transform="translate(214 214)" stroke="rgba(0,0,0,0)" stroke-width="1">
+          <circle cx="302.5" cy="302.5" r="302.5" stroke="none"/>
+          <circle cx="302.5" cy="302.5" r="302" fill="none"/>
+        </g>
+      </g>
+      <path id="Intersection_2" data-name="Intersection 2" d="M468.75,190.25A24.327,24.327,0,0,1,493,165.75c13.25,0,24,11,24,24.5a24.125,24.125,0,0,1-48.25,0ZM218,149.25c0-36,25.25-63.75,63.5-63.75,37.5,0,59.25,27.25,59.25,58.75,0,13.25-3.25,21.5-15.5,21.5H259c4.5,11.25,15.25,15.5,30.5,15.5,7,0,15-.25,25.25-5.75,2-1,3.25-.5,4.5,1.5l11.5,16c1,1.5,1.25,3.5-1.25,5.75C319.25,209.25,303.5,214,286,214,245.75,214,218,187,218,149.25ZM258.25,137H303.5C301,124,292,119.75,281.75,119.75,271,119.75,261.5,124.5,258.25,137ZM394.5,211a4.578,4.578,0,0,1-4.5-3L344.25,92.75c-1-2.75.5-4.251,3.25-4.251h34.75a4.9,4.9,0,0,1,4.75,3l24.75,71,24.5-71c.751-2,3-3,5-3h34.5c2.75,0,4.25,1.5,3.25,4.251L433.25,208a4.577,4.577,0,0,1-4.5,3ZM55.25,211a3.747,3.747,0,0,1-3.75-4V40a3.747,3.747,0,0,1,3.75-4h57.5C170.25,36,202,74.75,202,123.5S170.25,211,112.75,211ZM95,172.5h17c29.75,0,46-16.75,46-49s-16.25-49-46-49H95Z" transform="translate(39.5 176.875)" fill="#fff" stroke="#707070" stroke-width="1"/>
+    </g>
+  </g>
+</svg>

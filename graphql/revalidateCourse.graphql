@@ -1,0 +1,17 @@
+query revalidateCourse($slug: String!) {
+	course(slug: $slug) {
+		data {
+			attributes {
+				chapters {
+					chapter {
+						data {
+							attributes {
+								Slug
+							}
+						}
+					}
+				}
+			}
+		}
+	}
+}

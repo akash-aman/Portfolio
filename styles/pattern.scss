@@ -1,0 +1,25 @@
+.pattern-1 {
+	//background-image: linear-gradient(to bottom,hsl(225deg,74%,40%),hsl(270deg,70%,40%));
+	::before {
+		content: "";
+		position: absolute;
+		inset: 0;
+		background-image: linear-gradient(
+				135deg,
+				hsl(237deg, 92%, 62%) 25%,
+				transparent 25%
+			),
+			linear-gradient(225deg, hsl(237deg, 92%, 62%) 25%, transparent 25%),
+			linear-gradient(45deg, hsl(237deg, 92%, 62%) 25%, transparent 25%),
+			linear-gradient(315deg, hsl(237deg, 92%, 62%) 25%, transparent 25%);
+		background-position:
+			40px 0,
+			40px 0,
+			0 0,
+			0 0;
+		background-size: 80px 80px;
+		background-repeat: repeat;
+		opacity: 0.01;
+		z-index: -1;
+	}
+}

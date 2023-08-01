@@ -1,0 +1,93 @@
+/* -------------------------------------------------------------------
+
+					FONT FACE DECLARATIONS
+
+  ------------------------------------------------------------------- */
+// @font-face {
+// 	font-family: "Swing-King";
+// 	src: url("../assets/fonts/swing-king.woff2");
+// 	font-weight: 400;
+// 	font-style: normal;
+// }
+
+// @font-face {
+// 	font-family: "MyCodeFont";
+// 	src: url("../assets/fonts/attribute-mono-400.woff2");
+// 	font-weight: 400;
+// 	font-style: normal;
+// }
+
+// @font-face {
+// 	font-family: "MyCodeFont";
+// 	src: url("../assets/fonts/attribute-mono-400-italic.woff2");
+// 	font-weight: 400;
+// 	font-style: italic;
+// }
+
+// @font-face {
+// 	font-family: "MyWebFont";
+// 	src: url("../assets/fonts/wt-900.woff2");
+// 	font-weight: 800;
+// 	font-style: normal;
+// }
+
+// @font-face {
+// 	font-family: "MyWebFont";
+
+// 	src: url("../assets/fonts/wt-200.woff2");
+// 	font-weight: 200;
+// 	font-style: normal;
+// }
+
+// @font-face {
+// 	font-family: "MyWebFont";
+// 	src: url("../assets/fonts/wt-300.woff2");
+// 	font-weight: 300;
+// 	font-style: normal;
+// }
+
+// @font-face {
+// 	font-family: "MyWebFont";
+// 	src: url("../assets/fonts/wt-400.woff2");
+// 	font-weight: 400;
+// 	font-style: normal;
+// }
+
+// @font-face {
+// 	font-family: "MyWebFont";
+// 	src: url("../assets/fonts/wt-500.woff2");
+// 	font-weight: 500;
+// 	font-style: normal;
+// }
+
+// @font-face {
+// 	font-family: "headFont";
+// 	src: url("../assets/fonts/GreycliffCF-Bold.woff2");
+// 	font-weight: 600;
+// 	font-style: normal;
+// }
+
+// @font-face {
+// 	font-family: "headFont";
+// 	src: url("../assets/fonts/GreycliffCF-Heavy.woff2");
+// 	font-weight: 900;
+// 	font-style: normal;
+// }
+
+:root {
+	body {
+		.MyCodeFont {
+			font-family: var(--font-code);
+		}
+
+		.MyWebFont {
+			font-family: var(--font-content);
+			color : var(--content-font-color);
+		}
+
+		.headFont {
+			font-family: var(--font-heading);
+			color : var(--heading-font-color);
+		}
+	}
+}

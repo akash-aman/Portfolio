@@ -1,0 +1,58 @@
+html,
+body {
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	min-height: 100vh;
+	min-width: 100vw;
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	font-family: var(--font-content);
+
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
+		font-family: var(--font-heading);
+	}
+
+	pre.code * {
+		font-family: var(--font-code);
+	}
+
+	.p>span>svg * {
+		font-family: var(--font-svg);
+		transition: none;
+	}
+}
+
+body {
+	overflow-x: hidden;
+}
+
+.animate-gradient {
+	background-size: 300%;
+	-webkit-animation: animatedgradient 6s ease infinite alternate;
+	-moz-animation: animatedgradient 6s ease infinite alternate;
+	animation: animatedgradient 6s ease infinite alternate;
+}
+
+@keyframes animatedgradient {
+	0% {
+		background-position: 0% 50%;
+	}
+
+	50% {
+		background-position: 100% 50%;
+	}
+
+	100% {
+		background-position: 0% 50%;
+	}
+}

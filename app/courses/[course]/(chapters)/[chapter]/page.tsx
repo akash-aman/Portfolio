@@ -5,7 +5,6 @@ import {
 	CourseRoutesQueryVariables,
 	CourseRoutesDocument,
 	ChapterPageQuery,
-	ChapterPageQueryVariables,
 	ChapterPageDocument,
 } from "/generated/graphql";
 import { request } from "graphql-request";
@@ -39,64 +38,114 @@ export async function generateMetadata(
 	).data;
 
 	return {
-		title: chapter?.chapter?.data?.attributes?.seo?.metaTitle || 
+		title:
+			chapter?.chapter?.data?.attributes?.seo?.metaTitle ||
 			chapter?.chapter?.data?.attributes?.Title,
-		description: chapter?.chapter?.data?.attributes?.seo?.metaDescription || 
-			chapter?.chapter?.data?.attributes?.Excerpt || 
+		description:
+			chapter?.chapter?.data?.attributes?.seo?.metaDescription ||
+			chapter?.chapter?.data?.attributes?.Excerpt ||
 			chapter?.chapter?.data?.attributes?.Description,
 		openGraph: {
-			title: chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[0]?.title || 
-				chapter?.chapter?.data?.attributes?.seo?.metaTitle || 
+			title:
+				chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[0]?.title ||
+				chapter?.chapter?.data?.attributes?.seo?.metaTitle ||
 				chapter?.chapter?.data?.attributes?.Title,
-			description: chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[0]?.description ||
+			description:
+				chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[0]?.description ||
 				chapter?.chapter?.data?.attributes?.seo?.metaDescription ||
 				chapter?.chapter?.data?.attributes?.Excerpt ||
 				chapter?.chapter?.data?.attributes?.Description,
 			images: [
 				{
-					url: serverURL + ( chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data?.attributes?.formats?.medium?.url ||
-						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes?.formats?.medium?.url ||
-						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes?.formats?.medium?.url ),
-					width: chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data?.attributes?.formats?.medium?.width ||
-						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes?.formats?.medium?.width ||
-						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes?.formats?.medium?.width,
-					height:	chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data?.attributes?.formats?.medium?.height ||
-						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes?.formats?.medium?.height ||
-						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes?.formats?.medium?.height,
-					alt: chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data?.attributes?.caption ||
-						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes?.formats?.medium?.caption ||
-						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes?.formats?.medium?.caption,
+					url:
+						serverURL +
+						(chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[0]?.image
+							?.data?.attributes?.formats?.medium?.url ||
+							chapter?.chapter?.data?.attributes?.seo?.metaImage?.data
+								?.attributes?.formats?.medium?.url ||
+							chapter?.chapter?.data?.attributes?.FeaturedImage?.data
+								?.attributes?.formats?.medium?.url),
+					width:
+						chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[0]?.image
+							?.data?.attributes?.formats?.medium?.width ||
+						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes
+							?.formats?.medium?.width ||
+						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes
+							?.formats?.medium?.width,
+					height:
+						chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[0]?.image
+							?.data?.attributes?.formats?.medium?.height ||
+						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes
+							?.formats?.medium?.height ||
+						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes
+							?.formats?.medium?.height,
+					alt:
+						chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[0]?.image
+							?.data?.attributes?.caption ||
+						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes
+							?.formats?.medium?.caption ||
+						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes
+							?.formats?.medium?.caption,
 				},
 			],
 			type: "website",
-			url:  baseURL + "/courses/" +	params.course +	"/" + chapter?.chapter?.data?.attributes?.Slug,
+			url:
+				baseURL +
+				"/courses/" +
+				params.course +
+				"/" +
+				chapter?.chapter?.data?.attributes?.Slug,
 			countryName: "India",
 		},
 		twitter: {
-			title: chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[1]?.title || 
-				chapter?.chapter?.data?.attributes?.seo?.metaTitle || 
+			title:
+				chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[1]?.title ||
+				chapter?.chapter?.data?.attributes?.seo?.metaTitle ||
 				chapter?.chapter?.data?.attributes?.Title,
-			description: chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[1]?.description ||
+			description:
+				chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[1]?.description ||
 				chapter?.chapter?.data?.attributes?.seo?.metaDescription ||
 				chapter?.chapter?.data?.attributes?.Excerpt ||
 				chapter?.chapter?.data?.attributes?.Description,
 			images: [
 				{
-					url: serverURL + ( chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data?.attributes?.formats?.medium?.url ||
-						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes?.formats?.medium?.url ||
-						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes?.formats?.medium?.url ),
-					width: chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data?.attributes?.formats?.medium?.width ||
-						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes?.formats?.medium?.width ||
-						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes?.formats?.medium?.width,
-					height:	chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data?.attributes?.formats?.medium?.height ||
-						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes?.formats?.medium?.height ||
-						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes?.formats?.medium?.height,
-					alt: chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data?.attributes?.caption ||
-						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes?.caption ||
-						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes?.formats?.medium?.caption,
+					url:
+						serverURL +
+						(chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[1]?.image
+							?.data?.attributes?.formats?.medium?.url ||
+							chapter?.chapter?.data?.attributes?.seo?.metaImage?.data
+								?.attributes?.formats?.medium?.url ||
+							chapter?.chapter?.data?.attributes?.FeaturedImage?.data
+								?.attributes?.formats?.medium?.url),
+					width:
+						chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[1]?.image
+							?.data?.attributes?.formats?.medium?.width ||
+						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes
+							?.formats?.medium?.width ||
+						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes
+							?.formats?.medium?.width,
+					height:
+						chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[1]?.image
+							?.data?.attributes?.formats?.medium?.height ||
+						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes
+							?.formats?.medium?.height ||
+						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes
+							?.formats?.medium?.height,
+					alt:
+						chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[1]?.image
+							?.data?.attributes?.caption ||
+						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes
+							?.caption ||
+						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes
+							?.formats?.medium?.caption,
 				},
 			],
-			site: baseURL +"/courses/" + params.course + "/" +chapter?.chapter?.data?.attributes?.Slug,
+			site:
+				baseURL +
+				"/courses/" +
+				params.course +
+				"/" +
+				chapter?.chapter?.data?.attributes?.Slug,
 		},
 	};
 }

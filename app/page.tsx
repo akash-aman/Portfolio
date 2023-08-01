@@ -10,7 +10,6 @@ import SEO from "/components/SEO";
 import Card from "/components/card";
 import { Metadata } from "next";
 import { baseURL } from "/lib/constant";
-import { GitHub } from "/icons/social";
 export const metadata: Metadata = {
 	title: {
 		absolute: "Akash Aman | Full Stack Dev",
@@ -135,13 +134,22 @@ const Page = async () => {
 				/>
 				<h3 className="mb-4">About Me 😎</h3>
 				<p>
-					I am a Software Engineer working at <i className="not-italic animate-gradient font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400  to-pink-600">rtCamp, India</i>❤️. I am an active
-					learner & love exploring new technologies. My passion towards
-					technologies motivates me everyday to learn something new 😃.
+					I am a Software Engineer working at{" "}
+					<i className="not-italic animate-gradient font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400  to-pink-600">
+						rtCamp, India
+					</i>
+					❤️. I am an active learner & love exploring new technologies. My
+					passion towards technologies motivates me everyday to learn something
+					new 😃.
 				</p>
 				<h3 className="mb-4 mt-12">Activities & Interests 🎻</h3>
 				<p>
-				During my free time 🕛, you'll often find me building e-hacks and coding projects, which I enthusiastically share as open-source contributions on GitHub 🧑‍💻. Apart from my professional pursuits, I'm deeply fond of gadgets, teaching, and traveling. Exploring new destinations 🚞 and staying updated with cutting-edge technologies 🤖 bring me immense joy 😊 and fulfillment.
+					During my free time 🕛, you'll often find me building e-hacks and
+					coding projects, which I enthusiastically share as open-source
+					contributions on GitHub 🧑‍💻. Apart from my professional pursuits, I'm
+					deeply fond of gadgets, teaching, and traveling. Exploring new
+					destinations 🚞 and staying updated with cutting-edge technologies 🤖
+					bring me immense joy 😊 and fulfillment.
 				</p>
 				<h3 className="mb-14 text mt-12">Latest Blogs 📝</h3>
 				<div className="grid w-full grid-cols-[repeat(auto-fill,minmax(230px,370px))] justify-center gap-8">

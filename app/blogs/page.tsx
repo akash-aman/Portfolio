@@ -1,5 +1,5 @@
 import React from "react";
-import Context from "./HeaderContext";
+import HeaderAnimate from "/components/headerAnimationContext";
 import {
 	BlogsPageQuery,
 	BlogsPageQueryVariables,
@@ -75,8 +75,7 @@ const Page = async () => {
 
 	return (
 		<div className="grid w-full grid-cols-[repeat(auto-fill,minmax(230px,350px))] justify-center gap-8">
-			<Context />
-
+			<HeaderAnimate data={{ title: "Blog ✅" }} />
 			{blogs.posts.data.map(({ id, attributes }) => {
 				return <Card type={"blogs"} key={id} attributes={attributes} id={id} />;
 			})}

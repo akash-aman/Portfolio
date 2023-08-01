@@ -3,10 +3,8 @@ import { ParsedUrlQuery } from "querystring";
 import Link from "next/link";
 import {
 	CoursePageQuery,
-	CoursePageQueryVariables,
 	CoursePageDocument,
 } from "/generated/graphql";
-import { request } from "graphql-request";
 import { gqlAPI } from "/lib/constant";
 import { notFound } from "next/navigation";
 import { Metadata, ResolvingMetadata } from "next";
@@ -36,56 +34,93 @@ export async function generateMetadata(
 		.data;
 
 	return {
-		title: course?.course?.data?.attributes?.seo?.metaTitle || 
-			course?.course?.data?.attributes?.Title, 
-		description: course?.course?.data?.attributes?.seo?.metaDescription || 
-			course?.course?.data?.attributes?.Excerpt || 
+		title:
+			course?.course?.data?.attributes?.seo?.metaTitle ||
+			course?.course?.data?.attributes?.Title,
+		description:
+			course?.course?.data?.attributes?.seo?.metaDescription ||
+			course?.course?.data?.attributes?.Excerpt ||
 			course?.course?.data?.attributes?.Description,
 		openGraph: {
-			title: course?.course?.data?.attributes?.seo?.metaSocial?.[0]?.title || 
+			title:
+				course?.course?.data?.attributes?.seo?.metaSocial?.[0]?.title ||
 				course?.course?.data?.attributes?.Title,
-			description: course?.course?.data?.attributes?.seo?.metaSocial?.[0]?.description || 
-				course?.course?.data?.attributes?.Excerpt || 
+			description:
+				course?.course?.data?.attributes?.seo?.metaSocial?.[0]?.description ||
+				course?.course?.data?.attributes?.Excerpt ||
 				course?.course?.data?.attributes?.Description,
 			images: [
 				{
-					url: serverURL + ( course?.course?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data?.attributes?.formats?.medium?.url || 
-						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes?.formats?.medium?.url ),
-					width: course?.course?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data?.attributes?.formats?.medium?.width || 
-						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes?.formats?.medium?.width,
-					height:	course?.course?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data?.attributes?.formats?.medium?.height ||
-						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes?.formats?.medium?.height,
-					alt: course?.course?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data?.attributes?.caption || 
-						course?.course?.data?.attributes?.seo?.metaImage?.data?.attributes?.formats?.medium?.caption ||
-						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes?.formats?.medium?.caption,
+					url:
+						serverURL +
+						(course?.course?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data
+							?.attributes?.formats?.medium?.url ||
+							course?.course?.data?.attributes?.FeaturedImage?.data?.attributes
+								?.formats?.medium?.url),
+					width:
+						course?.course?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data
+							?.attributes?.formats?.medium?.width ||
+						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes
+							?.formats?.medium?.width,
+					height:
+						course?.course?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data
+							?.attributes?.formats?.medium?.height ||
+						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes
+							?.formats?.medium?.height,
+					alt:
+						course?.course?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data
+							?.attributes?.caption ||
+						course?.course?.data?.attributes?.seo?.metaImage?.data?.attributes
+							?.formats?.medium?.caption ||
+						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes
+							?.formats?.medium?.caption,
 				},
 			],
 			type: "website",
-			url:  baseURL + "/courses/" + course?.course?.data?.attributes?.Slug,
+			url: baseURL + "/courses/" + course?.course?.data?.attributes?.Slug,
 			countryName: "India",
 		},
 		twitter: {
-			title: course?.course?.data?.attributes?.seo?.metaSocial?.[1]?.title || 
+			title:
+				course?.course?.data?.attributes?.seo?.metaSocial?.[1]?.title ||
 				course?.course?.data?.attributes?.seo?.metaTitle ||
 				course?.course?.data?.attributes?.Title,
-			description: course?.course?.data?.attributes?.seo?.metaSocial?.[1]?.description ||
-				course?.course?.data?.attributes?.seo?.metaDescription || 
-				course?.course?.data?.attributes?.Excerpt || 
+			description:
+				course?.course?.data?.attributes?.seo?.metaSocial?.[1]?.description ||
+				course?.course?.data?.attributes?.seo?.metaDescription ||
+				course?.course?.data?.attributes?.Excerpt ||
 				course?.course?.data?.attributes?.Description,
 			images: [
 				{
-					url: serverURL + ( course?.course?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data?.attributes?.formats?.medium?.url || 
-						course?.course?.data?.attributes?.seo?.metaImage?.data?.attributes?.formats?.medium?.url ||
-						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes?.formats?.medium?.url ),
-					width: course?.course?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data?.attributes?.formats?.medium?.width || 
-						course?.course?.data?.attributes?.seo?.metaImage?.data?.attributes?.formats?.medium?.width ||
-						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes?.formats?.medium?.width,
-					height:	course?.course?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data?.attributes?.formats?.medium?.height ||
-						course?.course?.data?.attributes?.seo?.metaImage?.data?.attributes?.formats?.medium?.height ||
-						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes?.formats?.medium?.height,
-					alt: course?.course?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data?.attributes?.caption || 
-						course?.course?.data?.attributes?.seo?.metaImage?.data?.attributes?.formats?.medium?.caption ||
-						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes?.formats?.medium?.caption,
+					url:
+						serverURL +
+						(course?.course?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data
+							?.attributes?.formats?.medium?.url ||
+							course?.course?.data?.attributes?.seo?.metaImage?.data?.attributes
+								?.formats?.medium?.url ||
+							course?.course?.data?.attributes?.FeaturedImage?.data?.attributes
+								?.formats?.medium?.url),
+					width:
+						course?.course?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data
+							?.attributes?.formats?.medium?.width ||
+						course?.course?.data?.attributes?.seo?.metaImage?.data?.attributes
+							?.formats?.medium?.width ||
+						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes
+							?.formats?.medium?.width,
+					height:
+						course?.course?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data
+							?.attributes?.formats?.medium?.height ||
+						course?.course?.data?.attributes?.seo?.metaImage?.data?.attributes
+							?.formats?.medium?.height ||
+						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes
+							?.formats?.medium?.height,
+					alt:
+						course?.course?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data
+							?.attributes?.caption ||
+						course?.course?.data?.attributes?.seo?.metaImage?.data?.attributes
+							?.formats?.medium?.caption ||
+						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes
+							?.formats?.medium?.caption,
 				},
 			],
 			site: baseURL + "/courses/" + course?.course?.data?.attributes?.Slug,

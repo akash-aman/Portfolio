@@ -308,7 +308,6 @@ export const gqlAPI = serverURL + "/graphql";
 export const baseURL = "https://akash.cx";
 //export const gqlAPI = "http://strapi:1337/graphql";
 
-
 export const paths = [
 	{ path: "/projects" },
 	{ path: "/blogs" },

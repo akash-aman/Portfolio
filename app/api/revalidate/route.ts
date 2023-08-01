@@ -46,15 +46,18 @@ async function pathRevalidator(body: Body) {
 	if (body.model === "course") {
 		console.log("-----------------Course-TAG-API--------------------");
 		revalidateTag(body.entry.Slug);
-		console.log(`Current Time : ${new Date().toLocaleTimeString('en-US', {
-			timeZone: 'Asia/Kolkata',
-			year: 'numeric',
-			month: 'short',
-			day: '2-digit',
-			hour: '2-digit',
-			minute: '2-digit',
-			hour12: true
-		})} | ` + "revalidate tags: ", body.entry.Slug);
+		console.log(
+			`Current Time : ${new Date().toLocaleTimeString("en-US", {
+				timeZone: "Asia/Kolkata",
+				year: "numeric",
+				month: "short",
+				day: "2-digit",
+				hour: "2-digit",
+				minute: "2-digit",
+				hour12: true,
+			})} | ` + "revalidate tags: ",
+			body.entry.Slug,
+		);
 
 		// revalidatePath(`/courses`);
 		// console.log('Revalidated path :', `/courses`);
@@ -66,29 +69,35 @@ async function pathRevalidator(body: Body) {
 	if (body.model === "chapter") {
 		console.log("-----------------Chapter-TAG-API--------------------");
 		revalidateTag(body.entry.Slug);
-		console.log(`Current Time : ${new Date().toLocaleTimeString('en-US', {
-			timeZone: 'Asia/Kolkata',
-			year: 'numeric',
-			month: 'short',
-			day: '2-digit',
-			hour: '2-digit',
-			minute: '2-digit',
-			hour12: true
-		})} | ` + "revalidate tags: ", body.entry.Slug);
+		console.log(
+			`Current Time : ${new Date().toLocaleTimeString("en-US", {
+				timeZone: "Asia/Kolkata",
+				year: "numeric",
+				month: "short",
+				day: "2-digit",
+				hour: "2-digit",
+				minute: "2-digit",
+				hour12: true,
+			})} | ` + "revalidate tags: ",
+			body.entry.Slug,
+		);
 	}
 
 	if (body.model === "post") {
 		console.log("-----------------Post-TAG-API--------------------");
 		revalidateTag(body.entry.Slug);
-		console.log(`Current Time : ${new Date().toLocaleTimeString('en-US', {
-			timeZone: 'Asia/Kolkata',
-			year: 'numeric',
-			month: 'short',
-			day: '2-digit',
-			hour: '2-digit',
-			minute: '2-digit',
-			hour12: true
-		})} | ` + "revalidate tags: ", body.entry.Slug);
+		console.log(
+			`Current Time : ${new Date().toLocaleTimeString("en-US", {
+				timeZone: "Asia/Kolkata",
+				year: "numeric",
+				month: "short",
+				day: "2-digit",
+				hour: "2-digit",
+				minute: "2-digit",
+				hour12: true,
+			})} | ` + "revalidate tags: ",
+			body.entry.Slug,
+		);
 
 		//  revalidatePath(`/blogs`);
 		//  console.log('Revalidated path :', `/blogs`);
@@ -97,21 +106,21 @@ async function pathRevalidator(body: Body) {
 		//  console.log('Revalidated path :', `/blogs/${body.entry.Slug}`);
 	}
 
-	if (
-		body.event === "media.create" ||
-		body.event === "media.delete"
-	) {
+	if (body.event === "media.create" || body.event === "media.delete") {
 		console.log("-----------------Media-TAG-API--------------------");
 		revalidateTag(`${body.media.id}`);
-		console.log(`Current Time : ${new Date().toLocaleTimeString('en-US', {
-			timeZone: 'Asia/Kolkata',
-			year: 'numeric',
-			month: 'short',
-			day: '2-digit',
-			hour: '2-digit',
-			minute: '2-digit',
-			hour12: true
-		})} | ` + "revalidate tags: ", body?.media?.name);
+		console.log(
+			`Current Time : ${new Date().toLocaleTimeString("en-US", {
+				timeZone: "Asia/Kolkata",
+				year: "numeric",
+				month: "short",
+				day: "2-digit",
+				hour: "2-digit",
+				minute: "2-digit",
+				hour12: true,
+			})} | ` + "revalidate tags: ",
+			body?.media?.name,
+		);
 	}
 	console.log("------------------------------------------------------");
 	return NextResponse.json({ message: "Revalidated" }, { status: 200 });

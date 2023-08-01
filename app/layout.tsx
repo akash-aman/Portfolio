@@ -12,16 +12,15 @@ import { Metadata } from "next";
 import { baseURL } from "/lib/constant";
 import localFont from "next/font/local";
 
-
 const webFont = localFont({
 	src: [
 		{
 			path: "../assets/fonts/wt-400.woff2",
 			weight: "400",
-		}
+		},
 	],
 	variable: "--font-content",
-	preload: true
+	preload: true,
 });
 
 const headFont = localFont({
@@ -32,7 +31,7 @@ const headFont = localFont({
 		},
 	],
 	variable: "--font-heading",
-	preload: true
+	preload: true,
 });
 
 const svgFont = localFont({
@@ -40,9 +39,10 @@ const svgFont = localFont({
 		{
 			path: "../assets/fonts/swing-king.woff2",
 			weight: "400",
-		}],
+		},
+	],
 	variable: "--font-svg",
-	preload: false
+	preload: false,
 });
 
 const codeFont = localFont({
@@ -51,10 +51,10 @@ const codeFont = localFont({
 			path: "../assets/fonts/attribute-mono-400.woff2",
 			weight: "400",
 			style: "normal",
-		}
+		},
 	],
 	variable: "--font-code",
-	preload: false
+	preload: false,
 });
 
 export const metadata: Metadata = {
@@ -64,7 +64,7 @@ export const metadata: Metadata = {
 	},
 	metadataBase: new URL(baseURL),
 	description:
-	"Welcome to the captivating realm of Akash Aman. Witness the fusion of art and technology in this Full Stack Developer's portfolio. Immerse yourself in a symphony of elegant full stack sorcery, and transformative web experiences.",
+		"Welcome to the captivating realm of Akash Aman. Witness the fusion of art and technology in this Full Stack Developer's portfolio. Immerse yourself in a symphony of elegant full stack sorcery, and transformative web experiences.",
 	keywords: [
 		"Akash Aman",
 		"SDE",
@@ -97,7 +97,7 @@ export const metadata: Metadata = {
 	openGraph: {
 		title: "Akash Aman | Full Stack Dev",
 		description:
-		"Welcome to the captivating realm of Akash Aman. Witness the fusion of art and technology through full stack dev & transformative web experiences.",
+			"Welcome to the captivating realm of Akash Aman. Witness the fusion of art and technology through full stack dev & transformative web experiences.",
 		url: baseURL,
 		images: [
 			{
@@ -139,7 +139,7 @@ export const metadata: Metadata = {
 		],
 		title: "Akash Aman | Full Stack Dev",
 		description:
-		"Welcome to the captivating realm of Akash Aman. Witness the fusion of art and technology through full stack dev & transformative web experiences.",
+			"Welcome to the captivating realm of Akash Aman. Witness the fusion of art and technology through full stack dev & transformative web experiences.",
 	},
 	viewport: {
 		width: "device-width",
@@ -169,7 +169,18 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html lang="en" className={webFont.variable+ " " + headFont.variable + " " + svgFont.variable + " " + codeFont.variable }>
+		<html
+			lang="en"
+			className={
+				webFont.variable +
+				" " +
+				headFont.variable +
+				" " +
+				svgFont.variable +
+				" " +
+				codeFont.variable
+			}
+		>
 			<body className="bg-[var(--dev-bg-colour)] scrollbar">
 				<ApplyTheme />
 				<Navigation />

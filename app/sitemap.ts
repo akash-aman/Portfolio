@@ -1,6 +1,6 @@
 import { MetadataRoute } from "next";
 import { gqlAPI, paths } from "/lib/constant";
-import request, { RequestExtendedOptions } from "graphql-request";
+import request from "graphql-request";
 import {
 	CourseRoutesQuery,
 	CourseRoutesQueryVariables,

@@ -94,10 +94,15 @@
 		line-height: var(--tw-lh-h6);
 	}
 
-	h1,h2,h3,h4,h5,h6 {
+	h1,
+	h2,
+	h3,
+	h4,
+	h5,
+	h6 {
 		font-weight: var(--heading-font-weight);
 		font-family: var(--font-heading);
-		color : var(--heading-font-color);
+		color: var(--heading-font-color);
 	}
 
 	.emogi {

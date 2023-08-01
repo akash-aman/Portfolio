@@ -1,5 +1,4 @@
 :root {
-
 	--heading-font-weight: 700;
 	--dev-theme-transition: all 0.2s ease;
 	--dev-theme-color: rgb(0, 0, 0);
@@ -150,7 +149,6 @@
 }
 
 @mixin scrollbar() {
-
 	/* width */
 	&::-webkit-scrollbar {
 		@apply w-1.5 h-1.5;

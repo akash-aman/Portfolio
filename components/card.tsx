@@ -1,8 +1,6 @@
 import Link from "next/link";
 import React from "react";
-import { gqlAPI } from "/lib/constant";
-import Image from "next/image";
-import ImageComponent from "./image"; 
+import ImageComponent from "./image";
 
 const Card = ({ attributes, id, type }) => {
 	const { Title, Slug, Description, FeaturedImage, tags } = attributes;
@@ -50,11 +48,9 @@ const Card = ({ attributes, id, type }) => {
 													tag.attributes.FeaturedImage.data.attributes
 														.caption || tag.attributes.Name
 												}
-												tags={["media",tag.attributes.FeaturedImage.data.id]}
+												tags={["media", tag.attributes.FeaturedImage.data.id]}
 											/>{" "}
-											<span
-												className="font-light text-xs text-[rgba(0,0,0,0.55)] dark:text-[rgba(255,255,255,0.4)]"
-											>
+											<span className="font-light text-xs text-[rgba(0,0,0,0.55)] dark:text-[rgba(255,255,255,0.4)]">
 												{tag.attributes.Name}
 											</span>
 										</i>

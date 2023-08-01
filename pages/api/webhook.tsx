@@ -33,7 +33,6 @@ export default async function handleWebhook(
 	}
 
 	try {
-
 		console.log("-----------------Body-Path-API--------------------");
 		console.log("body: ", JSON.stringify(jsonBody, null, 2));
 		await res.revalidate(`/`);
@@ -41,26 +40,32 @@ export default async function handleWebhook(
 		if (jsonBody.model === "course") {
 			console.log("-----------------Course-Path-API--------------------");
 			await res.revalidate(`/courses`);
-			console.log(`Current Time : ${new Date().toLocaleTimeString('en-US', {
-				timeZone: 'Asia/Kolkata',
-				year: 'numeric',
-				month: 'short',
-				day: '2-digit',
-				hour: '2-digit',
-				minute: '2-digit',
-				hour12: true
-			})} | ` + "Revalidated path :", `/courses`);
+			console.log(
+				`Current Time : ${new Date().toLocaleTimeString("en-US", {
+					timeZone: "Asia/Kolkata",
+					year: "numeric",
+					month: "short",
+					day: "2-digit",
+					hour: "2-digit",
+					minute: "2-digit",
+					hour12: true,
+				})} | ` + "Revalidated path :",
+				`/courses`,
+			);
 
 			await res.revalidate(`/courses/${jsonBody.entry.Slug}`);
-			console.log(`Current Time : ${new Date().toLocaleTimeString('en-US', {
-				timeZone: 'Asia/Kolkata',
-				year: 'numeric',
-				month: 'short',
-				day: '2-digit',
-				hour: '2-digit',
-				minute: '2-digit',
-				hour12: true
-			})} | ` + "Revalidated path :", `/courses/${jsonBody.entry.Slug}`);
+			console.log(
+				`Current Time : ${new Date().toLocaleTimeString("en-US", {
+					timeZone: "Asia/Kolkata",
+					year: "numeric",
+					month: "short",
+					day: "2-digit",
+					hour: "2-digit",
+					minute: "2-digit",
+					hour12: true,
+				})} | ` + "Revalidated path :",
+				`/courses/${jsonBody.entry.Slug}`,
+			);
 
 			const allChapters = await request<
 				RevalidateCourseQuery,
@@ -73,14 +78,14 @@ export default async function handleWebhook(
 						`/courses/${jsonBody.entry.Slug}/${chapter.chapter.data.attributes.Slug}`,
 					);
 					console.log(
-						`Current Time : ${new Date().toLocaleTimeString('en-US', {
-							timeZone: 'Asia/Kolkata',
-							year: 'numeric',
-							month: 'short',
-							day: '2-digit',
-							hour: '2-digit',
-							minute: '2-digit',
-							hour12: true
+						`Current Time : ${new Date().toLocaleTimeString("en-US", {
+							timeZone: "Asia/Kolkata",
+							year: "numeric",
+							month: "short",
+							day: "2-digit",
+							hour: "2-digit",
+							minute: "2-digit",
+							hour12: true,
 						})} | ` + "Revalidated path :",
 						`/courses/${jsonBody.entry.Slug}/${chapter.chapter.data.attributes.Slug}`,
 					);
@@ -92,42 +97,48 @@ export default async function handleWebhook(
 			console.log("-----------------Post-Path-API--------------------");
 			await res.revalidate(`/blogs`);
 			await res.revalidate(`/blogs/${jsonBody.entry.Slug}`);
-			console.log(`Current Time : ${new Date().toLocaleTimeString('en-US', {
-				timeZone: 'Asia/Kolkata',
-				year: 'numeric',
-				month: 'short',
-				day: '2-digit',
-				hour: '2-digit',
-				minute: '2-digit',
-				hour12: true
-			})} | ` + "Revalidated path : /blogs");
-			console.log(`Current Time : ${new Date().toLocaleTimeString('en-US', {
-				timeZone: 'Asia/Kolkata',
-				year: 'numeric',
-				month: 'short',
-				day: '2-digit',
-				hour: '2-digit',
-				minute: '2-digit',
-				hour12: true
-			})} | ` + "Revalidated path :", `/blogs/${jsonBody.entry.Slug}`);
+			console.log(
+				`Current Time : ${new Date().toLocaleTimeString("en-US", {
+					timeZone: "Asia/Kolkata",
+					year: "numeric",
+					month: "short",
+					day: "2-digit",
+					hour: "2-digit",
+					minute: "2-digit",
+					hour12: true,
+				})} | ` + "Revalidated path : /blogs",
+			);
+			console.log(
+				`Current Time : ${new Date().toLocaleTimeString("en-US", {
+					timeZone: "Asia/Kolkata",
+					year: "numeric",
+					month: "short",
+					day: "2-digit",
+					hour: "2-digit",
+					minute: "2-digit",
+					hour12: true,
+				})} | ` + "Revalidated path :",
+				`/blogs/${jsonBody.entry.Slug}`,
+			);
 		}
 
 		console.log("---------------------------------------------------");
-		return res.status(200).send(`Current Time : ${new Date().toLocaleTimeString('en-US', {
-			timeZone: 'Asia/Kolkata',
-			year: 'numeric',
-			month: 'short',
-			day: '2-digit',
-			hour: '2-digit',
-			minute: '2-digit',
-			hour12: true
-		})} | ` + "revalidated");
+		return res.status(200).send(
+			`Current Time : ${new Date().toLocaleTimeString("en-US", {
+				timeZone: "Asia/Kolkata",
+				year: "numeric",
+				month: "short",
+				day: "2-digit",
+				hour: "2-digit",
+				minute: "2-digit",
+				hour12: true,
+			})} | ` + "revalidated",
+		);
 	} catch (err) {
 		console.log("-----------------Error-Path-API--------------------");
 		console.error(err);
 		return res.status(500).send("Internal server error");
 	}
-
 }
 
 type Body = {

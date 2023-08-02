@@ -10,6 +10,10 @@ import { gqlAPI } from "/lib/constant";
 
 import { Metadata } from "next";
 import Card from "/components/card";
+
+/**
+ * This is the metadata for the page.
+ */
 export const metadata: Metadata = {
 	title: {
 		absolute: "Courses",
@@ -66,6 +70,11 @@ export const metadata: Metadata = {
 	},
 };
 
+/**
+ * This function generates the page.
+ * 
+ * @returns jsx element.
+ */
 const Page = async () => {
 	const courses = await request<CoursesPageQuery, CoursesPageQueryVariables>(
 		gqlAPI,

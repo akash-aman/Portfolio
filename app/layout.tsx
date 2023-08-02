@@ -57,6 +57,9 @@ const codeFont = localFont({
 	preload: false,
 });
 
+/**
+ * This is the metadata for the page.
+ */
 export const metadata: Metadata = {
 	title: {
 		template: "%s | Akash Aman",
@@ -163,6 +166,13 @@ export const metadata: Metadata = {
 		baseURL + "/projects",
 	],
 };
+
+/**
+ * This is the Root layout for the every page.
+ * 
+ * @param param0 children - children of the component
+ * @returns jsx element.
+ */
 export default function RootLayout({
 	children,
 }: {

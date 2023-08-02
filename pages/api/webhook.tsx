@@ -1,4 +1,3 @@
-//import { createHmac } from 'crypto';
 import { NextApiRequest, NextApiResponse } from "next";
 import {
 	RevalidateCourseQuery,
@@ -8,12 +7,18 @@ import {
 import { request } from "graphql-request";
 import { gqlAPI } from "/lib/constant";
 
+/**
+ * This is the webhook handler for On Demand ISR.
+ * 
+ * @param req NextApiRequest  - request object
+ * @param res NextApiResponse - response object
+ * @returns res - response object
+ */
 export default async function handleWebhook(
 	req: NextApiRequest,
 	res: NextApiResponse,
 ) {
-	// verify the webhook signature request against the
-	// unmodified, unparsed body
+
 	const body = await getRawBody(req);
 	if (!body) {
 		res.status(400).send("Bad request (no body)");
@@ -22,11 +27,8 @@ export default async function handleWebhook(
 
 	const jsonBody: Body = JSON.parse(body);
 
-	// compute our signature from the raw body
 	const secret = process.env.GITHUB_WEBHOOK_SECRET;
 	const signature = req.headers["x-hub-signature-256"];
-	//const computedSignature =
-	// 'sha256=' + createHmac('sha256', secret).update(body).digest('hex');
 
 	if (signature !== secret) {
 		return res.status(403).send("Forbidden");
@@ -149,6 +151,12 @@ type Body = {
 	entry: any;
 };
 
+/**
+ * This function is used to get the raw body of the request.
+ * 
+ * @param req NextApiRequest - request object
+ * @returns Promise<string> - raw body 
+ */
 function getRawBody(req): Promise<string> {
 	return new Promise((resolve, reject) => {
 		let bodyChunks = [];

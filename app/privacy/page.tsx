@@ -3,6 +3,9 @@ import Link from "next/link";
 import HeaderAnimate from "/components/headerAnimationContext";
 import { Metadata } from "next";
 
+/**
+ * This is the metadata for the page.
+ */
 export const metadata: Metadata = {
 	title: "Privacy",
 	description:
@@ -57,6 +60,11 @@ export const metadata: Metadata = {
 	},
 };
 
+/**
+ * This function generates the page.
+ * 
+ * @returns jsx element.
+ */
 const Page = () => {
 	return (
 		<div>

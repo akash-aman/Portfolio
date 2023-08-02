@@ -1,8 +1,13 @@
-//import { createHmac } from 'crypto';
 import { NextRequest, NextResponse } from "next/server";
 import { revalidateTag } from "next/cache";
 type Secret = string;
 
+/**
+ * This is the webhook handler for On Demand ISR.
+ * 
+ * @param req NextRequest - Request Object
+ * @returns res - response object 
+ */
 export async function POST(req: NextRequest) {
 	const body = await rawBody(req.body);
 
@@ -15,7 +20,7 @@ export async function POST(req: NextRequest) {
 	const secret: Secret = process.env.GITHUB_WEBHOOK_SECRET;
 
 	const signature: string = req.headers.get("x-hub-signature-256");
-	//const computedSignature: string = 'sha256=' + createHmac('sha256', secret).update(body).digest('hex');
+
 	console.log(JSON.stringify(bodyJSON, null, 2));
 
 	if (signature !== secret) {
@@ -31,10 +36,22 @@ export async function POST(req: NextRequest) {
 	}
 }
 
+/**
+ * This is the webhook handler for On Demand ISR.
+ * 
+ * @param req NextRequest - Request Object
+ * @returns res - response object
+ */
 export async function GET(req: NextRequest) {
 	return NextResponse.json(`Only Post Request 😈`, { status: 404 });
 }
 
+/**
+ * This function is used to revalidate the path.
+ * 
+ * @param body Body - body object
+ * @returns 
+ */
 async function pathRevalidator(body: Body) {
 	// check if body is not empty.
 	if (!body) {
@@ -135,6 +152,12 @@ type Body = {
 	entry: any;
 };
 
+/**
+ * This function is used to get the raw body of the request.
+ * 
+ * @param req NextApiRequest - request object
+ * @returns Promise<string> - raw body 
+ */
 async function rawBody(responseBody) {
 	const reader = responseBody.getReader();
 	const chunks = [];

@@ -4,6 +4,9 @@ import Link from "next/link";
 import HeaderAnimate from "/components/headerAnimationContext";
 import { Metadata } from "next";
 
+/**
+ * This is the metadata for the page.
+ */
 export const metadata: Metadata = {
 	title: "Techstack",
 	description:
@@ -56,6 +59,12 @@ export const metadata: Metadata = {
 			"Explore the diverse tech stack and skills of Akash Aman in the field of Software Development. Akash possesses expertise in a wide range of technologies, languages, frameworks, tools, and more.",
 	},
 };
+
+/**
+ * This function generates the page.
+ * 
+ * @returns 
+ */
 const Page = () => {
 	return (
 		<div className="grid grid-cols-[repeat(auto-fit,minmax(230px,400px))] lg:grid-cols-[repeat(auto-fit,minmax(230px,350px))] justify-center gap-5 lg:gap-8">

@@ -10,6 +10,9 @@ import { gqlAPI } from "/lib/constant";
 import { Metadata } from "next";
 import Card from "/components/card";
 
+/**
+ * This is the metadata for the page.
+ */
 export const metadata: Metadata = {
 	title: {
 		absolute: "Blogs",
@@ -66,6 +69,11 @@ export const metadata: Metadata = {
 	},
 };
 
+/**
+ * This function generates the page.
+ * 
+ * @returns 
+ */
 const Page = async () => {
 	const blogs = await request<BlogsPageQuery, BlogsPageQueryVariables>(
 		gqlAPI,

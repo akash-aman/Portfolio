@@ -168,14 +168,14 @@ const Page = async () => {
 						);
 					})}
 				</div>
-				<h3 className="mb-14 text mt-12">Latest Courses 📖</h3>
+				{/* <h3 className="mb-14 text mt-12">Latest Courses 📖</h3>
 				<div className="grid w-full grid-cols-[repeat(auto-fill,minmax(230px,370px))] justify-center gap-8">
 					{courses.data.map(({ id, attributes }) => {
 						return (
 							<Card type={"courses"} key={id} attributes={attributes} id={id} />
 						);
 					})}
-				</div>
+				</div> */}
 			</div>
 		</>
 	);

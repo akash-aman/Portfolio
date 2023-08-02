@@ -10,6 +10,10 @@ import SEO from "/components/SEO";
 import Card from "/components/card";
 import { Metadata } from "next";
 import { baseURL } from "/lib/constant";
+
+/**
+ * This is the metadata for the page.
+ */
 export const metadata: Metadata = {
 	title: {
 		absolute: "Akash Aman | Full Stack Dev",
@@ -115,6 +119,11 @@ export const metadata: Metadata = {
 	],
 };
 
+/**
+ * This function generates the page.
+ * 
+ * @returns 
+ */
 const Page = async () => {
 	const { blogs, courses } = await request<
 		HomePageQuery,

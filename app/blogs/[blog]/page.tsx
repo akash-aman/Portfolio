@@ -18,6 +18,14 @@ type MetaProps = {
 	searchParams: { [key: string]: string | string[] | undefined };
 };
 
+/**
+ * This function generates the metadata for the page.
+ * 
+ * @param param0 params - params of the page
+ * @param param1 searchParams - searchParams of the page
+ * @param parent parent - parent metadata
+ * @returns 
+ */
 export async function generateMetadata(
 	{ params, searchParams }: MetaProps,
 	parent: ResolvingMetadata,
@@ -147,6 +155,12 @@ type Props = {
 	params: Params;
 };
 
+/**
+ * This function generates the page.
+ * 
+ * @param param0 params - params of the page
+ * @returns 
+ */
 const Blog = async ({ params }: Props) => {
 	var myHeaders = new Headers();
 	myHeaders.append("Content-Type", "application/json");

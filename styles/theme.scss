@@ -117,6 +117,14 @@
 	}
 }
 
+.fade {
+	transition:
+		var(--dev-theme-transition),
+		background-image 0.001s ease-in-out;
+	box-shadow:  var(--tw-shadow);
+	--tw-shadow: 0 10px 15px -3px rgba(0,0,0,.1),0 4px 6px -4px rgba(0,0,0,.1);
+}
+
 @screen sm {
 	:root {
 		font-size: 16px;

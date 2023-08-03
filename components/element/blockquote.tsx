@@ -1,19 +1,21 @@
-"use client";
 import React from "react";
 import BQ from "../../assets/icons/bq";
+import { Think } from "/assets/icons/icon";
 
 const Blockquote = ({ children, className }) => {
-	if (className == "notice") {
-		<div className="blockquote grid grid-cols-[4rem_1fr] gap-4 my-8">
-			<BQ className="w-full" />
-			<div>{children}</div>
-		</div>;
+	if (className == "think") {
+		return (
+			<div className="blockquote bg-neutral-100 dark:bg-neutral-800 p-10 sm:p-10 rounded-lg">
+				<Think className="w-16 inline align-bottom mr-4" />
+				<div className="inline Swing-King">{children}</div>
+			</div>
+		);
 	}
 
 	return (
-		<div className="blockquote grid grid-cols-[4rem_1fr] gap-4">
-			<BQ className="w-full" />
-			<div>{children}</div>
+		<div className="blockquote bg-neutral-100 dark:bg-neutral-800 p-10 sm:p-10 rounded-lg">
+			<BQ className="w-16 inline align-bottom mr-4" />
+			<div className="inline Swing-King">{children?.[1]?.props?.children?.[0]}</div>
 		</div>
 	);
 };

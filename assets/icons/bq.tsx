@@ -8,7 +8,6 @@ const BQ = (props) => {
 			fill="currentColor"
 			strokeWidth="0"
 			viewBox="0 0 14 16"
-			className="quote-icon"
 			xmlns="http://www.w3.org/2000/svg"
 		>
 			<path

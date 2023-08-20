@@ -44,8 +44,10 @@
 	--code-color-13: #50a14f; //s
 	--code-color-14: #c2c6da; //o 1
 	font-size: 13px;
-	--content-font-color: rgb(90, 90, 90);
-	--heading-font-color: rgb(80, 80, 80);
+	--content-font-color: rgb(90, 90, 90, 0.75);
+	--heading-font-color: rgb(80, 80, 80, 0.90);
+	--content-italic-font-color: rgb(90, 90, 90);
+	--content-bold-font-color: rgba(90, 90, 90, 0.85);
 }
 
 * {
@@ -68,7 +70,7 @@
 		--dev-copyright: rgba(230, 230, 230, 0.249);
 		--dev-text-color1: #fff;
 		--dev-text-color2: #fff;
-		--dev-text-color3: #eeeeee;
+		--dev-text-color3: #eeeeee28;
 		--dev-text-color4: #f0f0f0e4;
 		--dev-text-color5: rgba(255, 255, 255, 0.6);
 		--dev-text-color6: #c5c5c554;
@@ -90,8 +92,10 @@
 		--code-color-14: #dee2f7; //o
 
 		--github: #ffffff;
-		--content-font-color: rgb(230, 230, 230);
+		--content-font-color: rgba(230, 230, 230, 0.75);
 		--heading-font-color: rgb(255, 255, 255);
+		--content-italic-font-color: rgb(255, 255, 255);
+		--content-bold-font-color: rgba(255, 255, 255, 0.90);
 	}
 
 	* {

@@ -20,11 +20,6 @@ div {
 	font-weight: 400;
 	line-height: 2.3rem;
 	font-size: var(--dev-font-size-1);
-	color: var(--dev-text-color3);
-}
-
-i {
-	color: var(--dev-text-color4);
 }
 
 table {
@@ -38,7 +33,6 @@ table {
 }
 
 // transition.
-
 del,
 a,
 i,
@@ -111,10 +105,7 @@ details,
 div {
 	font-size: 1.25rem;
 	/* equivalent to 20px */
-
-	color: var(--content-font-color);
 }
-
 em,
 i {
 	font-style: italic;
@@ -143,4 +134,18 @@ br {
 li {
 	list-style: disc;
 	padding: 0 0 0 0.75rem;
+}
+
+
+li,ul,ol,div,p,span {
+	color: var(--content-font-color);
+}
+
+strong, .blockquote * {
+	color: var(--content-bold-font-color);
+}
+
+p code {
+	@apply bg-[var(--light-theme-500)] dark:bg-[rgba(64,64,64,0.8)] rounded-md p-1;
+	color: var(--content-bold-font-color);
 }

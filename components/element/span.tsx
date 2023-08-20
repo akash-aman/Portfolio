@@ -101,7 +101,7 @@ export const Span = (props) => {
 	}
 
 	return (
-		<span {...props} className="span">
+		<span className="span" {...props}>
 			{props.children}
 		</span>
 	);

@@ -35,7 +35,7 @@ const Code: FC<CodeProps> = ({ children, className, inline }) => {
 				{match[1]}
 			</div>
 			<pre className="code overflow-x-auto relative">
-				<div className="prismjs rounded-b-md rounded-tr-md bg-[var(--light-theme-500)] dark:bg-[rgba(64,64,64,0.3)] scrollbar overflow-x-auto p-4">
+				<div className="prismjs rounded-b-md max-h-[70vh] rounded-tr-md bg-[var(--light-theme-500)] dark:bg-[rgba(64,64,64,0.3)] scrollbar overflow-x-auto p-4">
 					<button
 						title="Copy to clipboard"
 						onClick={copyToClipboard}

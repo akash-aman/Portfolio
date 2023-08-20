@@ -33,6 +33,9 @@ body {
 	.p code {
 		font-family: var(--font-code);
 	}
+	.blockquote * {
+		font-family: var(--font-svg);
+	}
 }
 
 body {

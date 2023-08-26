@@ -25,7 +25,7 @@ const BasicLayout = ({
 						: { backgroundImage: `url(/${pathname.replaceAll("/", "-")}.svg)` }
 				}
 				className={clsx(
-					`grid bg-[var(--light-theme-500)] dark:bg-[var(--dark-theme-100)] min-h-[20rem] w-full z-20 md-h:sticky relative top-0 bg-blend-overlay`,
+					`grid bg-[var(--light-theme-500)] transition-all ease-in duration-200 dark:duration-400 dark:bg-[var(--dark-theme-100)] min-h-[20rem] w-full z-20 md-h:sticky relative top-0 bg-blend-overlay`,
 					{ "min-h-[0rem] h-[0px_!important]": validatePath() },
 				)}
 			>

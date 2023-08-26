@@ -76,10 +76,10 @@ const Page = () => {
 							<tech.Logo className="w-full" />
 						</div>
 						<div>
-							<p className="font-bold text-[var(--dev-text-color3)] m-0 p-0">
+							<p className="font-bold text-[var(--dev-text-color3)] dark:text-neutral-300  m-0 p-0">
 								{tech.name}
 							</p>
-							<p className="text-base text-[var(--dev-text-color5)] p-0 m-0">
+							<p className="text-base text-[var(--dev-text-color5)]  p-0 m-0">
 								{tech.description}
 							</p>
 						</div>

@@ -38,7 +38,7 @@ const Card = ({ attributes, id, type }) => {
 								<>
 									<div className="inline-block ">
 										<i className="leading-2 grid items-center bg-[rgba(255,255,255,0.6)]  dark:bg-slate-300 dark:bg-opacity-5 grid-flow-col gap-1 rounded-md not-italic m-[2px] py-[2px] p-1">
-											<ImageComponent
+											{tag?.attributes?.FeaturedImage?.data?.attributes?.url && <ImageComponent
 												className="inline align-middle"
 												src={tag.attributes.FeaturedImage.data.attributes.url}
 												width={18}
@@ -49,7 +49,8 @@ const Card = ({ attributes, id, type }) => {
 														.caption || tag.attributes.Name
 												}
 												tags={["media", tag.attributes.FeaturedImage.data.id]}
-											/>{" "}
+											/>}
+											{" "}
 											<span className="font-light text-xs text-[rgba(0,0,0,0.55)] dark:text-[rgba(255,255,255,0.4)]">
 												{tag.attributes.Name}
 											</span>

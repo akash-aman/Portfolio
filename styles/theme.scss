@@ -1,6 +1,8 @@
 :root {
 	--heading-font-weight: 700;
-	--dev-theme-transition: all 0.2s ease;
+	--dev-theme-transition: background-color 0.2s ease, 
+		box-shadow 0.2s ease,
+		max-height 0.2s ease;
 	--dev-theme-color: rgb(0, 0, 0);
 	--dev-box-fade: inset 120px 0px 30px -100px var(--dev-bg-colour);
 	--dev-box-fade-2: 0px 90px 10px 95px var(--dev-bg-colour);
@@ -62,7 +64,9 @@
 
 .dark {
 	&:root {
-		--dev-theme-transition: all 0.4s ease;
+		--dev-theme-transition: background-color 0.4s ease,
+			box-shadow 0.4s ease,
+			max-height 0.4s ease;
 		--dev-theme-color: rgb(255, 255, 255);
 		--dev-box-fade: inset 120px 0px 40px -92px var(--dark-theme-100);
 		--dev-box-fade-2: 0px 90px 10px 95px var(--dark-theme-100);

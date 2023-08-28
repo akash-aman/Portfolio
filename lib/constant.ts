@@ -60,28 +60,28 @@ export const timeLine = [
 	},
 	{
 		title: "High School",
-		description: "High School from Sacred Heart School",
+		description: "High School 🏫 from Sacred Heart School 🚸",
 		year: "2017",
 	},
 	{
 		title: "First Interaction with Internet",
 		description:
-			"First Interaction with Internet by watching my brother at the age of 8 years",
+			"My initial exposure to the internet 🌐 occurred when I was 8 years old, During that time, we used dial-up 📞 networking. ☎️",
 		year: "2008",
 	},
 	{
 		title: "First Interaction with Computer Games",
-		description: "First Interaction with Computer Games at the age of 5 years",
+		description: "At the age of 5, I had my initial experience with computer 🎮 games.",
 		year: "2005",
 	},
 	{
 		title: "Born",
-		description: "Born in a small town of Bihar, India",
+		description: "Born 👶 in a small town of Bihar, India",
 		year: "2000",
 	},
 	{
-		title: "First Computer At Home",
-		description: "First Computer bought before my birth by my father",
+		title: "The Earliest Home Computer",
+		description: "The first computer 🖥️, purchased before my birth.",
 		year: "1997",
 	},
 ];

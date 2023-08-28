@@ -1,5 +1,5 @@
 import { MetadataRoute } from "next";
-import { gqlAPI, paths } from "/lib/constant";
+import { gqlAPI, paths, baseURL } from "/lib/constant";
 import request from "graphql-request";
 import {
 	CourseRoutesQuery,
@@ -12,7 +12,7 @@ import {
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const defaultPaths = paths.map((path) => ({
-		url: path.path,
+		url: baseURL + "/" + path.path,
 		lastModified: new Date().toISOString(),
 	}));
 
@@ -27,7 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			...acc,
 			...course.attributes.chapters?.map(({ chapter }) => {
 				return {
-					url:
+					url: baseURL + 
 						"/courses/" +
 						course.attributes.Slug +
 						"/" +
@@ -36,7 +36,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 				};
 			}),
 			{
-				url: "/courses/" + course.attributes.Slug,
+				url: baseURL + "/courses/" + course.attributes.Slug,
 				lastModified: course.attributes.updatedAt,
 			},
 		];
@@ -50,7 +50,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		)
 	).posts.data?.map((blog) => {
 		return {
-			url: "/blogs/" + blog.attributes.Slug,
+			url: baseURL + "/blogs/" + blog.attributes.Slug,
 			lastModified: blog.attributes.updatedAt,
 		};
 	});

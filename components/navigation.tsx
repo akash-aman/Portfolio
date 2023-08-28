@@ -257,7 +257,7 @@ const Navigation = ({ nav }: NavigationProps) => {
 										/>
 									</div>
 									<div className="grid place-content-center">
-										<p className="font-semibold text-xl h-fit text-[var(--dev-text-color3)] m-0 p-0">
+										<p className="font-semibold text-xl h-fit dark:text-neutral-300 text-[var(--dev-text-color3)] m-0 p-0">
 											{tech.name}
 										</p>
 									</div>

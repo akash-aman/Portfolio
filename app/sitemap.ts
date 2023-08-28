@@ -12,7 +12,7 @@ import {
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const defaultPaths = paths.map((path) => ({
-		url: baseURL + "/" + path.path,
+		url: baseURL + path.path,
 		lastModified: new Date().toISOString(),
 	}));
 

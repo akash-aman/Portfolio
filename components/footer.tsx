@@ -22,7 +22,7 @@ const footer = ({ footer }: FooterProps) => {
 	const social = [
 		{
 			Icon: Youtube,
-			link: "https://www.youtube.com/@thedev684/featured",
+			link: "https://www.youtube.com/@DevZest",
 			title: "YouTube",
 		},
 		{

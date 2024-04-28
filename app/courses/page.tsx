@@ -76,17 +76,16 @@ export const metadata: Metadata = {
  * @returns jsx element.
  */
 const Page = async () => {
-	const courses = await request<CoursesPageQuery, CoursesPageQueryVariables>(
-		gqlAPI,
-		CoursesPageDocument,
-		{ page: 1, pageSize: 10 },
-	);
+	const { courses } = await request<
+		CoursesPageQuery,
+		CoursesPageQueryVariables
+	>(gqlAPI, CoursesPageDocument, { first: 10 });
 
 	return (
 		<div className="grid w-full grid-cols-[repeat(auto-fill,minmax(230px,350px))] justify-center gap-8 h-fit">
 			<HeaderAnimate data={{ title: "Courses" }} />
-			{courses.courses.data.map(({ id, attributes }) => (
-				<Card type={"courses"} key={id} attributes={attributes} id={id} />
+			{courses.nodes.map(({ slug, ...fields }) => (
+				<Card type={"courses"} key={slug} slug={slug} fields={fields} />
 			))}
 		</div>
 	);

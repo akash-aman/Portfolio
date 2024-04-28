@@ -1,5 +1,5 @@
-query blogPage($slug: ID!) {
-	blog: post(id: $slug, idType: SLUG) {
+query chapterPage($slug: ID!) {
+	chapter: chapter(id: $slug, idType: SLUG) {
 		title
 		slug
 		modified

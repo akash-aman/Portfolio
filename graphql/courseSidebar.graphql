@@ -1,0 +1,23 @@
+query courseSidebar($slug: ID!) {
+	course: course(id: $slug, idType: SLUG) {
+		title
+		slug
+		emogi {
+			emogi
+		}
+		chapters {
+			chapters {
+				... on Chapter {
+					title
+					slug
+					section {
+						section
+					}
+					emogi {
+						emogi
+					}
+				}
+			}
+		}
+	}
+}

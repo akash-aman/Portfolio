@@ -8,7 +8,7 @@ import React from "react";
 
 type SidebarProps = {
 	children: React.ReactNode;
-	section: CourseSidebarQuery;
+	course: CourseSidebarQuery;
 	params: any;
 };
 
@@ -20,12 +20,12 @@ type SidebarProps = {
  * @param param2 params - params of the component
  * @returns jsx element.
  */
-const Sidebar = ({ children, section, params }: SidebarProps): JSX.Element => {
+const Sidebar = ({ children, course, params }: SidebarProps): JSX.Element => {
 	if (params == null) {
 		return null;
 	}
 
-	if (section.course.data == null) {
+	if (!course) {
 		notFound();
 	}
 
@@ -47,44 +47,36 @@ const Sidebar = ({ children, section, params }: SidebarProps): JSX.Element => {
 			<aside className={clsx("row-start-2 xl:row-start-1")}>
 				<button {...props} />
 				<section className="max-h-[90vh] min-h-max py-5 bg-opacity-90 sticky top-20 overflow-scroll scrollbar overflow-x-hidden overflow-y-auto">
-					{section.course.data.attributes.chapters.map(
-						({ chapter, Section, Emogi, id }) => {
-							const courseSlug = section.course.data.attributes.Slug;
-							const chapterSlug = chapter.data.attributes.Slug;
-							const chapterTitle = chapter.data.attributes.Title;
-							return (
-								<div key={id}>
-									{Section !== "false" ? (
-										<li className="flex gap-2 p-1">
-											<span
-												className="max-w-fit emogi hover:cursor-pointer"
-												onClick={toggle}
-											>
-												{Emogi}
-											</span>
-											<h5
-												className={clsx(
-													"mt-1 italic font-extrabold uppercase",
-													{
-														hidden: !show,
-													},
-												)}
-											>
-												{Section}
-											</h5>
-										</li>
-									) : null}
-									<div className={clsx("p-1", { "hidden xz": !show })}>
-										<Link
-											className="text-lg sidebar-subheading"
-											href={`${chapterSlug}`}
+					{course.course?.chapters?.chapters?.map(
+						({ slug, title, emogi, section }) => (
+							<div key={slug}>
+								{section.section && (
+									<li className="flex gap-2 p-1">
+										<span
+											className="max-w-fit emogi hover:cursor-pointer"
+											onClick={toggle}
 										>
-											{chapterTitle}
-										</Link>
-									</div>
+											{emogi.emogi}
+										</span>
+										<h5
+											className={clsx("mt-1 italic font-extrabold uppercase", {
+												hidden: !show,
+											})}
+										>
+											{section?.section}
+										</h5>
+									</li>
+								)}
+								<div className={clsx("p-1", { "hidden xz": !show })}>
+									<Link
+										className="text-lg sidebar-subheading"
+										href={`/courses/${course?.course?.slug}/${slug}`}
+									>
+										{title}
+									</Link>
 								</div>
-							);
-						},
+							</div>
+						),
 					)}
 				</section>
 			</aside>

@@ -80,14 +80,13 @@ const Page = async () => {
 		BlogsPageDocument,
 		{ first: 5 },
 	);
-	console.log(blogs);
 
 	return (
 		<div className="grid w-full grid-cols-[repeat(auto-fill,minmax(230px,350px))] justify-center gap-8">
 			<HeaderAnimate data={{ title: "Blog ✅" }} />
-			{blogs.nodes.map(({ slug, ...fields }) => {
-				return <Card type={"blogs"} key={slug} slug={slug} fields={fields} />;
-			})}
+			{blogs.nodes.map(({ slug, ...fields }) => (
+				<Card type={"blogs"} key={slug} slug={slug} fields={fields} />
+			))}
 		</div>
 	);
 };

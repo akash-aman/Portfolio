@@ -574,6 +574,425 @@ export type Category_Featuredimage = AcfFieldGroup & {
 	fieldGroupName?: Maybe<Scalars["String"]["output"]>;
 };
 
+/** The chapter type */
+export type Chapter = ContentNode &
+	DatabaseIdentifier &
+	MenuItemLinkable &
+	Node &
+	NodeWithAuthor &
+	NodeWithContentEditor &
+	NodeWithExcerpt &
+	NodeWithFeaturedImage &
+	NodeWithTemplate &
+	NodeWithTitle &
+	Previewable &
+	UniformResourceIdentifiable & {
+		__typename?: "Chapter";
+		/** Connection between the NodeWithAuthor type and the User type */
+		author?: Maybe<NodeWithAuthorToUserConnectionEdge>;
+		/** The database identifier of the author of the node */
+		authorDatabaseId?: Maybe<Scalars["Int"]["output"]>;
+		/** The globally unique identifier of the author of the node */
+		authorId?: Maybe<Scalars["ID"]["output"]>;
+		/**
+		 * The id field matches the WP_Post-&gt;ID field.
+		 * @deprecated Deprecated in favor of the databaseId field
+		 */
+		chapterId: Scalars["Int"]["output"];
+		/** The content of the post. */
+		content?: Maybe<Scalars["String"]["output"]>;
+		/** The content of the post */
+		contentFiltered?: Maybe<Scalars["String"]["output"]>;
+		/** Connection between the ContentNode type and the ContentType type */
+		contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+		/** The name of the Content Type the node belongs to */
+		contentTypeName: Scalars["String"]["output"];
+		/** The unique identifier stored in the database */
+		databaseId: Scalars["Int"]["output"];
+		/** Post publishing date. */
+		date?: Maybe<Scalars["String"]["output"]>;
+		/** The publishing date set in GMT. */
+		dateGmt?: Maybe<Scalars["String"]["output"]>;
+		/** The desired slug of the post */
+		desiredSlug?: Maybe<Scalars["String"]["output"]>;
+		/** If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds */
+		editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
+		/** Added to the GraphQL Schema because the ACF Field Group &quot;Emogi&quot; was set to Show in GraphQL. */
+		emogi?: Maybe<Chapter_Emogi>;
+		/** The RSS enclosure for the object */
+		enclosure?: Maybe<Scalars["String"]["output"]>;
+		/** Connection between the ContentNode type and the EnqueuedScript type */
+		enqueuedScripts?: Maybe<ContentNodeToEnqueuedScriptConnection>;
+		/** Connection between the ContentNode type and the EnqueuedStylesheet type */
+		enqueuedStylesheets?: Maybe<ContentNodeToEnqueuedStylesheetConnection>;
+		/** The excerpt of the post. */
+		excerpt?: Maybe<Scalars["String"]["output"]>;
+		/** Connection between the NodeWithFeaturedImage type and the MediaItem type */
+		featuredImage?: Maybe<NodeWithFeaturedImageToMediaItemConnectionEdge>;
+		/** The database identifier for the featured image node assigned to the content node */
+		featuredImageDatabaseId?: Maybe<Scalars["Int"]["output"]>;
+		/** Globally unique ID of the featured image assigned to the node */
+		featuredImageId?: Maybe<Scalars["ID"]["output"]>;
+		/** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
+		guid?: Maybe<Scalars["String"]["output"]>;
+		/** Whether the chapters object is password protected. */
+		hasPassword?: Maybe<Scalars["Boolean"]["output"]>;
+		/** The globally unique identifier of the chapters object. */
+		id: Scalars["ID"]["output"];
+		/** Whether the node is a Comment */
+		isComment: Scalars["Boolean"]["output"];
+		/** Whether the node is a Content Node */
+		isContentNode: Scalars["Boolean"]["output"];
+		/** Whether the node represents the front page. */
+		isFrontPage: Scalars["Boolean"]["output"];
+		/** Whether  the node represents the blog page. */
+		isPostsPage: Scalars["Boolean"]["output"];
+		/** Whether the object is a node in the preview state */
+		isPreview?: Maybe<Scalars["Boolean"]["output"]>;
+		/** Whether the object is restricted from the current viewer */
+		isRestricted?: Maybe<Scalars["Boolean"]["output"]>;
+		/** Whether the node is a Term */
+		isTermNode: Scalars["Boolean"]["output"];
+		/** The user that most recently edited the node */
+		lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
+		/** The permalink of the post */
+		link?: Maybe<Scalars["String"]["output"]>;
+		/** The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time. */
+		modified?: Maybe<Scalars["String"]["output"]>;
+		/** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
+		modifiedGmt?: Maybe<Scalars["String"]["output"]>;
+		/** The password for the chapters object. */
+		password?: Maybe<Scalars["String"]["output"]>;
+		/** Connection between the Chapter type and the chapter type */
+		preview?: Maybe<ChapterToPreviewConnectionEdge>;
+		/** The database id of the preview node */
+		previewRevisionDatabaseId?: Maybe<Scalars["Int"]["output"]>;
+		/** Whether the object is a node in the preview state */
+		previewRevisionId?: Maybe<Scalars["ID"]["output"]>;
+		/** Added to the GraphQL Schema because the ACF Field Group &quot;Section&quot; was set to Show in GraphQL. */
+		section?: Maybe<Chapter_Section>;
+		/** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
+		slug?: Maybe<Scalars["String"]["output"]>;
+		/** The current status of the object */
+		status?: Maybe<Scalars["String"]["output"]>;
+		/** Connection between the Chapter type and the tag type */
+		tags?: Maybe<ChapterToTagConnection>;
+		/** The template assigned to the node */
+		template?: Maybe<ContentTemplate>;
+		/** Connection between the Chapter type and the TermNode type */
+		terms?: Maybe<ChapterToTermNodeConnection>;
+		/** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
+		title?: Maybe<Scalars["String"]["output"]>;
+		/** The unique resource identifier path */
+		uri?: Maybe<Scalars["String"]["output"]>;
+	};
+
+/** The chapter type */
+export type ChapterContentArgs = {
+	format?: InputMaybe<PostObjectFieldFormatEnum>;
+};
+
+/** The chapter type */
+export type ChapterEnqueuedScriptsArgs = {
+	after?: InputMaybe<Scalars["String"]["input"]>;
+	before?: InputMaybe<Scalars["String"]["input"]>;
+	first?: InputMaybe<Scalars["Int"]["input"]>;
+	last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** The chapter type */
+export type ChapterEnqueuedStylesheetsArgs = {
+	after?: InputMaybe<Scalars["String"]["input"]>;
+	before?: InputMaybe<Scalars["String"]["input"]>;
+	first?: InputMaybe<Scalars["Int"]["input"]>;
+	last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** The chapter type */
+export type ChapterExcerptArgs = {
+	format?: InputMaybe<PostObjectFieldFormatEnum>;
+};
+
+/** The chapter type */
+export type ChapterTagsArgs = {
+	after?: InputMaybe<Scalars["String"]["input"]>;
+	before?: InputMaybe<Scalars["String"]["input"]>;
+	first?: InputMaybe<Scalars["Int"]["input"]>;
+	last?: InputMaybe<Scalars["Int"]["input"]>;
+	where?: InputMaybe<ChapterToTagConnectionWhereArgs>;
+};
+
+/** The chapter type */
+export type ChapterTermsArgs = {
+	after?: InputMaybe<Scalars["String"]["input"]>;
+	before?: InputMaybe<Scalars["String"]["input"]>;
+	first?: InputMaybe<Scalars["Int"]["input"]>;
+	last?: InputMaybe<Scalars["Int"]["input"]>;
+	where?: InputMaybe<ChapterToTermNodeConnectionWhereArgs>;
+};
+
+/** The chapter type */
+export type ChapterTitleArgs = {
+	format?: InputMaybe<PostObjectFieldFormatEnum>;
+};
+
+/** Connection to chapter Nodes */
+export type ChapterConnection = {
+	/** A list of edges (relational context) between RootQuery and connected chapter Nodes */
+	edges: Array<ChapterConnectionEdge>;
+	/** A list of connected chapter Nodes */
+	nodes: Array<Chapter>;
+	/** Information about pagination in a connection. */
+	pageInfo: ChapterConnectionPageInfo;
+};
+
+/** Edge between a Node and a connected chapter */
+export type ChapterConnectionEdge = {
+	/** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+	cursor?: Maybe<Scalars["String"]["output"]>;
+	/** The connected chapter Node */
+	node: Chapter;
+};
+
+/** Page Info on the connected ChapterConnectionEdge */
+export type ChapterConnectionPageInfo = {
+	/** When paginating forwards, the cursor to continue. */
+	endCursor?: Maybe<Scalars["String"]["output"]>;
+	/** When paginating forwards, are there more items? */
+	hasNextPage: Scalars["Boolean"]["output"];
+	/** When paginating backwards, are there more items? */
+	hasPreviousPage: Scalars["Boolean"]["output"];
+	/** When paginating backwards, the cursor to continue. */
+	startCursor?: Maybe<Scalars["String"]["output"]>;
+};
+
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum ChapterIdType {
+	/** Identify a resource by the Database ID. */
+	DatabaseId = "DATABASE_ID",
+	/** Identify a resource by the (hashed) Global ID. */
+	Id = "ID",
+	/** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
+	Slug = "SLUG",
+	/** Identify a resource by the URI. */
+	Uri = "URI",
+}
+
+/** Set relationships between the chapter to tags */
+export type ChapterTagsInput = {
+	/** If true, this will append the tag to existing related tags. If false, this will replace existing relationships. Default true. */
+	append?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** The input list of items to set. */
+	nodes?: InputMaybe<Array<InputMaybe<ChapterTagsNodeInput>>>;
+};
+
+/** List of tags to connect the chapter to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists. */
+export type ChapterTagsNodeInput = {
+	/** The description of the tag. This field is used to set a description of the tag if a new one is created during the mutation. */
+	description?: InputMaybe<Scalars["String"]["input"]>;
+	/** The ID of the tag. If present, this will be used to connect to the chapter. If no existing tag exists with this ID, no connection will be made. */
+	id?: InputMaybe<Scalars["ID"]["input"]>;
+	/** The name of the tag. This field is used to create a new term, if term creation is enabled in nested mutations, and if one does not already exist with the provided slug or ID or if a slug or ID is not provided. If no name is included and a term is created, the creation will fallback to the slug field. */
+	name?: InputMaybe<Scalars["String"]["input"]>;
+	/** The slug of the tag. If no ID is present, this field will be used to make a connection. If no existing term exists with this slug, this field will be used as a fallback to the Name field when creating a new term to connect to, if term creation is enabled as a nested mutation. */
+	slug?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** Connection between the Chapter type and the chapter type */
+export type ChapterToPreviewConnectionEdge = ChapterConnectionEdge &
+	Edge &
+	OneToOneConnection & {
+		__typename?: "ChapterToPreviewConnectionEdge";
+		/** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+		cursor?: Maybe<Scalars["String"]["output"]>;
+		/** The node of the connection, without the edges */
+		node: Chapter;
+	};
+
+/** Connection between the Chapter type and the tag type */
+export type ChapterToTagConnection = Connection &
+	TagConnection & {
+		__typename?: "ChapterToTagConnection";
+		/** Edges for the ChapterToTagConnection connection */
+		edges: Array<ChapterToTagConnectionEdge>;
+		/** The nodes of the connection, without the edges */
+		nodes: Array<Tag>;
+		/** Information about pagination in a connection. */
+		pageInfo: ChapterToTagConnectionPageInfo;
+	};
+
+/** An edge in a connection */
+export type ChapterToTagConnectionEdge = Edge &
+	TagConnectionEdge & {
+		__typename?: "ChapterToTagConnectionEdge";
+		/** A cursor for use in pagination */
+		cursor?: Maybe<Scalars["String"]["output"]>;
+		/** The item at the end of the edge */
+		node: Tag;
+	};
+
+/** Page Info on the &quot;ChapterToTagConnection&quot; */
+export type ChapterToTagConnectionPageInfo = PageInfo &
+	TagConnectionPageInfo &
+	WpPageInfo & {
+		__typename?: "ChapterToTagConnectionPageInfo";
+		/** When paginating forwards, the cursor to continue. */
+		endCursor?: Maybe<Scalars["String"]["output"]>;
+		/** When paginating forwards, are there more items? */
+		hasNextPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, are there more items? */
+		hasPreviousPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, the cursor to continue. */
+		startCursor?: Maybe<Scalars["String"]["output"]>;
+	};
+
+/** Arguments for filtering the ChapterToTagConnection connection */
+export type ChapterToTagConnectionWhereArgs = {
+	/** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+	cacheDomain?: InputMaybe<Scalars["String"]["input"]>;
+	/** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+	childOf?: InputMaybe<Scalars["Int"]["input"]>;
+	/** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+	childless?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Retrieve terms where the description is LIKE the input value. Default empty. */
+	descriptionLike?: InputMaybe<Scalars["String"]["input"]>;
+	/** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+	exclude?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+	excludeTree?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+	hideEmpty?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+	hierarchical?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Array of term ids to include. Default empty array. */
+	include?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of names to return term(s) for. Default empty. */
+	name?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Retrieve terms where the name is LIKE the input value. Default empty. */
+	nameLike?: InputMaybe<Scalars["String"]["input"]>;
+	/** Array of object IDs. Results will be limited to terms associated with these objects. */
+	objectIds?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Direction the connection should be ordered in */
+	order?: InputMaybe<OrderEnum>;
+	/** Field(s) to order terms by. Defaults to 'name'. */
+	orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+	/** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+	padCounts?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Parent term ID to retrieve direct-child terms of. Default empty. */
+	parent?: InputMaybe<Scalars["Int"]["input"]>;
+	/** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+	search?: InputMaybe<Scalars["String"]["input"]>;
+	/** Array of slugs to return term(s) for. Default empty. */
+	slug?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Array of term taxonomy IDs, to match when querying terms. */
+	termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of term taxonomy IDs, to match when querying terms. */
+	termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Whether to prime meta caches for matched terms. Default true. */
+	updateTermMetaCache?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+/** Connection between the Chapter type and the TermNode type */
+export type ChapterToTermNodeConnection = Connection &
+	TermNodeConnection & {
+		__typename?: "ChapterToTermNodeConnection";
+		/** Edges for the ChapterToTermNodeConnection connection */
+		edges: Array<ChapterToTermNodeConnectionEdge>;
+		/** The nodes of the connection, without the edges */
+		nodes: Array<TermNode>;
+		/** Information about pagination in a connection. */
+		pageInfo: ChapterToTermNodeConnectionPageInfo;
+	};
+
+/** An edge in a connection */
+export type ChapterToTermNodeConnectionEdge = Edge &
+	TermNodeConnectionEdge & {
+		__typename?: "ChapterToTermNodeConnectionEdge";
+		/** A cursor for use in pagination */
+		cursor?: Maybe<Scalars["String"]["output"]>;
+		/** The item at the end of the edge */
+		node: TermNode;
+	};
+
+/** Page Info on the &quot;ChapterToTermNodeConnection&quot; */
+export type ChapterToTermNodeConnectionPageInfo = PageInfo &
+	TermNodeConnectionPageInfo &
+	WpPageInfo & {
+		__typename?: "ChapterToTermNodeConnectionPageInfo";
+		/** When paginating forwards, the cursor to continue. */
+		endCursor?: Maybe<Scalars["String"]["output"]>;
+		/** When paginating forwards, are there more items? */
+		hasNextPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, are there more items? */
+		hasPreviousPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, the cursor to continue. */
+		startCursor?: Maybe<Scalars["String"]["output"]>;
+	};
+
+/** Arguments for filtering the ChapterToTermNodeConnection connection */
+export type ChapterToTermNodeConnectionWhereArgs = {
+	/** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+	cacheDomain?: InputMaybe<Scalars["String"]["input"]>;
+	/** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+	childOf?: InputMaybe<Scalars["Int"]["input"]>;
+	/** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+	childless?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Retrieve terms where the description is LIKE the input value. Default empty. */
+	descriptionLike?: InputMaybe<Scalars["String"]["input"]>;
+	/** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+	exclude?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+	excludeTree?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+	hideEmpty?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+	hierarchical?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Array of term ids to include. Default empty array. */
+	include?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of names to return term(s) for. Default empty. */
+	name?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Retrieve terms where the name is LIKE the input value. Default empty. */
+	nameLike?: InputMaybe<Scalars["String"]["input"]>;
+	/** Array of object IDs. Results will be limited to terms associated with these objects. */
+	objectIds?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Direction the connection should be ordered in */
+	order?: InputMaybe<OrderEnum>;
+	/** Field(s) to order terms by. Defaults to 'name'. */
+	orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+	/** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+	padCounts?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Parent term ID to retrieve direct-child terms of. Default empty. */
+	parent?: InputMaybe<Scalars["Int"]["input"]>;
+	/** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+	search?: InputMaybe<Scalars["String"]["input"]>;
+	/** Array of slugs to return term(s) for. Default empty. */
+	slug?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** The Taxonomy to filter terms by */
+	taxonomies?: InputMaybe<Array<InputMaybe<TaxonomyEnum>>>;
+	/** Array of term taxonomy IDs, to match when querying terms. */
+	termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of term taxonomy IDs, to match when querying terms. */
+	termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Whether to prime meta caches for matched terms. Default true. */
+	updateTermMetaCache?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+/** Field Group */
+export type Chapter_Emogi = AcfFieldGroup & {
+	__typename?: "Chapter_Emogi";
+	emogi?: Maybe<Scalars["String"]["output"]>;
+	/** The name of the ACF Field Group */
+	fieldGroupName?: Maybe<Scalars["String"]["output"]>;
+};
+
+/** Field Group */
+export type Chapter_Section = AcfFieldGroup & {
+	__typename?: "Chapter_Section";
+	/** The name of the ACF Field Group */
+	fieldGroupName?: Maybe<Scalars["String"]["output"]>;
+	section?: Maybe<Scalars["String"]["output"]>;
+};
+
 /** A Comment object */
 export type Comment = DatabaseIdentifier &
 	Node &
@@ -1361,6 +1780,10 @@ export enum ContentTypeEnum {
 	/** The Type of Content object */
 	Attachment = "ATTACHMENT",
 	/** The Type of Content object */
+	Chapters = "CHAPTERS",
+	/** The Type of Content object */
+	Courses = "COURSES",
+	/** The Type of Content object */
 	Page = "PAGE",
 	/** The Type of Content object */
 	Post = "POST",
@@ -1504,8 +1927,433 @@ export enum ContentTypesOfPostFormatEnum {
 /** Allowed Content Types of the Tag taxonomy. */
 export enum ContentTypesOfTagEnum {
 	/** The Type of Content object */
+	Chapters = "CHAPTERS",
+	/** The Type of Content object */
+	Courses = "COURSES",
+	/** The Type of Content object */
 	Post = "POST",
 }
+
+/** The course type */
+export type Course = ContentNode &
+	DatabaseIdentifier &
+	MenuItemLinkable &
+	Node &
+	NodeWithAuthor &
+	NodeWithContentEditor &
+	NodeWithExcerpt &
+	NodeWithFeaturedImage &
+	NodeWithTemplate &
+	NodeWithTitle &
+	Previewable &
+	UniformResourceIdentifiable & {
+		__typename?: "Course";
+		/** Connection between the NodeWithAuthor type and the User type */
+		author?: Maybe<NodeWithAuthorToUserConnectionEdge>;
+		/** The database identifier of the author of the node */
+		authorDatabaseId?: Maybe<Scalars["Int"]["output"]>;
+		/** The globally unique identifier of the author of the node */
+		authorId?: Maybe<Scalars["ID"]["output"]>;
+		/** Added to the GraphQL Schema because the ACF Field Group &quot;Chapters&quot; was set to Show in GraphQL. */
+		chapters?: Maybe<Course_Chapters>;
+		/** The content of the post. */
+		content?: Maybe<Scalars["String"]["output"]>;
+		/** The content of the post */
+		contentFiltered?: Maybe<Scalars["String"]["output"]>;
+		/** Connection between the ContentNode type and the ContentType type */
+		contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
+		/** The name of the Content Type the node belongs to */
+		contentTypeName: Scalars["String"]["output"];
+		/**
+		 * The id field matches the WP_Post-&gt;ID field.
+		 * @deprecated Deprecated in favor of the databaseId field
+		 */
+		courseId: Scalars["Int"]["output"];
+		/** The unique identifier stored in the database */
+		databaseId: Scalars["Int"]["output"];
+		/** Post publishing date. */
+		date?: Maybe<Scalars["String"]["output"]>;
+		/** The publishing date set in GMT. */
+		dateGmt?: Maybe<Scalars["String"]["output"]>;
+		/** The desired slug of the post */
+		desiredSlug?: Maybe<Scalars["String"]["output"]>;
+		/** If a user has edited the node within the past 15 seconds, this will return the user that last edited. Null if the edit lock doesn&#039;t exist or is greater than 15 seconds */
+		editingLockedBy?: Maybe<ContentNodeToEditLockConnectionEdge>;
+		/** Added to the GraphQL Schema because the ACF Field Group &quot;Emogi&quot; was set to Show in GraphQL. */
+		emogi?: Maybe<Course_Emogi>;
+		/** The RSS enclosure for the object */
+		enclosure?: Maybe<Scalars["String"]["output"]>;
+		/** Connection between the ContentNode type and the EnqueuedScript type */
+		enqueuedScripts?: Maybe<ContentNodeToEnqueuedScriptConnection>;
+		/** Connection between the ContentNode type and the EnqueuedStylesheet type */
+		enqueuedStylesheets?: Maybe<ContentNodeToEnqueuedStylesheetConnection>;
+		/** The excerpt of the post. */
+		excerpt?: Maybe<Scalars["String"]["output"]>;
+		/** Connection between the NodeWithFeaturedImage type and the MediaItem type */
+		featuredImage?: Maybe<NodeWithFeaturedImageToMediaItemConnectionEdge>;
+		/** The database identifier for the featured image node assigned to the content node */
+		featuredImageDatabaseId?: Maybe<Scalars["Int"]["output"]>;
+		/** Globally unique ID of the featured image assigned to the node */
+		featuredImageId?: Maybe<Scalars["ID"]["output"]>;
+		/** The global unique identifier for this post. This currently matches the value stored in WP_Post-&gt;guid and the guid column in the &quot;post_objects&quot; database table. */
+		guid?: Maybe<Scalars["String"]["output"]>;
+		/** Whether the courses object is password protected. */
+		hasPassword?: Maybe<Scalars["Boolean"]["output"]>;
+		/** The globally unique identifier of the courses object. */
+		id: Scalars["ID"]["output"];
+		/** Whether the node is a Comment */
+		isComment: Scalars["Boolean"]["output"];
+		/** Whether the node is a Content Node */
+		isContentNode: Scalars["Boolean"]["output"];
+		/** Whether the node represents the front page. */
+		isFrontPage: Scalars["Boolean"]["output"];
+		/** Whether  the node represents the blog page. */
+		isPostsPage: Scalars["Boolean"]["output"];
+		/** Whether the object is a node in the preview state */
+		isPreview?: Maybe<Scalars["Boolean"]["output"]>;
+		/** Whether the object is restricted from the current viewer */
+		isRestricted?: Maybe<Scalars["Boolean"]["output"]>;
+		/** Whether the node is a Term */
+		isTermNode: Scalars["Boolean"]["output"];
+		/** The user that most recently edited the node */
+		lastEditedBy?: Maybe<ContentNodeToEditLastConnectionEdge>;
+		/** The permalink of the post */
+		link?: Maybe<Scalars["String"]["output"]>;
+		/** The local modified time for a post. If a post was recently updated the modified field will change to match the corresponding time. */
+		modified?: Maybe<Scalars["String"]["output"]>;
+		/** The GMT modified time for a post. If a post was recently updated the modified field will change to match the corresponding time in GMT. */
+		modifiedGmt?: Maybe<Scalars["String"]["output"]>;
+		/** The password for the courses object. */
+		password?: Maybe<Scalars["String"]["output"]>;
+		/** Connection between the Course type and the course type */
+		preview?: Maybe<CourseToPreviewConnectionEdge>;
+		/** The database id of the preview node */
+		previewRevisionDatabaseId?: Maybe<Scalars["Int"]["output"]>;
+		/** Whether the object is a node in the preview state */
+		previewRevisionId?: Maybe<Scalars["ID"]["output"]>;
+		/** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
+		slug?: Maybe<Scalars["String"]["output"]>;
+		/** The current status of the object */
+		status?: Maybe<Scalars["String"]["output"]>;
+		/** Connection between the Course type and the tag type */
+		tags?: Maybe<CourseToTagConnection>;
+		/** The template assigned to the node */
+		template?: Maybe<ContentTemplate>;
+		/** Connection between the Course type and the TermNode type */
+		terms?: Maybe<CourseToTermNodeConnection>;
+		/** The title of the post. This is currently just the raw title. An amendment to support rendered title needs to be made. */
+		title?: Maybe<Scalars["String"]["output"]>;
+		/** The unique resource identifier path */
+		uri?: Maybe<Scalars["String"]["output"]>;
+	};
+
+/** The course type */
+export type CourseContentArgs = {
+	format?: InputMaybe<PostObjectFieldFormatEnum>;
+};
+
+/** The course type */
+export type CourseEnqueuedScriptsArgs = {
+	after?: InputMaybe<Scalars["String"]["input"]>;
+	before?: InputMaybe<Scalars["String"]["input"]>;
+	first?: InputMaybe<Scalars["Int"]["input"]>;
+	last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** The course type */
+export type CourseEnqueuedStylesheetsArgs = {
+	after?: InputMaybe<Scalars["String"]["input"]>;
+	before?: InputMaybe<Scalars["String"]["input"]>;
+	first?: InputMaybe<Scalars["Int"]["input"]>;
+	last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** The course type */
+export type CourseExcerptArgs = {
+	format?: InputMaybe<PostObjectFieldFormatEnum>;
+};
+
+/** The course type */
+export type CourseTagsArgs = {
+	after?: InputMaybe<Scalars["String"]["input"]>;
+	before?: InputMaybe<Scalars["String"]["input"]>;
+	first?: InputMaybe<Scalars["Int"]["input"]>;
+	last?: InputMaybe<Scalars["Int"]["input"]>;
+	where?: InputMaybe<CourseToTagConnectionWhereArgs>;
+};
+
+/** The course type */
+export type CourseTermsArgs = {
+	after?: InputMaybe<Scalars["String"]["input"]>;
+	before?: InputMaybe<Scalars["String"]["input"]>;
+	first?: InputMaybe<Scalars["Int"]["input"]>;
+	last?: InputMaybe<Scalars["Int"]["input"]>;
+	where?: InputMaybe<CourseToTermNodeConnectionWhereArgs>;
+};
+
+/** The course type */
+export type CourseTitleArgs = {
+	format?: InputMaybe<PostObjectFieldFormatEnum>;
+};
+
+/** Connection to course Nodes */
+export type CourseConnection = {
+	/** A list of edges (relational context) between RootQuery and connected course Nodes */
+	edges: Array<CourseConnectionEdge>;
+	/** A list of connected course Nodes */
+	nodes: Array<Course>;
+	/** Information about pagination in a connection. */
+	pageInfo: CourseConnectionPageInfo;
+};
+
+/** Edge between a Node and a connected course */
+export type CourseConnectionEdge = {
+	/** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+	cursor?: Maybe<Scalars["String"]["output"]>;
+	/** The connected course Node */
+	node: Course;
+};
+
+/** Page Info on the connected CourseConnectionEdge */
+export type CourseConnectionPageInfo = {
+	/** When paginating forwards, the cursor to continue. */
+	endCursor?: Maybe<Scalars["String"]["output"]>;
+	/** When paginating forwards, are there more items? */
+	hasNextPage: Scalars["Boolean"]["output"];
+	/** When paginating backwards, are there more items? */
+	hasPreviousPage: Scalars["Boolean"]["output"];
+	/** When paginating backwards, the cursor to continue. */
+	startCursor?: Maybe<Scalars["String"]["output"]>;
+};
+
+/** The Type of Identifier used to fetch a single resource. Default is ID. */
+export enum CourseIdType {
+	/** Identify a resource by the Database ID. */
+	DatabaseId = "DATABASE_ID",
+	/** Identify a resource by the (hashed) Global ID. */
+	Id = "ID",
+	/** Identify a resource by the slug. Available to non-hierarchcial Types where the slug is a unique identifier. */
+	Slug = "SLUG",
+	/** Identify a resource by the URI. */
+	Uri = "URI",
+}
+
+/** Set relationships between the course to tags */
+export type CourseTagsInput = {
+	/** If true, this will append the tag to existing related tags. If false, this will replace existing relationships. Default true. */
+	append?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** The input list of items to set. */
+	nodes?: InputMaybe<Array<InputMaybe<CourseTagsNodeInput>>>;
+};
+
+/** List of tags to connect the course to. If an ID is set, it will be used to create the connection. If not, it will look for a slug. If neither are valid existing terms, and the site is configured to allow terms to be created during post mutations, a term will be created using the Name if it exists in the input, then fallback to the slug if it exists. */
+export type CourseTagsNodeInput = {
+	/** The description of the tag. This field is used to set a description of the tag if a new one is created during the mutation. */
+	description?: InputMaybe<Scalars["String"]["input"]>;
+	/** The ID of the tag. If present, this will be used to connect to the course. If no existing tag exists with this ID, no connection will be made. */
+	id?: InputMaybe<Scalars["ID"]["input"]>;
+	/** The name of the tag. This field is used to create a new term, if term creation is enabled in nested mutations, and if one does not already exist with the provided slug or ID or if a slug or ID is not provided. If no name is included and a term is created, the creation will fallback to the slug field. */
+	name?: InputMaybe<Scalars["String"]["input"]>;
+	/** The slug of the tag. If no ID is present, this field will be used to make a connection. If no existing term exists with this slug, this field will be used as a fallback to the Name field when creating a new term to connect to, if term creation is enabled as a nested mutation. */
+	slug?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** Connection between the Course type and the course type */
+export type CourseToPreviewConnectionEdge = CourseConnectionEdge &
+	Edge &
+	OneToOneConnection & {
+		__typename?: "CourseToPreviewConnectionEdge";
+		/** Opaque reference to the nodes position in the connection. Value can be used with pagination args. */
+		cursor?: Maybe<Scalars["String"]["output"]>;
+		/** The node of the connection, without the edges */
+		node: Course;
+	};
+
+/** Connection between the Course type and the tag type */
+export type CourseToTagConnection = Connection &
+	TagConnection & {
+		__typename?: "CourseToTagConnection";
+		/** Edges for the CourseToTagConnection connection */
+		edges: Array<CourseToTagConnectionEdge>;
+		/** The nodes of the connection, without the edges */
+		nodes: Array<Tag>;
+		/** Information about pagination in a connection. */
+		pageInfo: CourseToTagConnectionPageInfo;
+	};
+
+/** An edge in a connection */
+export type CourseToTagConnectionEdge = Edge &
+	TagConnectionEdge & {
+		__typename?: "CourseToTagConnectionEdge";
+		/** A cursor for use in pagination */
+		cursor?: Maybe<Scalars["String"]["output"]>;
+		/** The item at the end of the edge */
+		node: Tag;
+	};
+
+/** Page Info on the &quot;CourseToTagConnection&quot; */
+export type CourseToTagConnectionPageInfo = PageInfo &
+	TagConnectionPageInfo &
+	WpPageInfo & {
+		__typename?: "CourseToTagConnectionPageInfo";
+		/** When paginating forwards, the cursor to continue. */
+		endCursor?: Maybe<Scalars["String"]["output"]>;
+		/** When paginating forwards, are there more items? */
+		hasNextPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, are there more items? */
+		hasPreviousPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, the cursor to continue. */
+		startCursor?: Maybe<Scalars["String"]["output"]>;
+	};
+
+/** Arguments for filtering the CourseToTagConnection connection */
+export type CourseToTagConnectionWhereArgs = {
+	/** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+	cacheDomain?: InputMaybe<Scalars["String"]["input"]>;
+	/** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+	childOf?: InputMaybe<Scalars["Int"]["input"]>;
+	/** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+	childless?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Retrieve terms where the description is LIKE the input value. Default empty. */
+	descriptionLike?: InputMaybe<Scalars["String"]["input"]>;
+	/** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+	exclude?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+	excludeTree?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+	hideEmpty?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+	hierarchical?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Array of term ids to include. Default empty array. */
+	include?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of names to return term(s) for. Default empty. */
+	name?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Retrieve terms where the name is LIKE the input value. Default empty. */
+	nameLike?: InputMaybe<Scalars["String"]["input"]>;
+	/** Array of object IDs. Results will be limited to terms associated with these objects. */
+	objectIds?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Direction the connection should be ordered in */
+	order?: InputMaybe<OrderEnum>;
+	/** Field(s) to order terms by. Defaults to 'name'. */
+	orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+	/** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+	padCounts?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Parent term ID to retrieve direct-child terms of. Default empty. */
+	parent?: InputMaybe<Scalars["Int"]["input"]>;
+	/** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+	search?: InputMaybe<Scalars["String"]["input"]>;
+	/** Array of slugs to return term(s) for. Default empty. */
+	slug?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Array of term taxonomy IDs, to match when querying terms. */
+	termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of term taxonomy IDs, to match when querying terms. */
+	termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Whether to prime meta caches for matched terms. Default true. */
+	updateTermMetaCache?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+/** Connection between the Course type and the TermNode type */
+export type CourseToTermNodeConnection = Connection &
+	TermNodeConnection & {
+		__typename?: "CourseToTermNodeConnection";
+		/** Edges for the CourseToTermNodeConnection connection */
+		edges: Array<CourseToTermNodeConnectionEdge>;
+		/** The nodes of the connection, without the edges */
+		nodes: Array<TermNode>;
+		/** Information about pagination in a connection. */
+		pageInfo: CourseToTermNodeConnectionPageInfo;
+	};
+
+/** An edge in a connection */
+export type CourseToTermNodeConnectionEdge = Edge &
+	TermNodeConnectionEdge & {
+		__typename?: "CourseToTermNodeConnectionEdge";
+		/** A cursor for use in pagination */
+		cursor?: Maybe<Scalars["String"]["output"]>;
+		/** The item at the end of the edge */
+		node: TermNode;
+	};
+
+/** Page Info on the &quot;CourseToTermNodeConnection&quot; */
+export type CourseToTermNodeConnectionPageInfo = PageInfo &
+	TermNodeConnectionPageInfo &
+	WpPageInfo & {
+		__typename?: "CourseToTermNodeConnectionPageInfo";
+		/** When paginating forwards, the cursor to continue. */
+		endCursor?: Maybe<Scalars["String"]["output"]>;
+		/** When paginating forwards, are there more items? */
+		hasNextPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, are there more items? */
+		hasPreviousPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, the cursor to continue. */
+		startCursor?: Maybe<Scalars["String"]["output"]>;
+	};
+
+/** Arguments for filtering the CourseToTermNodeConnection connection */
+export type CourseToTermNodeConnectionWhereArgs = {
+	/** Unique cache key to be produced when this query is stored in an object cache. Default is 'core'. */
+	cacheDomain?: InputMaybe<Scalars["String"]["input"]>;
+	/** Term ID to retrieve child terms of. If multiple taxonomies are passed, $child_of is ignored. Default 0. */
+	childOf?: InputMaybe<Scalars["Int"]["input"]>;
+	/** True to limit results to terms that have no children. This parameter has no effect on non-hierarchical taxonomies. Default false. */
+	childless?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Retrieve terms where the description is LIKE the input value. Default empty. */
+	descriptionLike?: InputMaybe<Scalars["String"]["input"]>;
+	/** Array of term ids to exclude. If $include is non-empty, $exclude is ignored. Default empty array. */
+	exclude?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of term ids to exclude along with all of their descendant terms. If $include is non-empty, $exclude_tree is ignored. Default empty array. */
+	excludeTree?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Whether to hide terms not assigned to any posts. Accepts true or false. Default false */
+	hideEmpty?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Whether to include terms that have non-empty descendants (even if $hide_empty is set to true). Default true. */
+	hierarchical?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Array of term ids to include. Default empty array. */
+	include?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of names to return term(s) for. Default empty. */
+	name?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Retrieve terms where the name is LIKE the input value. Default empty. */
+	nameLike?: InputMaybe<Scalars["String"]["input"]>;
+	/** Array of object IDs. Results will be limited to terms associated with these objects. */
+	objectIds?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Direction the connection should be ordered in */
+	order?: InputMaybe<OrderEnum>;
+	/** Field(s) to order terms by. Defaults to 'name'. */
+	orderby?: InputMaybe<TermObjectsConnectionOrderbyEnum>;
+	/** Whether to pad the quantity of a term's children in the quantity of each term's "count" object variable. Default false. */
+	padCounts?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Parent term ID to retrieve direct-child terms of. Default empty. */
+	parent?: InputMaybe<Scalars["Int"]["input"]>;
+	/** Search criteria to match terms. Will be SQL-formatted with wildcards before and after. Default empty. */
+	search?: InputMaybe<Scalars["String"]["input"]>;
+	/** Array of slugs to return term(s) for. Default empty. */
+	slug?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** The Taxonomy to filter terms by */
+	taxonomies?: InputMaybe<Array<InputMaybe<TaxonomyEnum>>>;
+	/** Array of term taxonomy IDs, to match when querying terms. */
+	termTaxonomId?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of term taxonomy IDs, to match when querying terms. */
+	termTaxonomyId?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Whether to prime meta caches for matched terms. Default true. */
+	updateTermMetaCache?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+/** Field Group */
+export type Course_Chapters = AcfFieldGroup & {
+	__typename?: "Course_Chapters";
+	chapters?: Maybe<Array<Maybe<Course_Chapters_Chapters>>>;
+	/** The name of the ACF Field Group */
+	fieldGroupName?: Maybe<Scalars["String"]["output"]>;
+};
+
+export type Course_Chapters_Chapters = Chapter;
+
+/** Field Group */
+export type Course_Emogi = AcfFieldGroup & {
+	__typename?: "Course_Emogi";
+	emogi?: Maybe<Scalars["String"]["output"]>;
+	/** The name of the ACF Field Group */
+	fieldGroupName?: Maybe<Scalars["String"]["output"]>;
+};
 
 /** Input for the createCategory mutation. */
 export type CreateCategoryInput = {
@@ -1528,6 +2376,41 @@ export type CreateCategoryPayload = {
 	__typename?: "CreateCategoryPayload";
 	/** The created category */
 	category?: Maybe<Category>;
+	/** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+	clientMutationId?: Maybe<Scalars["String"]["output"]>;
+};
+
+/** Input for the createChapter mutation. */
+export type CreateChapterInput = {
+	/** The userId to assign as the author of the object */
+	authorId?: InputMaybe<Scalars["ID"]["input"]>;
+	/** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+	clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+	/** The content of the object */
+	content?: InputMaybe<Scalars["String"]["input"]>;
+	/** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+	date?: InputMaybe<Scalars["String"]["input"]>;
+	/** The excerpt of the object */
+	excerpt?: InputMaybe<Scalars["String"]["input"]>;
+	/** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+	menuOrder?: InputMaybe<Scalars["Int"]["input"]>;
+	/** The password used to protect the content of the object */
+	password?: InputMaybe<Scalars["String"]["input"]>;
+	/** The slug of the object */
+	slug?: InputMaybe<Scalars["String"]["input"]>;
+	/** The status of the object */
+	status?: InputMaybe<PostStatusEnum>;
+	/** Set connections between the chapter and tags */
+	tags?: InputMaybe<ChapterTagsInput>;
+	/** The title of the object */
+	title?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** The payload for the createChapter mutation. */
+export type CreateChapterPayload = {
+	__typename?: "CreateChapterPayload";
+	/** The Post object mutation type. */
+	chapter?: Maybe<Chapter>;
 	/** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
 	clientMutationId?: Maybe<Scalars["String"]["output"]>;
 };
@@ -1567,6 +2450,41 @@ export type CreateCommentPayload = {
 	comment?: Maybe<Comment>;
 	/** Whether the mutation succeeded. If the comment is not approved, the server will not return the comment to a non authenticated user, but a success message can be returned if the create succeeded, and the client can optimistically add the comment to the client cache */
 	success?: Maybe<Scalars["Boolean"]["output"]>;
+};
+
+/** Input for the createCourse mutation. */
+export type CreateCourseInput = {
+	/** The userId to assign as the author of the object */
+	authorId?: InputMaybe<Scalars["ID"]["input"]>;
+	/** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+	clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+	/** The content of the object */
+	content?: InputMaybe<Scalars["String"]["input"]>;
+	/** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+	date?: InputMaybe<Scalars["String"]["input"]>;
+	/** The excerpt of the object */
+	excerpt?: InputMaybe<Scalars["String"]["input"]>;
+	/** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+	menuOrder?: InputMaybe<Scalars["Int"]["input"]>;
+	/** The password used to protect the content of the object */
+	password?: InputMaybe<Scalars["String"]["input"]>;
+	/** The slug of the object */
+	slug?: InputMaybe<Scalars["String"]["input"]>;
+	/** The status of the object */
+	status?: InputMaybe<PostStatusEnum>;
+	/** Set connections between the course and tags */
+	tags?: InputMaybe<CourseTagsInput>;
+	/** The title of the object */
+	title?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** The payload for the createCourse mutation. */
+export type CreateCoursePayload = {
+	__typename?: "CreateCoursePayload";
+	/** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+	clientMutationId?: Maybe<Scalars["String"]["output"]>;
+	/** The Post object mutation type. */
+	course?: Maybe<Course>;
 };
 
 /** Input for the createMediaItem mutation. */
@@ -1861,6 +2779,29 @@ export type DeleteCategoryPayload = {
 	deletedId?: Maybe<Scalars["ID"]["output"]>;
 };
 
+/** Input for the deleteChapter mutation. */
+export type DeleteChapterInput = {
+	/** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+	clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+	/** Whether the object should be force deleted instead of being moved to the trash */
+	forceDelete?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** The ID of the chapter to delete */
+	id: Scalars["ID"]["input"];
+	/** Override the edit lock when another user is editing the post */
+	ignoreEditLock?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+/** The payload for the deleteChapter mutation. */
+export type DeleteChapterPayload = {
+	__typename?: "DeleteChapterPayload";
+	/** The object before it was deleted */
+	chapter?: Maybe<Chapter>;
+	/** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+	clientMutationId?: Maybe<Scalars["String"]["output"]>;
+	/** The ID of the deleted object */
+	deletedId?: Maybe<Scalars["ID"]["output"]>;
+};
+
 /** Input for the deleteComment mutation. */
 export type DeleteCommentInput = {
 	/** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
@@ -1879,6 +2820,29 @@ export type DeleteCommentPayload = {
 	/** The deleted comment object */
 	comment?: Maybe<Comment>;
 	/** The deleted comment ID */
+	deletedId?: Maybe<Scalars["ID"]["output"]>;
+};
+
+/** Input for the deleteCourse mutation. */
+export type DeleteCourseInput = {
+	/** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+	clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+	/** Whether the object should be force deleted instead of being moved to the trash */
+	forceDelete?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** The ID of the course to delete */
+	id: Scalars["ID"]["input"];
+	/** Override the edit lock when another user is editing the post */
+	ignoreEditLock?: InputMaybe<Scalars["Boolean"]["input"]>;
+};
+
+/** The payload for the deleteCourse mutation. */
+export type DeleteCoursePayload = {
+	__typename?: "DeleteCoursePayload";
+	/** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+	clientMutationId?: Maybe<Scalars["String"]["output"]>;
+	/** The object before it was deleted */
+	course?: Maybe<Course>;
+	/** The ID of the deleted object */
 	deletedId?: Maybe<Scalars["ID"]["output"]>;
 };
 
@@ -3218,7 +4182,13 @@ export enum MenuItemNodeIdTypeEnum {
 }
 
 /** Deprecated in favor of MenuItemLinkeable Interface */
-export type MenuItemObjectUnion = Category | Page | Post | Tag;
+export type MenuItemObjectUnion =
+	| Category
+	| Chapter
+	| Course
+	| Page
+	| Post
+	| Tag;
 
 /** Connection between the MenuItem type and the Menu type */
 export type MenuItemToMenuConnectionEdge = Edge &
@@ -4253,7 +5223,7 @@ export type Post = ContentNode &
 		comments?: Maybe<PostToCommentConnection>;
 		/** The content of the post. */
 		content?: Maybe<Scalars["String"]["output"]>;
-		/** The color of the post */
+		/** The content of the post */
 		contentFiltered?: Maybe<Scalars["String"]["output"]>;
 		/** Connection between the ContentNode type and the ContentType type */
 		contentType?: Maybe<ContentNodeToContentTypeConnectionEdge>;
@@ -5673,8 +6643,12 @@ export type RootMutation = {
 	__typename?: "RootMutation";
 	/** The createCategory mutation */
 	createCategory?: Maybe<CreateCategoryPayload>;
+	/** The createChapter mutation */
+	createChapter?: Maybe<CreateChapterPayload>;
 	/** The createComment mutation */
 	createComment?: Maybe<CreateCommentPayload>;
+	/** The createCourse mutation */
+	createCourse?: Maybe<CreateCoursePayload>;
 	/** The createMediaItem mutation */
 	createMediaItem?: Maybe<CreateMediaItemPayload>;
 	/** The createPage mutation */
@@ -5689,8 +6663,12 @@ export type RootMutation = {
 	createUser?: Maybe<CreateUserPayload>;
 	/** The deleteCategory mutation */
 	deleteCategory?: Maybe<DeleteCategoryPayload>;
+	/** The deleteChapter mutation */
+	deleteChapter?: Maybe<DeleteChapterPayload>;
 	/** The deleteComment mutation */
 	deleteComment?: Maybe<DeleteCommentPayload>;
+	/** The deleteCourse mutation */
+	deleteCourse?: Maybe<DeleteCoursePayload>;
 	/** The deleteMediaItem mutation */
 	deleteMediaItem?: Maybe<DeleteMediaItemPayload>;
 	/** The deletePage mutation */
@@ -5715,8 +6693,12 @@ export type RootMutation = {
 	sendPasswordResetEmail?: Maybe<SendPasswordResetEmailPayload>;
 	/** The updateCategory mutation */
 	updateCategory?: Maybe<UpdateCategoryPayload>;
+	/** The updateChapter mutation */
+	updateChapter?: Maybe<UpdateChapterPayload>;
 	/** The updateComment mutation */
 	updateComment?: Maybe<UpdateCommentPayload>;
+	/** The updateCourse mutation */
+	updateCourse?: Maybe<UpdateCoursePayload>;
 	/** The updateMediaItem mutation */
 	updateMediaItem?: Maybe<UpdateMediaItemPayload>;
 	/** The updatePage mutation */
@@ -5739,8 +6721,18 @@ export type RootMutationCreateCategoryArgs = {
 };
 
 /** The root mutation */
+export type RootMutationCreateChapterArgs = {
+	input: CreateChapterInput;
+};
+
+/** The root mutation */
 export type RootMutationCreateCommentArgs = {
 	input: CreateCommentInput;
+};
+
+/** The root mutation */
+export type RootMutationCreateCourseArgs = {
+	input: CreateCourseInput;
 };
 
 /** The root mutation */
@@ -5779,8 +6771,18 @@ export type RootMutationDeleteCategoryArgs = {
 };
 
 /** The root mutation */
+export type RootMutationDeleteChapterArgs = {
+	input: DeleteChapterInput;
+};
+
+/** The root mutation */
 export type RootMutationDeleteCommentArgs = {
 	input: DeleteCommentInput;
+};
+
+/** The root mutation */
+export type RootMutationDeleteCourseArgs = {
+	input: DeleteCourseInput;
 };
 
 /** The root mutation */
@@ -5844,8 +6846,18 @@ export type RootMutationUpdateCategoryArgs = {
 };
 
 /** The root mutation */
+export type RootMutationUpdateChapterArgs = {
+	input: UpdateChapterInput;
+};
+
+/** The root mutation */
 export type RootMutationUpdateCommentArgs = {
 	input: UpdateCommentInput;
+};
+
+/** The root mutation */
+export type RootMutationUpdateCourseArgs = {
+	input: UpdateCourseInput;
 };
 
 /** The root mutation */
@@ -5892,6 +6904,15 @@ export type RootQuery = {
 	categories?: Maybe<RootQueryToCategoryConnection>;
 	/** A 0bject */
 	category?: Maybe<Category>;
+	/** An object of the chapter Type.  */
+	chapter?: Maybe<Chapter>;
+	/**
+	 * A chapter object
+	 * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
+	 */
+	chapterBy?: Maybe<Chapter>;
+	/** Connection between the RootQuery type and the chapter type */
+	chapters?: Maybe<RootQueryToChapterConnection>;
 	/** Returns a Comment */
 	comment?: Maybe<Comment>;
 	/** Connection between the RootQuery type and the Comment type */
@@ -5904,6 +6925,15 @@ export type RootQuery = {
 	contentType?: Maybe<ContentType>;
 	/** Connection between the RootQuery type and the ContentType type */
 	contentTypes?: Maybe<RootQueryToContentTypeConnection>;
+	/** An object of the course Type.  */
+	course?: Maybe<Course>;
+	/**
+	 * A course object
+	 * @deprecated Deprecated in favor of using the single entry point for this type with ID and IDType fields. For example, instead of postBy( id: &quot;&quot; ), use post(id: &quot;&quot; idType: &quot;&quot;)
+	 */
+	courseBy?: Maybe<Course>;
+	/** Connection between the RootQuery type and the course type */
+	courses?: Maybe<RootQueryToCourseConnection>;
 	/** Fields of the &#039;DiscussionSettings&#039; settings group */
 	discussionSettings?: Maybe<DiscussionSettings>;
 	/** Fields of the &#039;GeneralSettings&#039; settings group */
@@ -6009,6 +7039,30 @@ export type RootQueryCategoryArgs = {
 };
 
 /** The root entry point into the Graph */
+export type RootQueryChapterArgs = {
+	asPreview?: InputMaybe<Scalars["Boolean"]["input"]>;
+	id: Scalars["ID"]["input"];
+	idType?: InputMaybe<ChapterIdType>;
+};
+
+/** The root entry point into the Graph */
+export type RootQueryChapterByArgs = {
+	chapterId?: InputMaybe<Scalars["Int"]["input"]>;
+	id?: InputMaybe<Scalars["ID"]["input"]>;
+	slug?: InputMaybe<Scalars["String"]["input"]>;
+	uri?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** The root entry point into the Graph */
+export type RootQueryChaptersArgs = {
+	after?: InputMaybe<Scalars["String"]["input"]>;
+	before?: InputMaybe<Scalars["String"]["input"]>;
+	first?: InputMaybe<Scalars["Int"]["input"]>;
+	last?: InputMaybe<Scalars["Int"]["input"]>;
+	where?: InputMaybe<RootQueryToChapterConnectionWhereArgs>;
+};
+
+/** The root entry point into the Graph */
 export type RootQueryCommentArgs = {
 	id: Scalars["ID"]["input"];
 	idType?: InputMaybe<CommentNodeIdTypeEnum>;
@@ -6052,6 +7106,30 @@ export type RootQueryContentTypesArgs = {
 	before?: InputMaybe<Scalars["String"]["input"]>;
 	first?: InputMaybe<Scalars["Int"]["input"]>;
 	last?: InputMaybe<Scalars["Int"]["input"]>;
+};
+
+/** The root entry point into the Graph */
+export type RootQueryCourseArgs = {
+	asPreview?: InputMaybe<Scalars["Boolean"]["input"]>;
+	id: Scalars["ID"]["input"];
+	idType?: InputMaybe<CourseIdType>;
+};
+
+/** The root entry point into the Graph */
+export type RootQueryCourseByArgs = {
+	courseId?: InputMaybe<Scalars["Int"]["input"]>;
+	id?: InputMaybe<Scalars["ID"]["input"]>;
+	slug?: InputMaybe<Scalars["String"]["input"]>;
+	uri?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** The root entry point into the Graph */
+export type RootQueryCoursesArgs = {
+	after?: InputMaybe<Scalars["String"]["input"]>;
+	before?: InputMaybe<Scalars["String"]["input"]>;
+	first?: InputMaybe<Scalars["Int"]["input"]>;
+	last?: InputMaybe<Scalars["Int"]["input"]>;
+	where?: InputMaybe<RootQueryToCourseConnectionWhereArgs>;
 };
 
 /** The root entry point into the Graph */
@@ -6388,6 +7466,101 @@ export type RootQueryToCategoryConnectionWhereArgs = {
 	updateTermMetaCache?: InputMaybe<Scalars["Boolean"]["input"]>;
 };
 
+/** Connection between the RootQuery type and the chapter type */
+export type RootQueryToChapterConnection = ChapterConnection &
+	Connection & {
+		__typename?: "RootQueryToChapterConnection";
+		/** Edges for the RootQueryToChapterConnection connection */
+		edges: Array<RootQueryToChapterConnectionEdge>;
+		/** The nodes of the connection, without the edges */
+		nodes: Array<Chapter>;
+		/** Information about pagination in a connection. */
+		pageInfo: RootQueryToChapterConnectionPageInfo;
+	};
+
+/** An edge in a connection */
+export type RootQueryToChapterConnectionEdge = ChapterConnectionEdge &
+	Edge & {
+		__typename?: "RootQueryToChapterConnectionEdge";
+		/** A cursor for use in pagination */
+		cursor?: Maybe<Scalars["String"]["output"]>;
+		/** The item at the end of the edge */
+		node: Chapter;
+	};
+
+/** Page Info on the &quot;RootQueryToChapterConnection&quot; */
+export type RootQueryToChapterConnectionPageInfo = ChapterConnectionPageInfo &
+	PageInfo &
+	WpPageInfo & {
+		__typename?: "RootQueryToChapterConnectionPageInfo";
+		/** When paginating forwards, the cursor to continue. */
+		endCursor?: Maybe<Scalars["String"]["output"]>;
+		/** When paginating forwards, are there more items? */
+		hasNextPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, are there more items? */
+		hasPreviousPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, the cursor to continue. */
+		startCursor?: Maybe<Scalars["String"]["output"]>;
+	};
+
+/** Arguments for filtering the RootQueryToChapterConnection connection */
+export type RootQueryToChapterConnectionWhereArgs = {
+	/** The user that's connected as the author of the object. Use the userId for the author object. */
+	author?: InputMaybe<Scalars["Int"]["input"]>;
+	/** Find objects connected to author(s) in the array of author's userIds */
+	authorIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Find objects connected to the author by the author's nicename */
+	authorName?: InputMaybe<Scalars["String"]["input"]>;
+	/** Find objects NOT connected to author(s) in the array of author's userIds */
+	authorNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Filter the connection based on dates */
+	dateQuery?: InputMaybe<DateQueryInput>;
+	/** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+	hasPassword?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Specific database ID of the object */
+	id?: InputMaybe<Scalars["Int"]["input"]>;
+	/** Array of IDs for the objects to retrieve */
+	in?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Get objects with a specific mimeType property */
+	mimeType?: InputMaybe<MimeTypeEnum>;
+	/** Slug / post_name of the object */
+	name?: InputMaybe<Scalars["String"]["input"]>;
+	/** Specify objects to retrieve. Use slugs */
+	nameIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+	notIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** What parameter to use to order the objects by. */
+	orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+	/** Use ID to return only children. Use 0 to return only top-level items */
+	parent?: InputMaybe<Scalars["ID"]["input"]>;
+	/** Specify objects whose parent is in an array */
+	parentIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Specify posts whose parent is not in an array */
+	parentNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Show posts with a specific password. */
+	password?: InputMaybe<Scalars["String"]["input"]>;
+	/** Show Posts based on a keyword search */
+	search?: InputMaybe<Scalars["String"]["input"]>;
+	/** Retrieve posts where post status is in an array. */
+	stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+	/** Show posts with a specific status. */
+	status?: InputMaybe<PostStatusEnum>;
+	/** Tag Slug */
+	tag?: InputMaybe<Scalars["String"]["input"]>;
+	/** Use Tag ID */
+	tagId?: InputMaybe<Scalars["String"]["input"]>;
+	/** Array of tag IDs, used to display objects from one tag OR another */
+	tagIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of tag IDs, used to display objects from one tag OR another */
+	tagNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of tag slugs, used to display objects from one tag AND another */
+	tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Array of tag slugs, used to include objects in ANY specified tags */
+	tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Title of the object */
+	title?: InputMaybe<Scalars["String"]["input"]>;
+};
+
 /** Connection between the RootQuery type and the Comment type */
 export type RootQueryToCommentConnection = CommentConnection &
 	Connection & {
@@ -6602,6 +7775,101 @@ export type RootQueryToContentTypeConnectionPageInfo =
 			/** When paginating backwards, the cursor to continue. */
 			startCursor?: Maybe<Scalars["String"]["output"]>;
 		};
+
+/** Connection between the RootQuery type and the course type */
+export type RootQueryToCourseConnection = Connection &
+	CourseConnection & {
+		__typename?: "RootQueryToCourseConnection";
+		/** Edges for the RootQueryToCourseConnection connection */
+		edges: Array<RootQueryToCourseConnectionEdge>;
+		/** The nodes of the connection, without the edges */
+		nodes: Array<Course>;
+		/** Information about pagination in a connection. */
+		pageInfo: RootQueryToCourseConnectionPageInfo;
+	};
+
+/** An edge in a connection */
+export type RootQueryToCourseConnectionEdge = CourseConnectionEdge &
+	Edge & {
+		__typename?: "RootQueryToCourseConnectionEdge";
+		/** A cursor for use in pagination */
+		cursor?: Maybe<Scalars["String"]["output"]>;
+		/** The item at the end of the edge */
+		node: Course;
+	};
+
+/** Page Info on the &quot;RootQueryToCourseConnection&quot; */
+export type RootQueryToCourseConnectionPageInfo = CourseConnectionPageInfo &
+	PageInfo &
+	WpPageInfo & {
+		__typename?: "RootQueryToCourseConnectionPageInfo";
+		/** When paginating forwards, the cursor to continue. */
+		endCursor?: Maybe<Scalars["String"]["output"]>;
+		/** When paginating forwards, are there more items? */
+		hasNextPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, are there more items? */
+		hasPreviousPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, the cursor to continue. */
+		startCursor?: Maybe<Scalars["String"]["output"]>;
+	};
+
+/** Arguments for filtering the RootQueryToCourseConnection connection */
+export type RootQueryToCourseConnectionWhereArgs = {
+	/** The user that's connected as the author of the object. Use the userId for the author object. */
+	author?: InputMaybe<Scalars["Int"]["input"]>;
+	/** Find objects connected to author(s) in the array of author's userIds */
+	authorIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Find objects connected to the author by the author's nicename */
+	authorName?: InputMaybe<Scalars["String"]["input"]>;
+	/** Find objects NOT connected to author(s) in the array of author's userIds */
+	authorNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Filter the connection based on dates */
+	dateQuery?: InputMaybe<DateQueryInput>;
+	/** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+	hasPassword?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Specific database ID of the object */
+	id?: InputMaybe<Scalars["Int"]["input"]>;
+	/** Array of IDs for the objects to retrieve */
+	in?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Get objects with a specific mimeType property */
+	mimeType?: InputMaybe<MimeTypeEnum>;
+	/** Slug / post_name of the object */
+	name?: InputMaybe<Scalars["String"]["input"]>;
+	/** Specify objects to retrieve. Use slugs */
+	nameIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+	notIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** What parameter to use to order the objects by. */
+	orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+	/** Use ID to return only children. Use 0 to return only top-level items */
+	parent?: InputMaybe<Scalars["ID"]["input"]>;
+	/** Specify objects whose parent is in an array */
+	parentIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Specify posts whose parent is not in an array */
+	parentNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Show posts with a specific password. */
+	password?: InputMaybe<Scalars["String"]["input"]>;
+	/** Show Posts based on a keyword search */
+	search?: InputMaybe<Scalars["String"]["input"]>;
+	/** Retrieve posts where post status is in an array. */
+	stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+	/** Show posts with a specific status. */
+	status?: InputMaybe<PostStatusEnum>;
+	/** Tag Slug */
+	tag?: InputMaybe<Scalars["String"]["input"]>;
+	/** Use Tag ID */
+	tagId?: InputMaybe<Scalars["String"]["input"]>;
+	/** Array of tag IDs, used to display objects from one tag OR another */
+	tagIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of tag IDs, used to display objects from one tag OR another */
+	tagNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of tag slugs, used to display objects from one tag AND another */
+	tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Array of tag slugs, used to include objects in ANY specified tags */
+	tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Title of the object */
+	title?: InputMaybe<Scalars["String"]["input"]>;
+};
 
 /** Connection between the RootQuery type and the EnqueuedScript type */
 export type RootQueryToEnqueuedScriptConnection = Connection &
@@ -7683,10 +8951,14 @@ export type Tag = DatabaseIdentifier &
 	TermNode &
 	UniformResourceIdentifiable & {
 		__typename?: "Tag";
+		/** Connection between the Tag type and the chapter type */
+		chapters?: Maybe<TagToChapterConnection>;
 		/** Connection between the Tag type and the ContentNode type */
 		contentNodes?: Maybe<TagToContentNodeConnection>;
 		/** The number of objects connected to the object */
 		count?: Maybe<Scalars["Int"]["output"]>;
+		/** Connection between the Tag type and the course type */
+		courses?: Maybe<TagToCourseConnection>;
 		/** The unique identifier stored in the database */
 		databaseId: Scalars["Int"]["output"];
 		/** The description of the object */
@@ -7737,12 +9009,30 @@ export type Tag = DatabaseIdentifier &
 	};
 
 /** The tag type */
+export type TagChaptersArgs = {
+	after?: InputMaybe<Scalars["String"]["input"]>;
+	before?: InputMaybe<Scalars["String"]["input"]>;
+	first?: InputMaybe<Scalars["Int"]["input"]>;
+	last?: InputMaybe<Scalars["Int"]["input"]>;
+	where?: InputMaybe<TagToChapterConnectionWhereArgs>;
+};
+
+/** The tag type */
 export type TagContentNodesArgs = {
 	after?: InputMaybe<Scalars["String"]["input"]>;
 	before?: InputMaybe<Scalars["String"]["input"]>;
 	first?: InputMaybe<Scalars["Int"]["input"]>;
 	last?: InputMaybe<Scalars["Int"]["input"]>;
 	where?: InputMaybe<TagToContentNodeConnectionWhereArgs>;
+};
+
+/** The tag type */
+export type TagCoursesArgs = {
+	after?: InputMaybe<Scalars["String"]["input"]>;
+	before?: InputMaybe<Scalars["String"]["input"]>;
+	first?: InputMaybe<Scalars["Int"]["input"]>;
+	last?: InputMaybe<Scalars["Int"]["input"]>;
+	where?: InputMaybe<TagToCourseConnectionWhereArgs>;
 };
 
 /** The tag type */
@@ -7813,6 +9103,101 @@ export enum TagIdType {
 	/** The URI for the node */
 	Uri = "URI",
 }
+
+/** Connection between the Tag type and the chapter type */
+export type TagToChapterConnection = ChapterConnection &
+	Connection & {
+		__typename?: "TagToChapterConnection";
+		/** Edges for the TagToChapterConnection connection */
+		edges: Array<TagToChapterConnectionEdge>;
+		/** The nodes of the connection, without the edges */
+		nodes: Array<Chapter>;
+		/** Information about pagination in a connection. */
+		pageInfo: TagToChapterConnectionPageInfo;
+	};
+
+/** An edge in a connection */
+export type TagToChapterConnectionEdge = ChapterConnectionEdge &
+	Edge & {
+		__typename?: "TagToChapterConnectionEdge";
+		/** A cursor for use in pagination */
+		cursor?: Maybe<Scalars["String"]["output"]>;
+		/** The item at the end of the edge */
+		node: Chapter;
+	};
+
+/** Page Info on the &quot;TagToChapterConnection&quot; */
+export type TagToChapterConnectionPageInfo = ChapterConnectionPageInfo &
+	PageInfo &
+	WpPageInfo & {
+		__typename?: "TagToChapterConnectionPageInfo";
+		/** When paginating forwards, the cursor to continue. */
+		endCursor?: Maybe<Scalars["String"]["output"]>;
+		/** When paginating forwards, are there more items? */
+		hasNextPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, are there more items? */
+		hasPreviousPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, the cursor to continue. */
+		startCursor?: Maybe<Scalars["String"]["output"]>;
+	};
+
+/** Arguments for filtering the TagToChapterConnection connection */
+export type TagToChapterConnectionWhereArgs = {
+	/** The user that's connected as the author of the object. Use the userId for the author object. */
+	author?: InputMaybe<Scalars["Int"]["input"]>;
+	/** Find objects connected to author(s) in the array of author's userIds */
+	authorIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Find objects connected to the author by the author's nicename */
+	authorName?: InputMaybe<Scalars["String"]["input"]>;
+	/** Find objects NOT connected to author(s) in the array of author's userIds */
+	authorNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Filter the connection based on dates */
+	dateQuery?: InputMaybe<DateQueryInput>;
+	/** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+	hasPassword?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Specific database ID of the object */
+	id?: InputMaybe<Scalars["Int"]["input"]>;
+	/** Array of IDs for the objects to retrieve */
+	in?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Get objects with a specific mimeType property */
+	mimeType?: InputMaybe<MimeTypeEnum>;
+	/** Slug / post_name of the object */
+	name?: InputMaybe<Scalars["String"]["input"]>;
+	/** Specify objects to retrieve. Use slugs */
+	nameIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+	notIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** What parameter to use to order the objects by. */
+	orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+	/** Use ID to return only children. Use 0 to return only top-level items */
+	parent?: InputMaybe<Scalars["ID"]["input"]>;
+	/** Specify objects whose parent is in an array */
+	parentIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Specify posts whose parent is not in an array */
+	parentNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Show posts with a specific password. */
+	password?: InputMaybe<Scalars["String"]["input"]>;
+	/** Show Posts based on a keyword search */
+	search?: InputMaybe<Scalars["String"]["input"]>;
+	/** Retrieve posts where post status is in an array. */
+	stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+	/** Show posts with a specific status. */
+	status?: InputMaybe<PostStatusEnum>;
+	/** Tag Slug */
+	tag?: InputMaybe<Scalars["String"]["input"]>;
+	/** Use Tag ID */
+	tagId?: InputMaybe<Scalars["String"]["input"]>;
+	/** Array of tag IDs, used to display objects from one tag OR another */
+	tagIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of tag IDs, used to display objects from one tag OR another */
+	tagNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of tag slugs, used to display objects from one tag AND another */
+	tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Array of tag slugs, used to include objects in ANY specified tags */
+	tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Title of the object */
+	title?: InputMaybe<Scalars["String"]["input"]>;
+};
 
 /** Connection between the Tag type and the ContentNode type */
 export type TagToContentNodeConnection = Connection &
@@ -7887,6 +9272,101 @@ export type TagToContentNodeConnectionWhereArgs = {
 	stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
 	/** Show posts with a specific status. */
 	status?: InputMaybe<PostStatusEnum>;
+	/** Title of the object */
+	title?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** Connection between the Tag type and the course type */
+export type TagToCourseConnection = Connection &
+	CourseConnection & {
+		__typename?: "TagToCourseConnection";
+		/** Edges for the TagToCourseConnection connection */
+		edges: Array<TagToCourseConnectionEdge>;
+		/** The nodes of the connection, without the edges */
+		nodes: Array<Course>;
+		/** Information about pagination in a connection. */
+		pageInfo: TagToCourseConnectionPageInfo;
+	};
+
+/** An edge in a connection */
+export type TagToCourseConnectionEdge = CourseConnectionEdge &
+	Edge & {
+		__typename?: "TagToCourseConnectionEdge";
+		/** A cursor for use in pagination */
+		cursor?: Maybe<Scalars["String"]["output"]>;
+		/** The item at the end of the edge */
+		node: Course;
+	};
+
+/** Page Info on the &quot;TagToCourseConnection&quot; */
+export type TagToCourseConnectionPageInfo = CourseConnectionPageInfo &
+	PageInfo &
+	WpPageInfo & {
+		__typename?: "TagToCourseConnectionPageInfo";
+		/** When paginating forwards, the cursor to continue. */
+		endCursor?: Maybe<Scalars["String"]["output"]>;
+		/** When paginating forwards, are there more items? */
+		hasNextPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, are there more items? */
+		hasPreviousPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, the cursor to continue. */
+		startCursor?: Maybe<Scalars["String"]["output"]>;
+	};
+
+/** Arguments for filtering the TagToCourseConnection connection */
+export type TagToCourseConnectionWhereArgs = {
+	/** The user that's connected as the author of the object. Use the userId for the author object. */
+	author?: InputMaybe<Scalars["Int"]["input"]>;
+	/** Find objects connected to author(s) in the array of author's userIds */
+	authorIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Find objects connected to the author by the author's nicename */
+	authorName?: InputMaybe<Scalars["String"]["input"]>;
+	/** Find objects NOT connected to author(s) in the array of author's userIds */
+	authorNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Filter the connection based on dates */
+	dateQuery?: InputMaybe<DateQueryInput>;
+	/** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+	hasPassword?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Specific database ID of the object */
+	id?: InputMaybe<Scalars["Int"]["input"]>;
+	/** Array of IDs for the objects to retrieve */
+	in?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Get objects with a specific mimeType property */
+	mimeType?: InputMaybe<MimeTypeEnum>;
+	/** Slug / post_name of the object */
+	name?: InputMaybe<Scalars["String"]["input"]>;
+	/** Specify objects to retrieve. Use slugs */
+	nameIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+	notIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** What parameter to use to order the objects by. */
+	orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+	/** Use ID to return only children. Use 0 to return only top-level items */
+	parent?: InputMaybe<Scalars["ID"]["input"]>;
+	/** Specify objects whose parent is in an array */
+	parentIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Specify posts whose parent is not in an array */
+	parentNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Show posts with a specific password. */
+	password?: InputMaybe<Scalars["String"]["input"]>;
+	/** Show Posts based on a keyword search */
+	search?: InputMaybe<Scalars["String"]["input"]>;
+	/** Retrieve posts where post status is in an array. */
+	stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+	/** Show posts with a specific status. */
+	status?: InputMaybe<PostStatusEnum>;
+	/** Tag Slug */
+	tag?: InputMaybe<Scalars["String"]["input"]>;
+	/** Use Tag ID */
+	tagId?: InputMaybe<Scalars["String"]["input"]>;
+	/** Array of tag IDs, used to display objects from one tag OR another */
+	tagIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of tag IDs, used to display objects from one tag OR another */
+	tagNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of tag slugs, used to display objects from one tag AND another */
+	tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Array of tag slugs, used to include objects in ANY specified tags */
+	tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
 	/** Title of the object */
 	title?: InputMaybe<Scalars["String"]["input"]>;
 };
@@ -8497,6 +9977,45 @@ export type UpdateCategoryPayload = {
 	clientMutationId?: Maybe<Scalars["String"]["output"]>;
 };
 
+/** Input for the updateChapter mutation. */
+export type UpdateChapterInput = {
+	/** The userId to assign as the author of the object */
+	authorId?: InputMaybe<Scalars["ID"]["input"]>;
+	/** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+	clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+	/** The content of the object */
+	content?: InputMaybe<Scalars["String"]["input"]>;
+	/** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+	date?: InputMaybe<Scalars["String"]["input"]>;
+	/** The excerpt of the object */
+	excerpt?: InputMaybe<Scalars["String"]["input"]>;
+	/** The ID of the chapter object */
+	id: Scalars["ID"]["input"];
+	/** Override the edit lock when another user is editing the post */
+	ignoreEditLock?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+	menuOrder?: InputMaybe<Scalars["Int"]["input"]>;
+	/** The password used to protect the content of the object */
+	password?: InputMaybe<Scalars["String"]["input"]>;
+	/** The slug of the object */
+	slug?: InputMaybe<Scalars["String"]["input"]>;
+	/** The status of the object */
+	status?: InputMaybe<PostStatusEnum>;
+	/** Set connections between the chapter and tags */
+	tags?: InputMaybe<ChapterTagsInput>;
+	/** The title of the object */
+	title?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** The payload for the updateChapter mutation. */
+export type UpdateChapterPayload = {
+	__typename?: "UpdateChapterPayload";
+	/** The Post object mutation type. */
+	chapter?: Maybe<Chapter>;
+	/** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+	clientMutationId?: Maybe<Scalars["String"]["output"]>;
+};
+
 /** Input for the updateComment mutation. */
 export type UpdateCommentInput = {
 	/** The approval status of the comment. */
@@ -8534,6 +10053,45 @@ export type UpdateCommentPayload = {
 	comment?: Maybe<Comment>;
 	/** Whether the mutation succeeded. If the comment is not approved, the server will not return the comment to a non authenticated user, but a success message can be returned if the create succeeded, and the client can optimistically add the comment to the client cache */
 	success?: Maybe<Scalars["Boolean"]["output"]>;
+};
+
+/** Input for the updateCourse mutation. */
+export type UpdateCourseInput = {
+	/** The userId to assign as the author of the object */
+	authorId?: InputMaybe<Scalars["ID"]["input"]>;
+	/** This is an ID that can be passed to a mutation by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+	clientMutationId?: InputMaybe<Scalars["String"]["input"]>;
+	/** The content of the object */
+	content?: InputMaybe<Scalars["String"]["input"]>;
+	/** The date of the object. Preferable to enter as year/month/day (e.g. 01/31/2017) as it will rearrange date as fit if it is not specified. Incomplete dates may have unintended results for example, "2017" as the input will use current date with timestamp 20:17  */
+	date?: InputMaybe<Scalars["String"]["input"]>;
+	/** The excerpt of the object */
+	excerpt?: InputMaybe<Scalars["String"]["input"]>;
+	/** The ID of the course object */
+	id: Scalars["ID"]["input"];
+	/** Override the edit lock when another user is editing the post */
+	ignoreEditLock?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** A field used for ordering posts. This is typically used with nav menu items or for special ordering of hierarchical content types. */
+	menuOrder?: InputMaybe<Scalars["Int"]["input"]>;
+	/** The password used to protect the content of the object */
+	password?: InputMaybe<Scalars["String"]["input"]>;
+	/** The slug of the object */
+	slug?: InputMaybe<Scalars["String"]["input"]>;
+	/** The status of the object */
+	status?: InputMaybe<PostStatusEnum>;
+	/** Set connections between the course and tags */
+	tags?: InputMaybe<CourseTagsInput>;
+	/** The title of the object */
+	title?: InputMaybe<Scalars["String"]["input"]>;
+};
+
+/** The payload for the updateCourse mutation. */
+export type UpdateCoursePayload = {
+	__typename?: "UpdateCoursePayload";
+	/** If a &#039;clientMutationId&#039; input is provided to the mutation, it will be returned as output on the mutation. This ID can be used by the client to track the progress of mutations and catch possible duplicate mutation submissions. */
+	clientMutationId?: Maybe<Scalars["String"]["output"]>;
+	/** The Post object mutation type. */
+	course?: Maybe<Course>;
 };
 
 /** Input for the updateMediaItem mutation. */
@@ -8843,8 +10401,12 @@ export type User = Commenter &
 		capKey?: Maybe<Scalars["String"]["output"]>;
 		/** A list of capabilities (permissions) granted to the user */
 		capabilities?: Maybe<Array<Maybe<Scalars["String"]["output"]>>>;
+		/** Connection between the User type and the chapter type */
+		chapters?: Maybe<UserToChapterConnection>;
 		/** Connection between the User type and the Comment type */
 		comments?: Maybe<UserToCommentConnection>;
+		/** Connection between the User type and the course type */
+		courses?: Maybe<UserToCourseConnection>;
 		/** Identifies the primary key from the database. */
 		databaseId: Scalars["Int"]["output"];
 		/** Description of the user. */
@@ -8920,12 +10482,30 @@ export type UserAvatarArgs = {
 };
 
 /** A User object */
+export type UserChaptersArgs = {
+	after?: InputMaybe<Scalars["String"]["input"]>;
+	before?: InputMaybe<Scalars["String"]["input"]>;
+	first?: InputMaybe<Scalars["Int"]["input"]>;
+	last?: InputMaybe<Scalars["Int"]["input"]>;
+	where?: InputMaybe<UserToChapterConnectionWhereArgs>;
+};
+
+/** A User object */
 export type UserCommentsArgs = {
 	after?: InputMaybe<Scalars["String"]["input"]>;
 	before?: InputMaybe<Scalars["String"]["input"]>;
 	first?: InputMaybe<Scalars["Int"]["input"]>;
 	last?: InputMaybe<Scalars["Int"]["input"]>;
 	where?: InputMaybe<UserToCommentConnectionWhereArgs>;
+};
+
+/** A User object */
+export type UserCoursesArgs = {
+	after?: InputMaybe<Scalars["String"]["input"]>;
+	before?: InputMaybe<Scalars["String"]["input"]>;
+	first?: InputMaybe<Scalars["Int"]["input"]>;
+	last?: InputMaybe<Scalars["Int"]["input"]>;
+	where?: InputMaybe<UserToCourseConnectionWhereArgs>;
 };
 
 /** A User object */
@@ -9093,6 +10673,101 @@ export enum UserRoleEnum {
 	Subscriber = "SUBSCRIBER",
 }
 
+/** Connection between the User type and the chapter type */
+export type UserToChapterConnection = ChapterConnection &
+	Connection & {
+		__typename?: "UserToChapterConnection";
+		/** Edges for the UserToChapterConnection connection */
+		edges: Array<UserToChapterConnectionEdge>;
+		/** The nodes of the connection, without the edges */
+		nodes: Array<Chapter>;
+		/** Information about pagination in a connection. */
+		pageInfo: UserToChapterConnectionPageInfo;
+	};
+
+/** An edge in a connection */
+export type UserToChapterConnectionEdge = ChapterConnectionEdge &
+	Edge & {
+		__typename?: "UserToChapterConnectionEdge";
+		/** A cursor for use in pagination */
+		cursor?: Maybe<Scalars["String"]["output"]>;
+		/** The item at the end of the edge */
+		node: Chapter;
+	};
+
+/** Page Info on the &quot;UserToChapterConnection&quot; */
+export type UserToChapterConnectionPageInfo = ChapterConnectionPageInfo &
+	PageInfo &
+	WpPageInfo & {
+		__typename?: "UserToChapterConnectionPageInfo";
+		/** When paginating forwards, the cursor to continue. */
+		endCursor?: Maybe<Scalars["String"]["output"]>;
+		/** When paginating forwards, are there more items? */
+		hasNextPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, are there more items? */
+		hasPreviousPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, the cursor to continue. */
+		startCursor?: Maybe<Scalars["String"]["output"]>;
+	};
+
+/** Arguments for filtering the UserToChapterConnection connection */
+export type UserToChapterConnectionWhereArgs = {
+	/** The user that's connected as the author of the object. Use the userId for the author object. */
+	author?: InputMaybe<Scalars["Int"]["input"]>;
+	/** Find objects connected to author(s) in the array of author's userIds */
+	authorIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Find objects connected to the author by the author's nicename */
+	authorName?: InputMaybe<Scalars["String"]["input"]>;
+	/** Find objects NOT connected to author(s) in the array of author's userIds */
+	authorNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Filter the connection based on dates */
+	dateQuery?: InputMaybe<DateQueryInput>;
+	/** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+	hasPassword?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Specific database ID of the object */
+	id?: InputMaybe<Scalars["Int"]["input"]>;
+	/** Array of IDs for the objects to retrieve */
+	in?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Get objects with a specific mimeType property */
+	mimeType?: InputMaybe<MimeTypeEnum>;
+	/** Slug / post_name of the object */
+	name?: InputMaybe<Scalars["String"]["input"]>;
+	/** Specify objects to retrieve. Use slugs */
+	nameIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+	notIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** What parameter to use to order the objects by. */
+	orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+	/** Use ID to return only children. Use 0 to return only top-level items */
+	parent?: InputMaybe<Scalars["ID"]["input"]>;
+	/** Specify objects whose parent is in an array */
+	parentIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Specify posts whose parent is not in an array */
+	parentNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Show posts with a specific password. */
+	password?: InputMaybe<Scalars["String"]["input"]>;
+	/** Show Posts based on a keyword search */
+	search?: InputMaybe<Scalars["String"]["input"]>;
+	/** Retrieve posts where post status is in an array. */
+	stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+	/** Show posts with a specific status. */
+	status?: InputMaybe<PostStatusEnum>;
+	/** Tag Slug */
+	tag?: InputMaybe<Scalars["String"]["input"]>;
+	/** Use Tag ID */
+	tagId?: InputMaybe<Scalars["String"]["input"]>;
+	/** Array of tag IDs, used to display objects from one tag OR another */
+	tagIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of tag IDs, used to display objects from one tag OR another */
+	tagNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of tag slugs, used to display objects from one tag AND another */
+	tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Array of tag slugs, used to include objects in ANY specified tags */
+	tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Title of the object */
+	title?: InputMaybe<Scalars["String"]["input"]>;
+};
+
 /** Connection between the User type and the Comment type */
 export type UserToCommentConnection = CommentConnection &
 	Connection & {
@@ -9190,6 +10865,101 @@ export type UserToCommentConnectionWhereArgs = {
 	status?: InputMaybe<Scalars["String"]["input"]>;
 	/** Include comments for a specific user ID. */
 	userId?: InputMaybe<Scalars["ID"]["input"]>;
+};
+
+/** Connection between the User type and the course type */
+export type UserToCourseConnection = Connection &
+	CourseConnection & {
+		__typename?: "UserToCourseConnection";
+		/** Edges for the UserToCourseConnection connection */
+		edges: Array<UserToCourseConnectionEdge>;
+		/** The nodes of the connection, without the edges */
+		nodes: Array<Course>;
+		/** Information about pagination in a connection. */
+		pageInfo: UserToCourseConnectionPageInfo;
+	};
+
+/** An edge in a connection */
+export type UserToCourseConnectionEdge = CourseConnectionEdge &
+	Edge & {
+		__typename?: "UserToCourseConnectionEdge";
+		/** A cursor for use in pagination */
+		cursor?: Maybe<Scalars["String"]["output"]>;
+		/** The item at the end of the edge */
+		node: Course;
+	};
+
+/** Page Info on the &quot;UserToCourseConnection&quot; */
+export type UserToCourseConnectionPageInfo = CourseConnectionPageInfo &
+	PageInfo &
+	WpPageInfo & {
+		__typename?: "UserToCourseConnectionPageInfo";
+		/** When paginating forwards, the cursor to continue. */
+		endCursor?: Maybe<Scalars["String"]["output"]>;
+		/** When paginating forwards, are there more items? */
+		hasNextPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, are there more items? */
+		hasPreviousPage: Scalars["Boolean"]["output"];
+		/** When paginating backwards, the cursor to continue. */
+		startCursor?: Maybe<Scalars["String"]["output"]>;
+	};
+
+/** Arguments for filtering the UserToCourseConnection connection */
+export type UserToCourseConnectionWhereArgs = {
+	/** The user that's connected as the author of the object. Use the userId for the author object. */
+	author?: InputMaybe<Scalars["Int"]["input"]>;
+	/** Find objects connected to author(s) in the array of author's userIds */
+	authorIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Find objects connected to the author by the author's nicename */
+	authorName?: InputMaybe<Scalars["String"]["input"]>;
+	/** Find objects NOT connected to author(s) in the array of author's userIds */
+	authorNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Filter the connection based on dates */
+	dateQuery?: InputMaybe<DateQueryInput>;
+	/** True for objects with passwords; False for objects without passwords; null for all objects with or without passwords */
+	hasPassword?: InputMaybe<Scalars["Boolean"]["input"]>;
+	/** Specific database ID of the object */
+	id?: InputMaybe<Scalars["Int"]["input"]>;
+	/** Array of IDs for the objects to retrieve */
+	in?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Get objects with a specific mimeType property */
+	mimeType?: InputMaybe<MimeTypeEnum>;
+	/** Slug / post_name of the object */
+	name?: InputMaybe<Scalars["String"]["input"]>;
+	/** Specify objects to retrieve. Use slugs */
+	nameIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Specify IDs NOT to retrieve. If this is used in the same query as "in", it will be ignored */
+	notIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** What parameter to use to order the objects by. */
+	orderby?: InputMaybe<Array<InputMaybe<PostObjectsConnectionOrderbyInput>>>;
+	/** Use ID to return only children. Use 0 to return only top-level items */
+	parent?: InputMaybe<Scalars["ID"]["input"]>;
+	/** Specify objects whose parent is in an array */
+	parentIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Specify posts whose parent is not in an array */
+	parentNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Show posts with a specific password. */
+	password?: InputMaybe<Scalars["String"]["input"]>;
+	/** Show Posts based on a keyword search */
+	search?: InputMaybe<Scalars["String"]["input"]>;
+	/** Retrieve posts where post status is in an array. */
+	stati?: InputMaybe<Array<InputMaybe<PostStatusEnum>>>;
+	/** Show posts with a specific status. */
+	status?: InputMaybe<PostStatusEnum>;
+	/** Tag Slug */
+	tag?: InputMaybe<Scalars["String"]["input"]>;
+	/** Use Tag ID */
+	tagId?: InputMaybe<Scalars["String"]["input"]>;
+	/** Array of tag IDs, used to display objects from one tag OR another */
+	tagIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of tag IDs, used to display objects from one tag OR another */
+	tagNotIn?: InputMaybe<Array<InputMaybe<Scalars["ID"]["input"]>>>;
+	/** Array of tag slugs, used to display objects from one tag AND another */
+	tagSlugAnd?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Array of tag slugs, used to include objects in ANY specified tags */
+	tagSlugIn?: InputMaybe<Array<InputMaybe<Scalars["String"]["input"]>>>;
+	/** Title of the object */
+	title?: InputMaybe<Scalars["String"]["input"]>;
 };
 
 /** Connection between the User type and the EnqueuedScript type */
@@ -9722,7 +11492,7 @@ export type BlogPageQueryVariables = Exact<{
 
 export type BlogPageQuery = {
 	__typename?: "RootQuery";
-	post?: {
+	blog?: {
 		__typename?: "Post";
 		title?: string | null;
 		slug?: string | null;
@@ -9841,6 +11611,293 @@ export type BlogsPageQuery = {
 	} | null;
 };
 
+export type ChapterPageQueryVariables = Exact<{
+	slug: Scalars["ID"]["input"];
+}>;
+
+export type ChapterPageQuery = {
+	__typename?: "RootQuery";
+	chapter?: {
+		__typename?: "Chapter";
+		title?: string | null;
+		slug?: string | null;
+		modified?: string | null;
+		excerpt?: string | null;
+		contentFiltered?: string | null;
+		tags?: {
+			__typename?: "ChapterToTagConnection";
+			nodes: Array<{
+				__typename?: "Tag";
+				name?: string | null;
+				slug?: string | null;
+				featuredImage?: {
+					__typename?: "Tag_Featuredimage";
+					featuredImage?: {
+						__typename?: "MediaItem";
+						mediaItemUrl?: string | null;
+						sizes?: string | null;
+						caption?: string | null;
+						mediaDetails?: {
+							__typename?: "MediaDetails";
+							height?: number | null;
+							width?: number | null;
+						} | null;
+					} | null;
+				} | null;
+			}>;
+		} | null;
+		featuredImage?: {
+			__typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+			node: {
+				__typename?: "MediaItem";
+				caption?: string | null;
+				mediaItemUrl?: string | null;
+				mediaDetails?: {
+					__typename?: "MediaDetails";
+					height?: number | null;
+					width?: number | null;
+				} | null;
+			};
+		} | null;
+		author?: {
+			__typename?: "NodeWithAuthorToUserConnectionEdge";
+			node: {
+				__typename?: "User";
+				firstName?: string | null;
+				lastName?: string | null;
+			};
+		} | null;
+	} | null;
+};
+
+export type CoursePageQueryVariables = Exact<{
+	slug: Scalars["ID"]["input"];
+}>;
+
+export type CoursePageQuery = {
+	__typename?: "RootQuery";
+	course?: {
+		__typename?: "Course";
+		title?: string | null;
+		slug?: string | null;
+		modified?: string | null;
+		excerpt?: string | null;
+		contentFiltered?: string | null;
+		tags?: {
+			__typename?: "CourseToTagConnection";
+			nodes: Array<{
+				__typename?: "Tag";
+				name?: string | null;
+				slug?: string | null;
+				featuredImage?: {
+					__typename?: "Tag_Featuredimage";
+					featuredImage?: {
+						__typename?: "MediaItem";
+						mediaItemUrl?: string | null;
+						sizes?: string | null;
+						caption?: string | null;
+						mediaDetails?: {
+							__typename?: "MediaDetails";
+							height?: number | null;
+							width?: number | null;
+						} | null;
+					} | null;
+				} | null;
+			}>;
+		} | null;
+		featuredImage?: {
+			__typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+			node: {
+				__typename?: "MediaItem";
+				caption?: string | null;
+				mediaItemUrl?: string | null;
+				mediaDetails?: {
+					__typename?: "MediaDetails";
+					height?: number | null;
+					width?: number | null;
+				} | null;
+			};
+		} | null;
+		chapters?: {
+			__typename?: "Course_Chapters";
+			chapters?: Array<{
+				__typename?: "Chapter";
+				title?: string | null;
+				slug?: string | null;
+				modified?: string | null;
+				excerpt?: string | null;
+				contentFiltered?: string | null;
+				tags?: {
+					__typename?: "ChapterToTagConnection";
+					nodes: Array<{
+						__typename?: "Tag";
+						name?: string | null;
+						slug?: string | null;
+						featuredImage?: {
+							__typename?: "Tag_Featuredimage";
+							featuredImage?: {
+								__typename?: "MediaItem";
+								mediaItemUrl?: string | null;
+								sizes?: string | null;
+								caption?: string | null;
+								mediaDetails?: {
+									__typename?: "MediaDetails";
+									height?: number | null;
+									width?: number | null;
+								} | null;
+							} | null;
+						} | null;
+					}>;
+				} | null;
+				featuredImage?: {
+					__typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+					node: {
+						__typename?: "MediaItem";
+						caption?: string | null;
+						mediaItemUrl?: string | null;
+						mediaDetails?: {
+							__typename?: "MediaDetails";
+							height?: number | null;
+							width?: number | null;
+						} | null;
+					};
+				} | null;
+				author?: {
+					__typename?: "NodeWithAuthorToUserConnectionEdge";
+					node: {
+						__typename?: "User";
+						firstName?: string | null;
+						lastName?: string | null;
+					};
+				} | null;
+			} | null> | null;
+		} | null;
+		author?: {
+			__typename?: "NodeWithAuthorToUserConnectionEdge";
+			node: {
+				__typename?: "User";
+				firstName?: string | null;
+				lastName?: string | null;
+			};
+		} | null;
+	} | null;
+};
+
+export type CourseRoutesQueryVariables = Exact<{
+	first: Scalars["Int"]["input"];
+	after?: InputMaybe<Scalars["String"]["input"]>;
+}>;
+
+export type CourseRoutesQuery = {
+	__typename?: "RootQuery";
+	courses?: {
+		__typename?: "RootQueryToCourseConnection";
+		nodes: Array<{
+			__typename?: "Course";
+			slug?: string | null;
+			modified?: string | null;
+			chapters?: {
+				__typename?: "Course_Chapters";
+				chapters?: Array<{
+					__typename?: "Chapter";
+					slug?: string | null;
+					modified?: string | null;
+				} | null> | null;
+			} | null;
+		}>;
+	} | null;
+};
+
+export type CourseSidebarQueryVariables = Exact<{
+	slug: Scalars["ID"]["input"];
+}>;
+
+export type CourseSidebarQuery = {
+	__typename?: "RootQuery";
+	course?: {
+		__typename?: "Course";
+		title?: string | null;
+		slug?: string | null;
+		emogi?: { __typename?: "Course_Emogi"; emogi?: string | null } | null;
+		chapters?: {
+			__typename?: "Course_Chapters";
+			chapters?: Array<{
+				__typename?: "Chapter";
+				title?: string | null;
+				slug?: string | null;
+				section?: {
+					__typename?: "Chapter_Section";
+					section?: string | null;
+				} | null;
+				emogi?: { __typename?: "Chapter_Emogi"; emogi?: string | null } | null;
+			} | null> | null;
+		} | null;
+	} | null;
+};
+
+export type CoursesPageQueryVariables = Exact<{
+	first: Scalars["Int"]["input"];
+	after?: InputMaybe<Scalars["String"]["input"]>;
+}>;
+
+export type CoursesPageQuery = {
+	__typename?: "RootQuery";
+	courses?: {
+		__typename?: "RootQueryToCourseConnection";
+		nodes: Array<{
+			__typename?: "Course";
+			title?: string | null;
+			slug?: string | null;
+			modified?: string | null;
+			excerpt?: string | null;
+			contentFiltered?: string | null;
+			tags?: {
+				__typename?: "CourseToTagConnection";
+				nodes: Array<{
+					__typename?: "Tag";
+					name?: string | null;
+					slug?: string | null;
+					featuredImage?: {
+						__typename?: "Tag_Featuredimage";
+						featuredImage?: {
+							__typename?: "MediaItem";
+							mediaItemUrl?: string | null;
+							sizes?: string | null;
+							caption?: string | null;
+							mediaDetails?: {
+								__typename?: "MediaDetails";
+								height?: number | null;
+								width?: number | null;
+							} | null;
+						} | null;
+					} | null;
+				}>;
+			} | null;
+			featuredImage?: {
+				__typename?: "NodeWithFeaturedImageToMediaItemConnectionEdge";
+				node: {
+					__typename?: "MediaItem";
+					caption?: string | null;
+					mediaItemUrl?: string | null;
+					mediaDetails?: {
+						__typename?: "MediaDetails";
+						height?: number | null;
+						width?: number | null;
+					} | null;
+				};
+			} | null;
+			author?: {
+				__typename?: "NodeWithAuthorToUserConnectionEdge";
+				node: {
+					__typename?: "User";
+					firstName?: string | null;
+					lastName?: string | null;
+				};
+			} | null;
+		}>;
+	} | null;
+};
+
 export type HomePageQueryVariables = Exact<{
 	first: Scalars["Int"]["input"];
 	after?: InputMaybe<Scalars["String"]["input"]>;
@@ -9892,7 +11949,7 @@ export type HomePageQuery = {
 
 export const BlogPageDocument = gql`
 	query blogPage($slug: ID!) {
-		post(id: $slug, idType: SLUG) {
+		blog: post(id: $slug, idType: SLUG) {
 			title
 			slug
 			modified
@@ -10127,6 +12184,486 @@ export type BlogsPageLazyQueryHookResult = ReturnType<
 export type BlogsPageQueryResult = Apollo.QueryResult<
 	BlogsPageQuery,
 	BlogsPageQueryVariables
+>;
+export const ChapterPageDocument = gql`
+	query chapterPage($slug: ID!) {
+		chapter(id: $slug, idType: SLUG) {
+			title
+			slug
+			modified
+			excerpt
+			contentFiltered
+			tags {
+				nodes {
+					name
+					slug
+					featuredImage {
+						featuredImage {
+							mediaItemUrl
+							sizes
+							caption
+							mediaDetails {
+								height
+								width
+							}
+						}
+					}
+				}
+			}
+			featuredImage {
+				node {
+					caption
+					mediaItemUrl
+					mediaDetails {
+						height
+						width
+					}
+				}
+			}
+			author {
+				node {
+					firstName
+					lastName
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useChapterPageQuery__
+ *
+ * To run a query within a React component, call `useChapterPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useChapterPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useChapterPageQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useChapterPageQuery(
+	baseOptions: Apollo.QueryHookOptions<
+		ChapterPageQuery,
+		ChapterPageQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useQuery<ChapterPageQuery, ChapterPageQueryVariables>(
+		ChapterPageDocument,
+		options,
+	);
+}
+export function useChapterPageLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		ChapterPageQuery,
+		ChapterPageQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useLazyQuery<ChapterPageQuery, ChapterPageQueryVariables>(
+		ChapterPageDocument,
+		options,
+	);
+}
+export type ChapterPageQueryHookResult = ReturnType<typeof useChapterPageQuery>;
+export type ChapterPageLazyQueryHookResult = ReturnType<
+	typeof useChapterPageLazyQuery
+>;
+export type ChapterPageQueryResult = Apollo.QueryResult<
+	ChapterPageQuery,
+	ChapterPageQueryVariables
+>;
+export const CoursePageDocument = gql`
+	query coursePage($slug: ID!) {
+		course: course(id: $slug, idType: SLUG) {
+			title
+			slug
+			modified
+			excerpt
+			contentFiltered
+			tags {
+				nodes {
+					name
+					slug
+					featuredImage {
+						featuredImage {
+							mediaItemUrl
+							sizes
+							caption
+							mediaDetails {
+								height
+								width
+							}
+						}
+					}
+				}
+			}
+			featuredImage {
+				node {
+					caption
+					mediaItemUrl
+					mediaDetails {
+						height
+						width
+					}
+				}
+			}
+			chapters {
+				chapters {
+					... on Chapter {
+						title
+						slug
+						modified
+						excerpt
+						contentFiltered
+						tags {
+							nodes {
+								name
+								slug
+								featuredImage {
+									featuredImage {
+										mediaItemUrl
+										sizes
+										caption
+										mediaDetails {
+											height
+											width
+										}
+									}
+								}
+							}
+						}
+						featuredImage {
+							node {
+								caption
+								mediaItemUrl
+								mediaDetails {
+									height
+									width
+								}
+							}
+						}
+						author {
+							node {
+								firstName
+								lastName
+							}
+						}
+					}
+				}
+			}
+			author {
+				node {
+					firstName
+					lastName
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useCoursePageQuery__
+ *
+ * To run a query within a React component, call `useCoursePageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCoursePageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCoursePageQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useCoursePageQuery(
+	baseOptions: Apollo.QueryHookOptions<
+		CoursePageQuery,
+		CoursePageQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useQuery<CoursePageQuery, CoursePageQueryVariables>(
+		CoursePageDocument,
+		options,
+	);
+}
+export function useCoursePageLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		CoursePageQuery,
+		CoursePageQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useLazyQuery<CoursePageQuery, CoursePageQueryVariables>(
+		CoursePageDocument,
+		options,
+	);
+}
+export type CoursePageQueryHookResult = ReturnType<typeof useCoursePageQuery>;
+export type CoursePageLazyQueryHookResult = ReturnType<
+	typeof useCoursePageLazyQuery
+>;
+export type CoursePageQueryResult = Apollo.QueryResult<
+	CoursePageQuery,
+	CoursePageQueryVariables
+>;
+export const CourseRoutesDocument = gql`
+	query courseRoutes($first: Int!, $after: String) {
+		courses: courses(
+			where: { orderby: { field: MODIFIED, order: DESC } }
+			first: $first
+			after: $after
+		) {
+			nodes {
+				slug
+				modified
+				chapters {
+					chapters {
+						... on Chapter {
+							slug
+							modified
+						}
+					}
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useCourseRoutesQuery__
+ *
+ * To run a query within a React component, call `useCourseRoutesQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCourseRoutesQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCourseRoutesQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *      after: // value for 'after'
+ *   },
+ * });
+ */
+export function useCourseRoutesQuery(
+	baseOptions: Apollo.QueryHookOptions<
+		CourseRoutesQuery,
+		CourseRoutesQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useQuery<CourseRoutesQuery, CourseRoutesQueryVariables>(
+		CourseRoutesDocument,
+		options,
+	);
+}
+export function useCourseRoutesLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		CourseRoutesQuery,
+		CourseRoutesQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useLazyQuery<CourseRoutesQuery, CourseRoutesQueryVariables>(
+		CourseRoutesDocument,
+		options,
+	);
+}
+export type CourseRoutesQueryHookResult = ReturnType<
+	typeof useCourseRoutesQuery
+>;
+export type CourseRoutesLazyQueryHookResult = ReturnType<
+	typeof useCourseRoutesLazyQuery
+>;
+export type CourseRoutesQueryResult = Apollo.QueryResult<
+	CourseRoutesQuery,
+	CourseRoutesQueryVariables
+>;
+export const CourseSidebarDocument = gql`
+	query courseSidebar($slug: ID!) {
+		course: course(id: $slug, idType: SLUG) {
+			title
+			slug
+			emogi {
+				emogi
+			}
+			chapters {
+				chapters {
+					... on Chapter {
+						title
+						slug
+						section {
+							section
+						}
+						emogi {
+							emogi
+						}
+					}
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useCourseSidebarQuery__
+ *
+ * To run a query within a React component, call `useCourseSidebarQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCourseSidebarQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCourseSidebarQuery({
+ *   variables: {
+ *      slug: // value for 'slug'
+ *   },
+ * });
+ */
+export function useCourseSidebarQuery(
+	baseOptions: Apollo.QueryHookOptions<
+		CourseSidebarQuery,
+		CourseSidebarQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useQuery<CourseSidebarQuery, CourseSidebarQueryVariables>(
+		CourseSidebarDocument,
+		options,
+	);
+}
+export function useCourseSidebarLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		CourseSidebarQuery,
+		CourseSidebarQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useLazyQuery<CourseSidebarQuery, CourseSidebarQueryVariables>(
+		CourseSidebarDocument,
+		options,
+	);
+}
+export type CourseSidebarQueryHookResult = ReturnType<
+	typeof useCourseSidebarQuery
+>;
+export type CourseSidebarLazyQueryHookResult = ReturnType<
+	typeof useCourseSidebarLazyQuery
+>;
+export type CourseSidebarQueryResult = Apollo.QueryResult<
+	CourseSidebarQuery,
+	CourseSidebarQueryVariables
+>;
+export const CoursesPageDocument = gql`
+	query coursesPage($first: Int!, $after: String) {
+		courses: courses(
+			where: { orderby: { field: MODIFIED, order: DESC } }
+			first: $first
+			after: $after
+		) {
+			nodes {
+				title
+				slug
+				modified
+				excerpt
+				contentFiltered
+				tags {
+					nodes {
+						name
+						slug
+						featuredImage {
+							featuredImage {
+								mediaItemUrl
+								sizes
+								caption
+								mediaDetails {
+									height
+									width
+								}
+							}
+						}
+					}
+				}
+				featuredImage {
+					node {
+						caption
+						mediaItemUrl
+						mediaDetails {
+							height
+							width
+						}
+					}
+				}
+				author {
+					node {
+						firstName
+						lastName
+					}
+				}
+			}
+		}
+	}
+`;
+
+/**
+ * __useCoursesPageQuery__
+ *
+ * To run a query within a React component, call `useCoursesPageQuery` and pass it any options that fit your needs.
+ * When your component renders, `useCoursesPageQuery` returns an object from Apollo Client that contains loading, error, and data properties
+ * you can use to render your UI.
+ *
+ * @param baseOptions options that will be passed into the query, supported options are listed on: https://www.apollographql.com/docs/react/api/react-hooks/#options;
+ *
+ * @example
+ * const { data, loading, error } = useCoursesPageQuery({
+ *   variables: {
+ *      first: // value for 'first'
+ *      after: // value for 'after'
+ *   },
+ * });
+ */
+export function useCoursesPageQuery(
+	baseOptions: Apollo.QueryHookOptions<
+		CoursesPageQuery,
+		CoursesPageQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useQuery<CoursesPageQuery, CoursesPageQueryVariables>(
+		CoursesPageDocument,
+		options,
+	);
+}
+export function useCoursesPageLazyQuery(
+	baseOptions?: Apollo.LazyQueryHookOptions<
+		CoursesPageQuery,
+		CoursesPageQueryVariables
+	>,
+) {
+	const options = { ...defaultOptions, ...baseOptions };
+	return Apollo.useLazyQuery<CoursesPageQuery, CoursesPageQueryVariables>(
+		CoursesPageDocument,
+		options,
+	);
+}
+export type CoursesPageQueryHookResult = ReturnType<typeof useCoursesPageQuery>;
+export type CoursesPageLazyQueryHookResult = ReturnType<
+	typeof useCoursesPageLazyQuery
+>;
+export type CoursesPageQueryResult = Apollo.QueryResult<
+	CoursesPageQuery,
+	CoursesPageQueryVariables
 >;
 export const HomePageDocument = gql`
 	query HomePage($first: Int!, $after: String) {

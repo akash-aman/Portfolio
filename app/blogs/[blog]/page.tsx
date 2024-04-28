@@ -31,42 +31,42 @@ export async function generateMetadata(
 	{ params, searchParams }: MetaProps,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
-	const { post } = await request<BlogPageQuery, BlogPageQueryVariables>(
+	const { blog } = await request<BlogPageQuery, BlogPageQueryVariables>(
 		gqlAPI,
 		BlogPageDocument,
 		{ slug: params.blog },
 	);
 
 	return {
-		title: post?.title,
-		description: post?.excerpt,
+		title: blog?.title,
+		description: blog?.excerpt,
 		openGraph: {
-			title: post?.title,
-			description: post?.excerpt,
+			title: blog?.title,
+			description: blog?.excerpt,
 			images: [
 				{
-					url: post?.featuredImage?.node?.mediaItemUrl,
-					width: post?.featuredImage?.node?.mediaDetails?.width,
-					height: post?.featuredImage?.node?.mediaDetails?.height,
-					alt: post?.featuredImage?.node?.caption,
+					url: blog?.featuredImage?.node?.mediaItemUrl,
+					width: blog?.featuredImage?.node?.mediaDetails?.width,
+					height: blog?.featuredImage?.node?.mediaDetails?.height,
+					alt: blog?.featuredImage?.node?.caption,
 				},
 			],
 			type: "website",
-			url: baseURL + "/blogs/" + post?.slug,
+			url: baseURL + "/blogs/" + blog?.slug,
 			countryName: "India",
 		},
 		twitter: {
-			title: post?.title,
-			description: post?.excerpt,
+			title: blog?.title,
+			description: blog?.excerpt,
 			images: [
 				{
-					url: post?.featuredImage?.node?.mediaItemUrl,
-					width: post?.featuredImage?.node?.mediaDetails?.width,
-					height: post?.featuredImage?.node?.mediaDetails?.height,
-					alt: post?.featuredImage?.node?.caption,
+					url: blog?.featuredImage?.node?.mediaItemUrl,
+					width: blog?.featuredImage?.node?.mediaDetails?.width,
+					height: blog?.featuredImage?.node?.mediaDetails?.height,
+					alt: blog?.featuredImage?.node?.caption,
 				},
 			],
-			site: baseURL + "/blogs/" + post?.slug,
+			site: baseURL + "/blogs/" + blog?.slug,
 		},
 	};
 }
@@ -86,19 +86,19 @@ type Props = {
  * @returns
  */
 const Blog = async ({ params }: Props) => {
-	const { post } = await request<BlogPageQuery, BlogPageQueryVariables>(
+	const { blog } = await request<BlogPageQuery, BlogPageQueryVariables>(
 		gqlAPI,
 		BlogPageDocument,
 		{ slug: params.blog },
 	);
 
-	if (!post) {
+	if (!blog) {
 		notFound();
 	}
 
 	return (
 		<div className="grid h-fit">
-			<MDBlog markdown={post.contentFiltered} />
+			<MDBlog markdown={blog.contentFiltered} />
 		</div>
 	);
 };

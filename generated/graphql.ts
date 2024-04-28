@@ -9784,7 +9784,11 @@ export type BlogRoutesQuery = {
 	__typename?: "RootQuery";
 	routes?: {
 		__typename?: "RootQueryToPostConnection";
-		nodes: Array<{ __typename?: "Post"; slug?: string | null }>;
+		nodes: Array<{
+			__typename?: "Post";
+			slug?: string | null;
+			modified?: string | null;
+		}>;
 	} | null;
 };
 
@@ -9981,6 +9985,7 @@ export const BlogRoutesDocument = gql`
 		routes: posts(first: $first, after: $after) {
 			nodes {
 				slug
+				modified
 			}
 		}
 	}

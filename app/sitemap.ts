@@ -2,9 +2,6 @@ import { MetadataRoute } from "next";
 import { gqlAPI, paths, baseURL } from "/lib/constant";
 import request from "graphql-request";
 import {
-	CourseRoutesQuery,
-	CourseRoutesQueryVariables,
-	CourseRoutesDocument,
 	BlogRoutesQuery,
 	BlogRoutesDocument,
 	BlogRoutesQueryVariables,
@@ -16,45 +13,18 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		lastModified: new Date().toISOString(),
 	}));
 
-	const courses = (
-		await request<CourseRoutesQuery, CourseRoutesQueryVariables>(
-			gqlAPI,
-			CourseRoutesDocument,
-			{ page: 1, pageSize: 1000 },
-		)
-	).courses.data?.reduce((acc, course) => {
-		return [
-			...acc,
-			...course.attributes.chapters?.map(({ chapter }) => {
-				return {
-					url:
-						baseURL +
-						"/courses/" +
-						course.attributes.Slug +
-						"/" +
-						chapter.data.attributes.Slug,
-					lastModified: chapter.data.attributes.updatedAt,
-				};
-			}),
-			{
-				url: baseURL + "/courses/" + course.attributes.Slug,
-				lastModified: course.attributes.updatedAt,
-			},
-		];
-	}, []);
+	const { routes } = await request<BlogRoutesQuery, BlogRoutesQueryVariables>(
+		gqlAPI,
+		BlogRoutesDocument,
+		{ first: 100 },
+	);
 
-	const blogs = (
-		await request<BlogRoutesQuery, BlogRoutesQueryVariables>(
-			gqlAPI,
-			BlogRoutesDocument,
-			{ page: 1, pageSize: 1000 },
-		)
-	).posts.data?.map((blog) => {
+	const blogs = routes.nodes.map(({ slug, modified }) => {
 		return {
-			url: baseURL + "/blogs/" + blog.attributes.Slug,
-			lastModified: blog.attributes.updatedAt,
+			url: baseURL + "/blogs/" + slug,
+			lastModified: modified,
 		};
 	});
 
-	return [...defaultPaths, ...courses, ...blogs];
+	return [...defaultPaths, ...blogs];
 }

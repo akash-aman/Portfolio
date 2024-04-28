@@ -1,67 +1,41 @@
-# Write your query or mutation here
-query blogPage($slug: String!) {
-	post(slug: $slug) {
-		data {
-			attributes {
-				Slug
-				seo {
-					id
-					metaTitle
-					metaDescription
-					metaImage {
-						data {
-							attributes {
-								formats
-								caption
-							}
-						}
-					}
-					metaSocial {
-						socialNetwork
-						title
-						description
-						image {
-							data {
-								attributes {
-									formats
-									caption
-								}
-							}
-						}
-					}
-					keywords
-					metaRobots
-					structuredData
-					metaViewport
-					canonicalURL
-				}
-				Title
-				Excerpt
-				Description
-				Content
-				FeaturedImage {
-					data {
-						attributes {
-							formats
+query blogPage($slug: ID!) {
+	post(id: $slug, idType: SLUG) {
+		title
+		slug
+		modified
+		excerpt
+		contentFiltered
+		tags {
+			nodes {
+				name
+				slug
+				featuredImage {
+					featuredImage {
+						mediaItemUrl
+						sizes
+						caption
+						mediaDetails {
+							height
+							width
 						}
 					}
 				}
-				category {
-					data {
-						attributes {
-							Name
-							Slug
-						}
-					}
+			}
+		}
+		featuredImage {
+			node {
+				caption
+				mediaItemUrl
+				mediaDetails {
+					height
+					width
 				}
-				tags {
-					data {
-						attributes {
-							Name
-							Slug
-						}
-					}
-				}
+			}
+		}
+		author {
+			node {
+				firstName
+				lastName
 			}
 		}
 	}

@@ -62,8 +62,8 @@ export const metadata: Metadata = {
 
 /**
  * This function generates the page.
- * 
- * @returns 
+ *
+ * @returns
  */
 const Page = () => {
 	return (

@@ -1,10 +1,7 @@
 import React from "react";
 import { ParsedUrlQuery } from "querystring";
 import Link from "next/link";
-import {
-	CoursePageQuery,
-	CoursePageDocument,
-} from "/generated/graphql";
+import { CoursePageQuery, CoursePageDocument } from "/generated/graphql";
 import { gqlAPI } from "/lib/constant";
 import { notFound } from "next/navigation";
 import { Metadata, ResolvingMetadata } from "next";
@@ -17,11 +14,11 @@ type MetaProps = {
 
 /**
  * This function generates the metadata for the page.
- * 
+ *
  * @param param0 params - params of the page
  * @param param1 searchParams - searchParams of the page
  * @param parent parent - parent metadata
- * @returns 
+ * @returns
  */
 export async function generateMetadata(
 	{ params, searchParams }: MetaProps,
@@ -146,7 +143,7 @@ type Props = {
 
 /**
  * This function generates the page.
- * 
+ *
  * @param param0 params - params of the page
  * @returns jsx element.
  */

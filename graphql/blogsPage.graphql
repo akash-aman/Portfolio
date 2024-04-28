@@ -1,40 +1,37 @@
-query blogsPage($page: Int = 1, $pageSize: Int = 5) {
-	posts(
-		sort: ["updatedAt:desc"]
-		pagination: { page: $page, pageSize: $pageSize }
+query blogsPage($first: Int!, $after: String) {
+	blogs: posts(
+		where: { orderby: { field: MODIFIED, order: DESC } }
+		first: $first
+		after: $after
 	) {
-		data {
-			id
-			attributes {
-				tags {
-					data {
-						attributes {
-							Name
-							Slug
-							colour
-							fontColour
-							FeaturedImage {
-								data {
-									id
-									attributes {
-										url
-										name
-									}
-								}
-							}
+		nodes {
+			title
+			slug
+			modified
+			excerpt
+			contentFiltered
+			tags {
+				nodes {
+					name
+					slug
+					featuredImage {
+						featuredImage {
+							mediaItemUrl
+							sizes
+							caption
 						}
 					}
 				}
-				Title
-				Slug
-				Description
-				FeaturedImage {
-					data {
-						attributes {
-							caption
-							formats
-						}
-					}
+			}
+			featuredImage {
+				node {
+					mediaItemUrl
+				}
+			}
+			author {
+				node {
+					firstName
+					lastName
 				}
 			}
 		}

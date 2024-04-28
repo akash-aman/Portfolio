@@ -9,7 +9,7 @@ import { gqlAPI } from "/lib/constant";
 
 /**
  * This is the webhook handler for On Demand ISR.
- * 
+ *
  * @param req NextApiRequest  - request object
  * @param res NextApiResponse - response object
  * @returns res - response object
@@ -18,7 +18,6 @@ export default async function handleWebhook(
 	req: NextApiRequest,
 	res: NextApiResponse,
 ) {
-
 	const body = await getRawBody(req);
 	if (!body) {
 		res.status(400).send("Bad request (no body)");
@@ -153,9 +152,9 @@ type Body = {
 
 /**
  * This function is used to get the raw body of the request.
- * 
+ *
  * @param req NextApiRequest - request object
- * @returns Promise<string> - raw body 
+ * @returns Promise<string> - raw body
  */
 function getRawBody(req): Promise<string> {
 	return new Promise((resolve, reject) => {

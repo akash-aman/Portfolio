@@ -8,8 +8,8 @@ import "/styles/timeline.scss";
 
 /**
  * This function generates the page.
- * 
- * @returns 
+ *
+ * @returns
  */
 const Page = () => {
 	useSetHeader({ title: "Projects ⚒️" });

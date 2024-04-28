@@ -1,0 +1,73 @@
+query HomePage($page: Int = 0, $pageSize: Int = 5) {
+	blogs: posts(where: { orderby: { field: MODIFIED, order: DESC } }, first: 5) {
+		nodes {
+			title
+			slug
+			modified
+			excerpt
+			content
+			tags {
+				nodes {
+					name
+					slug
+					featuredImage {
+						featuredImage {
+							mediaItemUrl
+						}
+					}
+				}
+			}
+			featuredImage {
+				node {
+					mediaItemUrl
+				}
+			}
+			author {
+				node {
+					firstName
+					lastName
+				}
+			}
+		}
+	}
+	courses: courses(
+		sort: ["updatedAt:desc"]
+		pagination: { page: $page, pageSize: $pageSize }
+	) {
+		data {
+			id
+			attributes {
+				tags {
+					data {
+						attributes {
+							Name
+							Slug
+							colour
+							fontColour
+							FeaturedImage {
+								data {
+									id
+									attributes {
+										url
+										name
+									}
+								}
+							}
+						}
+					}
+				}
+				Title
+				Slug
+				Description
+				FeaturedImage {
+					data {
+						attributes {
+							caption
+							formats
+						}
+					}
+				}
+			}
+		}
+	}
+}

@@ -121,14 +121,16 @@ export const metadata: Metadata = {
 
 /**
  * This function generates the page.
- * 
- * @returns 
+ *
+ * @returns
  */
 const Page = async () => {
-	const { blogs, courses } = await request<
-		HomePageQuery,
-		HomePageQueryVariables
-	>(gqlAPI, HomePageDocument, { page: 1, pageSize: 5 });
+	const { blogs } = await request<HomePageQuery, HomePageQueryVariables>(
+		gqlAPI,
+		HomePageDocument,
+		{ first: 5 },
+	);
+	//console.log(blogs);
 
 	return (
 		<>
@@ -162,9 +164,9 @@ const Page = async () => {
 				</p>
 				<h3 className="mb-14 text mt-12">Latest Blogs 📝</h3>
 				<div className="grid w-full grid-cols-[repeat(auto-fill,minmax(230px,370px))] justify-center gap-8">
-					{blogs.data.map(({ id, attributes }) => {
+					{blogs.nodes.map(({ slug, ...fields }) => {
 						return (
-							<Card type={"blogs"} key={id} attributes={attributes} id={id} />
+							<Card type={"blogs"} key={slug} slug={slug} fields={fields} />
 						);
 					})}
 				</div>

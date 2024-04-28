@@ -1,8 +1,5 @@
 import Sidebar from "./Sidebar";
-import {
-	CourseSidebarQuery,
-	CourseSidebarDocument,
-} from "/generated/graphql";
+import { CourseSidebarQuery, CourseSidebarDocument } from "/generated/graphql";
 import { gqlAPI } from "/lib/constant";
 import { notFound } from "next/navigation";
 /**

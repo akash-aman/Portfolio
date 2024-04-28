@@ -169,7 +169,7 @@ export const metadata: Metadata = {
 
 /**
  * This is the Root layout for the every page.
- * 
+ *
  * @param param0 children - children of the component
  * @returns jsx element.
  */

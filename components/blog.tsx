@@ -12,11 +12,13 @@ import rehypePrism from "rehype-prism-plus";
 
 type BlogProps = {
 	markdown?: string;
+	className?: string;
 };
 
-const MDBlog: FC<BlogProps> = ({ markdown }: BlogProps) => {
+const MDBlog: FC<BlogProps> = ({ markdown, ...attributes }: BlogProps) => {
 	return (
 		<ReactMarkdown
+			{...attributes}
 			// eslint-disable-next-line react/no-children-prop
 			components={elements}
 			children={markdown}

@@ -4,9 +4,9 @@ type Secret = string;
 
 /**
  * This is the webhook handler for On Demand ISR.
- * 
+ *
  * @param req NextRequest - Request Object
- * @returns res - response object 
+ * @returns res - response object
  */
 export async function POST(req: NextRequest) {
 	const body = await rawBody(req.body);
@@ -38,7 +38,7 @@ export async function POST(req: NextRequest) {
 
 /**
  * This is the webhook handler for On Demand ISR.
- * 
+ *
  * @param req NextRequest - Request Object
  * @returns res - response object
  */
@@ -48,9 +48,9 @@ export async function GET(req: NextRequest) {
 
 /**
  * This function is used to revalidate the path.
- * 
+ *
  * @param body Body - body object
- * @returns 
+ * @returns
  */
 async function pathRevalidator(body: Body) {
 	// check if body is not empty.
@@ -154,9 +154,9 @@ type Body = {
 
 /**
  * This function is used to get the raw body of the request.
- * 
+ *
  * @param req NextApiRequest - request object
- * @returns Promise<string> - raw body 
+ * @returns Promise<string> - raw body
  */
 async function rawBody(responseBody) {
 	const reader = responseBody.getReader();

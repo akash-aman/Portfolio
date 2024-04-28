@@ -1,80 +1,37 @@
-query HomePage($page: Int = 0, $pageSize: Int = 5) {
+query HomePage($first: Int!, $after: String) {
 	blogs: posts(
-		sort: ["updatedAt:desc"]
-		pagination: { page: $page, pageSize: $pageSize }
+		where: { orderby: { field: MODIFIED, order: DESC } }
+		first: $first
+		after: $after
 	) {
-		data {
-			id
-			attributes {
-				tags {
-					data {
-						attributes {
-							Name
-							Slug
-							colour
-							fontColour
-							FeaturedImage {
-								data {
-									id
-									attributes {
-										url
-										name
-									}
-								}
-							}
-						}
-					}
-				}
-				Title
-				Slug
-				Description
-				FeaturedImage {
-					data {
-						attributes {
+		nodes {
+			title
+			slug
+			modified
+			excerpt
+			contentFiltered
+			tags {
+				nodes {
+					name
+					slug
+					featuredImage {
+						featuredImage {
+							mediaItemUrl
+							sizes
 							caption
-							formats
 						}
 					}
 				}
 			}
-		}
-	}
-	courses: courses(
-		sort: ["updatedAt:desc"]
-		pagination: { page: $page, pageSize: $pageSize }
-	) {
-		data {
-			id
-			attributes {
-				tags {
-					data {
-						attributes {
-							Name
-							Slug
-							colour
-							fontColour
-							FeaturedImage {
-								data {
-									id
-									attributes {
-										url
-										name
-									}
-								}
-							}
-						}
-					}
+			featuredImage {
+				node {
+					mediaItemUrl
 				}
-				Title
-				Slug
-				Description
-				FeaturedImage {
-					data {
-						attributes {
-							caption
-							formats
-						}
-					}
+			}
+			author {
+				node {
+					firstName
+					lastName
 				}
 			}
 		}

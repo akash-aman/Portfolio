@@ -1,6 +1,6 @@
 import React from "react";
 import { Components } from "react-markdown";
-import Rehypecode from "./element/rehypecode";
+import Code from "./element/rehypecode";
 import MultiCode from "./element/multicode";
 import Blockquote from "./element/blockquote";
 import P from "./element/p";
@@ -26,7 +26,7 @@ export const elements: { [key: string]: React.ElementType | Components } = {
 	u: U,
 	span: Span,
 	img: ImageComponent,
-	code: Rehypecode,
+	code: Code,
 	multicode: MultiCode,
 	blockquote: Blockquote,
 };

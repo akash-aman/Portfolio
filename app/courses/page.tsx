@@ -72,7 +72,7 @@ export const metadata: Metadata = {
 
 /**
  * This function generates the page.
- * 
+ *
  * @returns jsx element.
  */
 const Page = async () => {

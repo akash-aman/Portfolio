@@ -4,7 +4,6 @@ import { useSetHeader } from "/contexts/headercontext";
 import { timeLine } from "/lib/constant";
 import "/styles/timeline.scss";
 
-
 const Page = () => {
 	useSetHeader({ title: "Timeline ⌛" });
 	const timelineRef = useRef([]);

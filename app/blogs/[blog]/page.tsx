@@ -6,12 +6,13 @@ import {
 	BlogRoutesDocument,
 	BlogPageQuery,
 	BlogPageDocument,
+	BlogPageQueryVariables,
 } from "/generated/graphql";
 import { request } from "graphql-request";
 import { gqlAPI } from "/lib/constant";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
-import { baseURL, serverURL } from "/lib/constant";
+import { baseURL } from "/lib/constant";
 
 type MetaProps = {
 	params: { blog: string };
@@ -20,129 +21,52 @@ type MetaProps = {
 
 /**
  * This function generates the metadata for the page.
- * 
+ *
  * @param param0 params - params of the page
  * @param param1 searchParams - searchParams of the page
  * @param parent parent - parent metadata
- * @returns 
+ * @returns
  */
 export async function generateMetadata(
 	{ params, searchParams }: MetaProps,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
-	var myHeaders = new Headers();
-	myHeaders.append("Content-Type", "application/json");
-	const options = {
-		method: "POST",
-		headers: myHeaders,
-		next: { tags: [params.blog] },
-		body: JSON.stringify({
-			query: BlogPageDocument.loc.source.body,
-			variables: { slug: params.blog },
-		}),
-	};
-	const blog: BlogPageQuery = (await (await fetch(gqlAPI, options)).json())
-		.data;
+	const { post } = await request<BlogPageQuery, BlogPageQueryVariables>(
+		gqlAPI,
+		BlogPageDocument,
+		{ slug: params.blog },
+	);
 
 	return {
-		title:
-			blog?.post?.data?.attributes?.seo?.metaTitle ||
-			blog?.post?.data?.attributes?.Title,
-		description:
-			blog?.post?.data?.attributes?.seo?.metaDescription ||
-			blog?.post?.data?.attributes?.Excerpt ||
-			blog?.post?.data?.attributes?.Description,
+		title: post?.title,
+		description: post?.excerpt,
 		openGraph: {
-			title:
-				blog?.post?.data?.attributes?.seo?.metaSocial?.[0]?.title ||
-				blog?.post?.data?.attributes?.seo?.metaTitle ||
-				blog?.post?.data?.attributes?.Title,
-			description:
-				blog?.post?.data?.attributes?.seo?.metaSocial?.[0]?.description ||
-				blog?.post?.data?.attributes?.seo?.metaDescription ||
-				blog?.post?.data?.attributes?.Excerpt ||
-				blog?.post?.data?.attributes?.Description,
+			title: post?.title,
+			description: post?.excerpt,
 			images: [
 				{
-					url:
-						serverURL +
-						(blog?.post?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data
-							?.attributes?.formats?.medium?.url ||
-							blog?.post?.data?.attributes?.seo?.metaImage?.data?.attributes
-								?.formats?.medium?.url ||
-							blog?.post?.data?.attributes?.FeaturedImage?.data?.attributes
-								?.formats?.medium?.url),
-					width:
-						blog?.post?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data
-							?.attributes?.formats?.medium?.width ||
-						blog?.post?.data?.attributes?.seo?.metaImage?.data?.attributes
-							?.formats?.medium?.width ||
-						blog?.post?.data?.attributes?.FeaturedImage?.data?.attributes
-							?.formats?.medium?.width,
-					height:
-						blog?.post?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data
-							?.attributes?.formats?.medium?.height ||
-						blog?.post?.data?.attributes?.seo?.metaImage?.data?.attributes
-							?.formats?.medium?.height ||
-						blog?.post?.data?.attributes?.FeaturedImage?.data?.attributes
-							?.formats?.medium?.height,
-					alt:
-						blog?.post?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data
-							?.attributes?.caption ||
-						blog?.post?.data?.attributes?.seo?.metaImage?.data?.attributes
-							?.formats?.medium?.caption ||
-						blog?.post?.data?.attributes?.FeaturedImage?.data?.attributes
-							?.formats?.medium?.caption,
+					url: post?.featuredImage?.node?.mediaItemUrl,
+					width: post?.featuredImage?.node?.mediaDetails?.width,
+					height: post?.featuredImage?.node?.mediaDetails?.height,
+					alt: post?.featuredImage?.node?.caption,
 				},
 			],
 			type: "website",
-			url: baseURL + "/blogs/" + blog?.post?.data?.attributes?.Slug,
+			url: baseURL + "/blogs/" + post?.slug,
 			countryName: "India",
 		},
 		twitter: {
-			title:
-				blog?.post?.data?.attributes?.seo?.metaSocial?.[1]?.title ||
-				blog?.post?.data?.attributes?.seo?.metaTitle ||
-				blog?.post?.data?.attributes?.Title,
-			description:
-				blog?.post?.data?.attributes?.seo?.metaSocial?.[1]?.description ||
-				blog?.post?.data?.attributes?.seo?.metaDescription ||
-				blog?.post?.data?.attributes?.Excerpt ||
-				blog?.post?.data?.attributes?.Description,
+			title: post?.title,
+			description: post?.excerpt,
 			images: [
 				{
-					url:
-						serverURL +
-						(blog?.post?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data
-							?.attributes?.formats?.medium?.url ||
-							blog?.post?.data?.attributes?.seo?.metaImage?.data?.attributes
-								?.formats?.medium?.url ||
-							blog?.post?.data?.attributes?.FeaturedImage?.data?.attributes
-								?.formats?.medium?.url),
-					width:
-						blog?.post?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data
-							?.attributes?.formats?.medium?.width ||
-						blog?.post?.data?.attributes?.seo?.metaImage?.data?.attributes
-							?.formats?.medium?.width ||
-						blog?.post?.data?.attributes?.FeaturedImage?.data?.attributes
-							?.formats?.medium?.width,
-					height:
-						blog?.post?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data
-							?.attributes?.formats?.medium?.height ||
-						blog?.post?.data?.attributes?.seo?.metaImage?.data?.attributes
-							?.formats?.medium?.height ||
-						blog?.post?.data?.attributes?.FeaturedImage?.data?.attributes
-							?.formats?.medium?.height,
-					alt:
-						blog?.post?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data
-							?.attributes?.caption ||
-						blog?.post?.data?.attributes?.seo?.metaImage?.data?.attributes
-							?.caption ||
-						blog?.post?.data?.attributes?.FeaturedImage?.data?.attributes
-							?.formats?.medium?.caption,
+					url: post?.featuredImage?.node?.mediaItemUrl,
+					width: post?.featuredImage?.node?.mediaDetails?.width,
+					height: post?.featuredImage?.node?.mediaDetails?.height,
+					alt: post?.featuredImage?.node?.caption,
 				},
 			],
-			site: baseURL + "/blogs/" + blog?.post?.data?.attributes?.Slug,
+			site: baseURL + "/blogs/" + post?.slug,
 		},
 	};
 }
@@ -157,32 +81,24 @@ type Props = {
 
 /**
  * This function generates the page.
- * 
+ *
  * @param param0 params - params of the page
- * @returns 
+ * @returns
  */
 const Blog = async ({ params }: Props) => {
-	var myHeaders = new Headers();
-	myHeaders.append("Content-Type", "application/json");
-	const options = {
-		method: "POST",
-		headers: myHeaders,
-		next: { tags: [params.blog] },
-		body: JSON.stringify({
-			query: BlogPageDocument.loc.source.body,
-			variables: { slug: params.blog },
-		}),
-	};
-	const blog: BlogPageQuery = (await (await fetch(gqlAPI, options)).json())
-		.data;
+	const { post } = await request<BlogPageQuery, BlogPageQueryVariables>(
+		gqlAPI,
+		BlogPageDocument,
+		{ slug: params.blog },
+	);
 
-	if (blog.post.data == null) {
+	if (!post) {
 		notFound();
 	}
 
 	return (
 		<div className="grid h-fit">
-			<MDBlog markdown={blog.post.data.attributes.Content} />
+			<MDBlog markdown={post.contentFiltered} />
 		</div>
 	);
 };
@@ -190,15 +106,15 @@ const Blog = async ({ params }: Props) => {
 export default Blog;
 
 export async function generateStaticParams() {
-	return (
-		await request<BlogRoutesQuery, BlogRoutesQueryVariables>(
-			gqlAPI,
-			BlogRoutesDocument,
-			{ page: 1, pageSize: 40 },
-		)
-	).posts.data.map((blog) => {
+	const { routes } = await request<BlogRoutesQuery, BlogRoutesQueryVariables>(
+		gqlAPI,
+		BlogRoutesDocument,
+		{ first: 100 },
+	);
+
+	return routes.nodes.map(({ slug }) => {
 		return {
-			blog: `${blog.attributes.Slug}`,
+			blog: slug,
 		};
 	});
 }

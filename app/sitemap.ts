@@ -27,7 +27,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 			...acc,
 			...course.attributes.chapters?.map(({ chapter }) => {
 				return {
-					url: baseURL + 
+					url:
+						baseURL +
 						"/courses/" +
 						course.attributes.Slug +
 						"/" +

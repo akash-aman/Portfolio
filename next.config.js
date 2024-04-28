@@ -7,7 +7,7 @@ const isDev = process.env.NODE_ENV !== "production";
 /** @type {import('next').NextConfig} */
 const nextConfig = {
 	images: {
-		formats: ["image/avif"],
+		formats: ["image/avif", "image/webp"],
 		remotePatterns: [
 			{
 				protocol: "https",
@@ -23,7 +23,7 @@ const nextConfig = {
 			},
 			{
 				protocol: "https",
-				hostname: "strapi.under19.in",
+				hostname: "backend.akash.cx",
 			},
 			{
 				protocol: "http",

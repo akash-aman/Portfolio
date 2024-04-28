@@ -20,11 +20,11 @@ type MetaProps = {
 
 /**
  * This function generates the metadata for the page.
- * 
+ *
  * @param param0 params - params of the page
  * @param param1 searchParams - searchParams of the page
  * @param parent parent - parent metadata
- * @returns 
+ * @returns
  */
 export async function generateMetadata(
 	{ params, searchParams }: MetaProps,
@@ -169,9 +169,9 @@ type Props = {
 
 /**
  * This function generates the page.
- * 
+ *
  * @param param0 params - params of the page
- * @returns 
+ * @returns
  */
 const Chapter = async ({ params }: Props) => {
 	var myHeaders = new Headers();
@@ -202,10 +202,9 @@ const Chapter = async ({ params }: Props) => {
 
 export default Chapter;
 
-
 /**
  * This function generates the static paths for the page.
- * 
+ *
  * @returns array of paths.
  */
 export async function generateStaticParams() {

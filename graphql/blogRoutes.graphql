@@ -1,13 +1,7 @@
-query blogRoutes($page: Int = 1, $pageSize: Int = 100) {
-	posts(
-		sort: ["updatedAt:desc"]
-		pagination: { page: $page, pageSize: $pageSize }
-	) {
-		data {
-			attributes {
-				Slug
-				updatedAt
-			}
+query blogRoutes($first: Int!, $after: String) {
+	routes: posts(first: $first, after: $after) {
+		nodes {
+			slug
 		}
 	}
 }

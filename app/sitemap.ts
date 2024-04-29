@@ -1,6 +1,5 @@
 import { MetadataRoute } from "next";
 import { gqlAPI, paths, baseURL } from "/lib/constant";
-import request from "graphql-request";
 import {
 	BlogRoutesQuery,
 	BlogRoutesDocument,

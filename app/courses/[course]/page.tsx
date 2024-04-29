@@ -11,6 +11,7 @@ import { request } from "graphql-request";
 import { notFound } from "next/navigation";
 import { Metadata, ResolvingMetadata } from "next";
 import { baseURL, serverURL } from "/lib/constant";
+import { wretch } from "/lib/fetchapi";
 
 type MetaProps = {
 	params: { course: string };
@@ -29,10 +30,11 @@ export async function generateMetadata(
 	{ params, searchParams }: MetaProps,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
-	const { course } = await request<CoursePageQuery, CoursePageQueryVariables>(
+	const { course } = await wretch<CoursePageQuery, CoursePageQueryVariables>(
 		gqlAPI,
 		CoursePageDocument,
 		{ slug: params.course },
+		{ tags: [params.course, "courses"] },
 	);
 
 	return {
@@ -84,10 +86,11 @@ type Props = {
  * @returns jsx element.
  */
 const Course = async ({ params }) => {
-	const { course } = await request<CoursePageQuery, CoursePageQueryVariables>(
+	const { course } = await wretch<CoursePageQuery, CoursePageQueryVariables>(
 		gqlAPI,
 		CoursePageDocument,
 		{ slug: params.course },
+		{ tags: [params.course, "courses"] },
 	);
 
 	if (!course) {

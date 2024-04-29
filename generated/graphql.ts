@@ -12187,7 +12187,7 @@ export type BlogsPageQueryResult = Apollo.QueryResult<
 >;
 export const ChapterPageDocument = gql`
 	query chapterPage($slug: ID!) {
-		chapter(id: $slug, idType: SLUG) {
+		chapter: chapter(id: $slug, idType: SLUG) {
 			title
 			slug
 			modified

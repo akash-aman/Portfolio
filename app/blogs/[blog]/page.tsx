@@ -8,11 +8,11 @@ import {
 	BlogPageDocument,
 	BlogPageQueryVariables,
 } from "/generated/graphql";
-import { request } from "graphql-request";
 import { gqlAPI } from "/lib/constant";
 import { Metadata, ResolvingMetadata } from "next";
 import { notFound } from "next/navigation";
 import { baseURL } from "/lib/constant";
+import { wretch } from "/lib/fetchapi";
 
 type MetaProps = {
 	params: { blog: string };
@@ -31,10 +31,11 @@ export async function generateMetadata(
 	{ params, searchParams }: MetaProps,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
-	const { blog } = await request<BlogPageQuery, BlogPageQueryVariables>(
+	const { blog } = await wretch<BlogPageQuery, BlogPageQueryVariables>(
 		gqlAPI,
 		BlogPageDocument,
 		{ slug: params.blog },
+		{ tags: [params.blog, "blogs"] },
 	);
 
 	return {
@@ -86,10 +87,11 @@ type Props = {
  * @returns
  */
 const Blog = async ({ params }: Props) => {
-	const { blog } = await request<BlogPageQuery, BlogPageQueryVariables>(
+	const { blog } = await wretch<BlogPageQuery, BlogPageQueryVariables>(
 		gqlAPI,
 		BlogPageDocument,
 		{ slug: params.blog },
+		{ tags: [params.blog, "blogs"] },
 	);
 
 	if (!blog) {
@@ -106,10 +108,11 @@ const Blog = async ({ params }: Props) => {
 export default Blog;
 
 export async function generateStaticParams() {
-	const { routes } = await request<BlogRoutesQuery, BlogRoutesQueryVariables>(
+	const { routes } = await wretch<BlogRoutesQuery, BlogRoutesQueryVariables>(
 		gqlAPI,
 		BlogRoutesDocument,
 		{ first: 100 },
+		{ tags: ["blog-routes"] },
 	);
 
 	return routes.nodes.map(({ slug }) => {

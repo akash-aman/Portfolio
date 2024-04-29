@@ -6,6 +6,7 @@ import {
 	BlogRoutesDocument,
 	BlogRoutesQueryVariables,
 } from "/generated/graphql";
+import { wretch } from "/lib/fetchapi";
 
 export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 	const defaultPaths = paths.map((path) => ({
@@ -13,7 +14,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 		lastModified: new Date().toISOString(),
 	}));
 
-	const { routes } = await request<BlogRoutesQuery, BlogRoutesQueryVariables>(
+	const { routes } = await wretch<BlogRoutesQuery, BlogRoutesQueryVariables>(
 		gqlAPI,
 		BlogRoutesDocument,
 		{ first: 100 },

@@ -5,11 +5,10 @@ import {
 	CoursesPageQueryVariables,
 	CoursesPageDocument,
 } from "/generated/graphql";
-import { request } from "graphql-request";
 import { gqlAPI } from "/lib/constant";
-
 import { Metadata } from "next";
 import Card from "/components/card";
+import { wretch } from "/lib/fetchapi";
 
 /**
  * This is the metadata for the page.
@@ -76,10 +75,12 @@ export const metadata: Metadata = {
  * @returns jsx element.
  */
 const Page = async () => {
-	const { courses } = await request<
-		CoursesPageQuery,
-		CoursesPageQueryVariables
-	>(gqlAPI, CoursesPageDocument, { first: 10 });
+	const { courses } = await wretch<CoursesPageQuery, CoursesPageQueryVariables>(
+		gqlAPI,
+		CoursesPageDocument,
+		{ first: 10 },
+		{ tags: ["courses-archive"] },
+	);
 
 	return (
 		<div className="grid w-full grid-cols-[repeat(auto-fill,minmax(230px,350px))] justify-center gap-8 h-fit">

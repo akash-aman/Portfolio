@@ -3,13 +3,13 @@ import {
 	HomePageQueryVariables,
 	HomePageDocument,
 } from "/generated/graphql";
-import { request } from "graphql-request";
 import { gqlAPI } from "/lib/constant";
 import HeaderAnimate from "/components/headerAnimationContext";
 import SEO from "/components/SEO";
 import Card from "/components/card";
 import { Metadata } from "next";
 import { baseURL } from "/lib/constant";
+import { wretch } from "/lib/fetchapi";
 
 /**
  * This is the metadata for the page.
@@ -125,7 +125,7 @@ export const metadata: Metadata = {
  * @returns
  */
 const Page = async () => {
-	const { blogs } = await request<HomePageQuery, HomePageQueryVariables>(
+	const { blogs } = await wretch<HomePageQuery, HomePageQueryVariables>(
 		gqlAPI,
 		HomePageDocument,
 		{ first: 5 },

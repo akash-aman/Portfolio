@@ -5,10 +5,10 @@ import {
 	BlogsPageQueryVariables,
 	BlogsPageDocument,
 } from "/generated/graphql";
-import { request } from "graphql-request";
 import { gqlAPI } from "/lib/constant";
 import { Metadata } from "next";
 import Card from "/components/card";
+import { wretch } from "/lib/fetchapi";
 
 /**
  * This is the metadata for the page.
@@ -75,10 +75,11 @@ export const metadata: Metadata = {
  * @returns
  */
 const Page = async () => {
-	const { blogs } = await request<BlogsPageQuery, BlogsPageQueryVariables>(
+	const { blogs } = await wretch<BlogsPageQuery, BlogsPageQueryVariables>(
 		gqlAPI,
 		BlogsPageDocument,
 		{ first: 5 },
+		{ tags: ["blogs-archive"] },
 	);
 
 	return (

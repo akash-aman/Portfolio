@@ -1,4 +1,5 @@
 import { ParsedUrlQuery } from "querystring";
+import { cache } from "react";
 import Blog from "/components/blog";
 import {
 	CourseRoutesQuery,
@@ -6,13 +7,14 @@ import {
 	CourseRoutesDocument,
 	ChapterPageQuery,
 	ChapterPageDocument,
-  ChapterPageQueryVariables,
+	ChapterPageQueryVariables,
 } from "/generated/graphql";
 import { request } from "graphql-request";
 import { gqlAPI } from "/lib/constant";
 import { notFound } from "next/navigation";
 import { Metadata, ResolvingMetadata } from "next";
 import { baseURL, serverURL } from "/lib/constant";
+import { wretch } from "/lib/fetchapi";
 
 type MetaProps = {
 	params: { chapter: string; course: string };
@@ -31,11 +33,12 @@ export async function generateMetadata(
 	{ params, searchParams }: MetaProps,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
-  const { chapter } = await request<ChapterPageQuery, ChapterPageQueryVariables>(
-    gqlAPI,
-    ChapterPageDocument,
-    { slug: params.chapter }
-  );
+	const { chapter } = await wretch<ChapterPageQuery, ChapterPageQueryVariables>(
+		gqlAPI,
+		ChapterPageDocument,
+		{ slug: params.chapter },
+		{ tags: [params.chapter, params.course, "chapters"] },
+	);
 
 	return {
 		title: chapter?.title,
@@ -52,7 +55,7 @@ export async function generateMetadata(
 				},
 			],
 			type: "website",
-			url: baseURL + "/courses/" + params.course + '/' + chapter?.slug,
+			url: baseURL + "/courses/" + params.course + "/" + chapter?.slug,
 			countryName: "India",
 		},
 		twitter: {
@@ -66,7 +69,7 @@ export async function generateMetadata(
 					alt: chapter?.featuredImage?.node?.caption,
 				},
 			],
-			site: baseURL + "/courses/" + params.course + '/' + chapter?.slug,
+			site: baseURL + "/courses/" + params.course + "/" + chapter?.slug,
 		},
 	};
 }
@@ -87,13 +90,12 @@ type Props = {
  * @returns
  */
 const Chapter = async ({ params }: Props) => {
-
-
-  const { chapter } = await request<ChapterPageQuery, ChapterPageQueryVariables>(
-    gqlAPI,
-    ChapterPageDocument,
-    { slug: params.chapter }
-  );
+	const { chapter } = await wretch<ChapterPageQuery, ChapterPageQueryVariables>(
+		gqlAPI,
+		ChapterPageDocument,
+		{ slug: params.chapter },
+		{ tags: [params.chapter, params.course, "chapters"] },
+	);
 
 	if (!chapter) {
 		notFound();
@@ -114,12 +116,10 @@ export default Chapter;
  * @returns array of paths.
  */
 export async function generateStaticParams() {
-
-  const { courses } = await request<CourseRoutesQuery, CourseRoutesQueryVariables>(
-    gqlAPI,
-    CourseRoutesDocument,
-    { first: 1000 }
-  );
+	const { courses } = await wretch<
+		CourseRoutesQuery,
+		CourseRoutesQueryVariables
+	>(gqlAPI, CourseRoutesDocument, { first: 1000 }, { tags: ["course-routes"] });
 
 	return courses.nodes.reduce((acc, course) => {
 		return [

@@ -7,6 +7,7 @@ import {
 } from "/generated/graphql";
 import { gqlAPI } from "/lib/constant";
 import { notFound } from "next/navigation";
+import { wretch } from "/lib/fetchapi";
 /**
  * This function will get all the sections of the course.
  *
@@ -21,10 +22,11 @@ import { notFound } from "next/navigation";
  * @returns
  */
 export default async function Layout({ children, params }) {
-	const course = await request<CourseSidebarQuery, CourseSidebarQueryVariables>(
+	const course = await wretch<CourseSidebarQuery, CourseSidebarQueryVariables>(
 		gqlAPI,
 		CourseSidebarDocument,
 		{ slug: params.course },
+		{ tags: [params.course, "courses"] },
 	);
 
 	if (!course) {

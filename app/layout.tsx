@@ -144,15 +144,8 @@ export const metadata: Metadata = {
 		description:
 			"Welcome to the captivating realm of Akash Aman. Witness the fusion of art and technology through full stack dev & transformative web experiences.",
 	},
-	viewport: {
-		width: "device-width",
-		initialScale: 1,
-		userScalable: true,
-	},
-	themeColor: "#000000",
 	manifest: "/manifest.json",
 	category: "technology",
-	colorScheme: "light dark",
 	appLinks: {
 		web: {
 			url: baseURL,
@@ -165,6 +158,14 @@ export const metadata: Metadata = {
 		baseURL + "/courses",
 		baseURL + "/projects",
 	],
+};
+
+export const viewport = {
+	width: "device-width",
+	initialScale: 1,
+	userScalable: true,
+	colorScheme: "light dark",
+	themeColor: "#000000",
 };
 
 /**

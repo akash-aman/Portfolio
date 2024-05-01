@@ -100,7 +100,7 @@ const Blog = async ({ params }: Props) => {
 
 	return (
 		<div className="grid h-fit">
-			<MDBlog markdown={blog.contentFiltered} />
+			<MDBlog markdown={blog?.contentFiltered} />
 		</div>
 	);
 };
@@ -115,7 +115,7 @@ export async function generateStaticParams() {
 		{ tags: ["blog-routes"] },
 	);
 
-	return routes.nodes.map(({ slug }) => {
+	return routes?.nodes?.map(({ slug }) => {
 		return {
 			blog: slug,
 		};

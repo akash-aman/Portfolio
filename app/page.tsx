@@ -5,7 +5,6 @@ import {
 } from "/generated/graphql";
 import { gqlAPI } from "/lib/constant";
 import HeaderAnimate from "/components/headerAnimationContext";
-import SEO from "/components/SEO";
 import Card from "/components/card";
 import { Metadata } from "next";
 import { baseURL } from "/lib/constant";
@@ -96,15 +95,6 @@ export const metadata: Metadata = {
 		description:
 			"Welcome to the captivating realm of Akash Aman. Witness the fusion of art and technology through full stack dev & transformative web experiences.",
 	},
-	viewport: {
-		width: "device-width",
-		initialScale: 1,
-		userScalable: true,
-	},
-	themeColor: "#000000",
-	manifest: "/manifest.json",
-	category: "technology",
-	colorScheme: "light dark",
 	appLinks: {
 		web: {
 			url: baseURL,
@@ -134,7 +124,6 @@ const Page = async () => {
 
 	return (
 		<>
-			<SEO />
 			<div>
 				<HeaderAnimate
 					data={{

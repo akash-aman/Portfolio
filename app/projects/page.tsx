@@ -38,7 +38,9 @@ const Page = () => {
 					<>
 						<div
 							key={index}
-							ref={(el) => (projectRef.current[2 * index] = el)}
+							ref={(el) => {
+								projectRef.current[2 * index] = el;
+							}}
 							className={`${row} t-${index} relative timeline-detail`}
 						>
 							<div className="max-w-[700px] w-[700px] min-w-[60px] grid items-start">
@@ -60,7 +62,9 @@ const Page = () => {
 							</div>
 						</div>
 						<div
-							ref={(el) => (projectRef.current[2 * index + 1] = el)}
+							ref={(el) => {
+								projectRef.current[2 * index + 1] = el;
+							}}
 							className={`${row} t-${index} relative timeline-year`}
 						>
 							<div className="min-w-[60px]">

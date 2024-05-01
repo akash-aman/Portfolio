@@ -18,6 +18,7 @@ const Card = ({ type, slug, fields }) => {
 							sizes={featuredImage?.node?.sizes}
 							width={300}
 							height={200}
+							card={true}
 						/>
 					</div>
 					<p className="font-bold my-6 headFont capitalize">{title}</p>
@@ -33,6 +34,7 @@ const Card = ({ type, slug, fields }) => {
 										sizes={featuredImage?.featuredImage?.sizes}
 										width={18}
 										height={18}
+										card={true}
 									/>
 									<span className="font-light text-xs text-[rgba(0,0,0,0.55)] dark:text-[rgba(255,255,255,0.4)]">
 										{name}

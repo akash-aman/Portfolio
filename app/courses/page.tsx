@@ -5,11 +5,10 @@ import {
 	CoursesPageQueryVariables,
 	CoursesPageDocument,
 } from "/generated/graphql";
-import { request } from "graphql-request";
 import { gqlAPI } from "/lib/constant";
-
 import { Metadata } from "next";
 import Card from "/components/card";
+import { wretch } from "/lib/fetchapi";
 
 /**
  * This is the metadata for the page.
@@ -72,21 +71,22 @@ export const metadata: Metadata = {
 
 /**
  * This function generates the page.
- * 
+ *
  * @returns jsx element.
  */
 const Page = async () => {
-	const courses = await request<CoursesPageQuery, CoursesPageQueryVariables>(
+	const { courses } = await wretch<CoursesPageQuery, CoursesPageQueryVariables>(
 		gqlAPI,
 		CoursesPageDocument,
-		{ page: 1, pageSize: 10 },
+		{ first: 10 },
+		{ tags: ["courses-archive"] },
 	);
 
 	return (
 		<div className="grid w-full grid-cols-[repeat(auto-fill,minmax(230px,350px))] justify-center gap-8 h-fit">
 			<HeaderAnimate data={{ title: "Courses" }} />
-			{courses.courses.data.map(({ id, attributes }) => (
-				<Card type={"courses"} key={id} attributes={attributes} id={id} />
+			{courses.nodes.map(({ slug, ...fields }) => (
+				<Card type={"courses"} key={slug} slug={slug} fields={fields} />
 			))}
 		</div>
 	);

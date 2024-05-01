@@ -1,40 +1,46 @@
-query coursesPage($page: Int = 1, $pageSize: Int = 5) {
-	courses(
-		sort: ["updatedAt:desc"]
-		pagination: { page: $page, pageSize: $pageSize }
+query coursesPage($first: Int!, $after: String) {
+	courses: courses(
+		where: { orderby: { field: MODIFIED, order: DESC } }
+		first: $first
+		after: $after
 	) {
-		data {
-			id
-			attributes {
-				tags {
-					data {
-						attributes {
-							Name
-							Slug
-							colour
-							fontColour
-							FeaturedImage {
-								data {
-									id
-									attributes {
-										url
-										name
-									}
-								}
+		nodes {
+			title
+			slug
+			modified
+			excerpt
+			contentFiltered
+			tags {
+				nodes {
+					name
+					slug
+					featuredImage {
+						featuredImage {
+							mediaItemUrl
+							sizes
+							caption
+							mediaDetails {
+								height
+								width
 							}
 						}
 					}
 				}
-				Title
-				Slug
-				Description
-				FeaturedImage {
-					data {
-						attributes {
-							caption
-							formats
-						}
+			}
+			featuredImage {
+				node {
+					caption
+					mediaItemUrl
+					mediaDetails {
+						height
+						width
 					}
+				}
+			}
+			author {
+				node {
+					firstName
+					lastName
 				}
 			}
 		}

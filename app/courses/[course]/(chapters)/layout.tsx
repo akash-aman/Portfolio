@@ -1,10 +1,13 @@
+import request from "graphql-request";
 import Sidebar from "./Sidebar";
 import {
 	CourseSidebarQuery,
 	CourseSidebarDocument,
+	CourseSidebarQueryVariables,
 } from "/generated/graphql";
 import { gqlAPI } from "/lib/constant";
 import { notFound } from "next/navigation";
+import { wretch } from "/lib/fetchapi";
 /**
  * This function will get all the sections of the course.
  *
@@ -19,27 +22,19 @@ import { notFound } from "next/navigation";
  * @returns
  */
 export default async function Layout({ children, params }) {
-	var myHeaders = new Headers();
-	myHeaders.append("Content-Type", "application/json");
-	const options = {
-		method: "POST",
-		headers: myHeaders,
-		next: { tags: [params.course] },
-		body: JSON.stringify({
-			query: CourseSidebarDocument.loc.source.body,
-			variables: { slug: params.course },
-		}),
-	};
-	const section: CourseSidebarQuery = (
-		await (await fetch(gqlAPI, options)).json()
-	).data;
+	const course = await wretch<CourseSidebarQuery, CourseSidebarQueryVariables>(
+		gqlAPI,
+		CourseSidebarDocument,
+		{ slug: params.course },
+		{ tags: [params.course, "courses"] },
+	);
 
-	if (section == null) {
+	if (!course) {
 		notFound();
 	}
 
 	return (
-		<Sidebar section={section} params={params}>
+		<Sidebar course={course} params={params}>
 			{children}
 		</Sidebar>
 	);

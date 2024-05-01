@@ -1,61 +1,41 @@
-# Write your query or mutation here
-query chapterPage($slug: String!) {
-	chapter(slug: $slug) {
-		data {
-			attributes {
-				seo {
-					id
-					metaTitle
-					metaDescription
-					metaImage {
-						data {
-							attributes {
-								formats
-								caption
-							}
-						}
-					}
-					metaSocial {
-						socialNetwork
-						title
-						description
-						image {
-							data {
-								attributes {
-									formats
-									caption
-								}
-							}
-						}
-					}
-					keywords
-					metaRobots
-					structuredData
-					metaViewport
-					canonicalURL
-				}
-				Slug
-				Title
-				Excerpt
-				Description
-				Content
-				FeaturedImage {
-					data {
-						attributes {
-							formats
+query chapterPage($slug: ID!) {
+	chapter: chapter(id: $slug, idType: SLUG) {
+		title
+		slug
+		modified
+		excerpt
+		contentFiltered
+		tags {
+			nodes {
+				name
+				slug
+				featuredImage {
+					featuredImage {
+						mediaItemUrl
+						sizes
+						caption
+						mediaDetails {
+							height
+							width
 						}
 					}
 				}
-				tags {
-					data {
-						attributes {
-							Name
-							Slug
-							colour
-							fontColour
-						}
-					}
+			}
+		}
+		featuredImage {
+			node {
+				caption
+				mediaItemUrl
+				mediaDetails {
+					height
+					width
 				}
+			}
+		}
+		author {
+			node {
+				firstName
+				lastName
 			}
 		}
 	}

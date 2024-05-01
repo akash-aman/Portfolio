@@ -4,11 +4,14 @@ import Link from "next/link";
 import {
 	CoursePageQuery,
 	CoursePageDocument,
+	CoursePageQueryVariables,
 } from "/generated/graphql";
 import { gqlAPI } from "/lib/constant";
+import { request } from "graphql-request";
 import { notFound } from "next/navigation";
 import { Metadata, ResolvingMetadata } from "next";
 import { baseURL, serverURL } from "/lib/constant";
+import { wretch } from "/lib/fetchapi";
 
 type MetaProps = {
 	params: { course: string };
@@ -17,121 +20,53 @@ type MetaProps = {
 
 /**
  * This function generates the metadata for the page.
- * 
+ *
  * @param param0 params - params of the page
  * @param param1 searchParams - searchParams of the page
  * @param parent parent - parent metadata
- * @returns 
+ * @returns
  */
 export async function generateMetadata(
 	{ params, searchParams }: MetaProps,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
-	var myHeaders = new Headers();
-	myHeaders.append("Content-Type", "application/json");
-	const options = {
-		method: "POST",
-		headers: myHeaders,
-		next: { tags: [params.course] },
-		body: JSON.stringify({
-			query: CoursePageDocument.loc.source.body,
-			variables: { slug: params.course },
-		}),
-	};
-	const course: CoursePageQuery = (await (await fetch(gqlAPI, options)).json())
-		.data;
+	const { course } = await wretch<CoursePageQuery, CoursePageQueryVariables>(
+		gqlAPI,
+		CoursePageDocument,
+		{ slug: params.course },
+		{ tags: [params.course, "courses"] },
+	);
 
 	return {
-		title:
-			course?.course?.data?.attributes?.seo?.metaTitle ||
-			course?.course?.data?.attributes?.Title,
-		description:
-			course?.course?.data?.attributes?.seo?.metaDescription ||
-			course?.course?.data?.attributes?.Excerpt ||
-			course?.course?.data?.attributes?.Description,
+		title: course?.title,
+		description: course?.excerpt,
 		openGraph: {
-			title:
-				course?.course?.data?.attributes?.seo?.metaSocial?.[0]?.title ||
-				course?.course?.data?.attributes?.Title,
-			description:
-				course?.course?.data?.attributes?.seo?.metaSocial?.[0]?.description ||
-				course?.course?.data?.attributes?.Excerpt ||
-				course?.course?.data?.attributes?.Description,
+			title: course?.title,
+			description: course?.excerpt,
 			images: [
 				{
-					url:
-						serverURL +
-						(course?.course?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data
-							?.attributes?.formats?.medium?.url ||
-							course?.course?.data?.attributes?.FeaturedImage?.data?.attributes
-								?.formats?.medium?.url),
-					width:
-						course?.course?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data
-							?.attributes?.formats?.medium?.width ||
-						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes
-							?.formats?.medium?.width,
-					height:
-						course?.course?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data
-							?.attributes?.formats?.medium?.height ||
-						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes
-							?.formats?.medium?.height,
-					alt:
-						course?.course?.data?.attributes?.seo?.metaSocial?.[0]?.image?.data
-							?.attributes?.caption ||
-						course?.course?.data?.attributes?.seo?.metaImage?.data?.attributes
-							?.formats?.medium?.caption ||
-						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes
-							?.formats?.medium?.caption,
+					url: course?.featuredImage?.node?.mediaItemUrl,
+					width: course?.featuredImage?.node?.mediaDetails?.width,
+					height: course?.featuredImage?.node?.mediaDetails?.height,
+					alt: course?.featuredImage?.node?.caption,
 				},
 			],
 			type: "website",
-			url: baseURL + "/courses/" + course?.course?.data?.attributes?.Slug,
+			url: baseURL + "/courses/" + course?.slug,
 			countryName: "India",
 		},
 		twitter: {
-			title:
-				course?.course?.data?.attributes?.seo?.metaSocial?.[1]?.title ||
-				course?.course?.data?.attributes?.seo?.metaTitle ||
-				course?.course?.data?.attributes?.Title,
-			description:
-				course?.course?.data?.attributes?.seo?.metaSocial?.[1]?.description ||
-				course?.course?.data?.attributes?.seo?.metaDescription ||
-				course?.course?.data?.attributes?.Excerpt ||
-				course?.course?.data?.attributes?.Description,
+			title: course?.title,
+			description: course?.excerpt,
 			images: [
 				{
-					url:
-						serverURL +
-						(course?.course?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data
-							?.attributes?.formats?.medium?.url ||
-							course?.course?.data?.attributes?.seo?.metaImage?.data?.attributes
-								?.formats?.medium?.url ||
-							course?.course?.data?.attributes?.FeaturedImage?.data?.attributes
-								?.formats?.medium?.url),
-					width:
-						course?.course?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data
-							?.attributes?.formats?.medium?.width ||
-						course?.course?.data?.attributes?.seo?.metaImage?.data?.attributes
-							?.formats?.medium?.width ||
-						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes
-							?.formats?.medium?.width,
-					height:
-						course?.course?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data
-							?.attributes?.formats?.medium?.height ||
-						course?.course?.data?.attributes?.seo?.metaImage?.data?.attributes
-							?.formats?.medium?.height ||
-						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes
-							?.formats?.medium?.height,
-					alt:
-						course?.course?.data?.attributes?.seo?.metaSocial?.[1]?.image?.data
-							?.attributes?.caption ||
-						course?.course?.data?.attributes?.seo?.metaImage?.data?.attributes
-							?.formats?.medium?.caption ||
-						course?.course?.data?.attributes?.FeaturedImage?.data?.attributes
-							?.formats?.medium?.caption,
+					url: course?.featuredImage?.node?.mediaItemUrl,
+					width: course?.featuredImage?.node?.mediaDetails?.width,
+					height: course?.featuredImage?.node?.mediaDetails?.height,
+					alt: course?.featuredImage?.node?.caption,
 				},
 			],
-			site: baseURL + "/courses/" + course?.course?.data?.attributes?.Slug,
+			site: baseURL + "/courses/" + course?.slug,
 		},
 	};
 }
@@ -146,48 +81,33 @@ type Props = {
 
 /**
  * This function generates the page.
- * 
+ *
  * @param param0 params - params of the page
  * @returns jsx element.
  */
 const Course = async ({ params }) => {
-	var myHeaders = new Headers();
-	myHeaders.append("Content-Type", "application/json");
-	const options = {
-		method: "POST",
-		headers: myHeaders,
-		next: { tags: [params.course] },
-		body: JSON.stringify({
-			query: CoursePageDocument.loc.source.body,
-			variables: { slug: params.course },
-		}),
-	};
-	const course: CoursePageQuery = (await (await fetch(gqlAPI, options)).json())
-		.data;
+	const { course } = await wretch<CoursePageQuery, CoursePageQueryVariables>(
+		gqlAPI,
+		CoursePageDocument,
+		{ slug: params.course },
+		{ tags: [params.course, "courses"] },
+	);
 
-	if (course.course.data == null) {
+	if (!course) {
 		notFound();
 	}
 
 	return (
 		<div>
-			<h1 className="mb-10">{course.course.data?.attributes.Title}</h1>
+			<h1 className="mb-10">{course?.title}</h1>
 			<div className="grid w-full grid-cols-[repeat(auto-fill,minmax(230px,350px))] justify-center gap-8">
-				{course.course.data?.attributes.chapters.map((chapter) => {
-					return chapter.chapter.data ? (
-						<Link
-							key={chapter.id}
-							href={`${course.course.data?.attributes.Slug}/${chapter.chapter.data?.attributes.Slug}`}
-						>
-							<div
-								key={chapter.id}
-								className="bg-[var(--light-theme-500)] dark:bg-[var(--dark-theme-100)]  rounded-lg p-10"
-							>
-								<p>{chapter.chapter.data?.attributes.Title}</p>
-							</div>
-						</Link>
-					) : null;
-				})}
+				{course.chapters.chapters.map(({ slug, title }) => (
+					<Link key={slug} href={`${course.slug}/${slug}`}>
+						<div className="bg-[var(--light-theme-500)] dark:bg-[var(--dark-theme-100)]  rounded-lg p-10">
+							<p>{title}</p>
+						</div>
+					</Link>
+				))}
 			</div>
 		</div>
 	);

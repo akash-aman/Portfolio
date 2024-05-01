@@ -71,7 +71,8 @@ export const timeLine = [
 	},
 	{
 		title: "First Interaction with Computer Games",
-		description: "At the age of 5, I had my initial experience with computer 🎮 games.",
+		description:
+			"At the age of 5, I had my initial experience with computer 🎮 games.",
 		year: "2005",
 	},
 	{
@@ -303,7 +304,7 @@ export const social = [
 	},
 ];
 
-export const serverURL = "https://strapi.under19.in";
+export const serverURL = "https://backend.akash.cx";
 export const gqlAPI = serverURL + "/graphql";
 export const baseURL = "https://www.akash.cx";
 //export const gqlAPI = "http://strapi:1337/graphql";

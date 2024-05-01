@@ -11,6 +11,7 @@ import { RegisterPWA } from "./register-pwa";
 import { Metadata } from "next";
 import { baseURL } from "/lib/constant";
 import localFont from "next/font/local";
+import { GoogleAnalytics } from '@next/third-parties/google'
 
 const webFont = localFont({
 	src: [
@@ -144,15 +145,8 @@ export const metadata: Metadata = {
 		description:
 			"Welcome to the captivating realm of Akash Aman. Witness the fusion of art and technology through full stack dev & transformative web experiences.",
 	},
-	viewport: {
-		width: "device-width",
-		initialScale: 1,
-		userScalable: true,
-	},
-	themeColor: "#000000",
 	manifest: "/manifest.json",
 	category: "technology",
-	colorScheme: "light dark",
 	appLinks: {
 		web: {
 			url: baseURL,
@@ -167,9 +161,17 @@ export const metadata: Metadata = {
 	],
 };
 
+export const viewport = {
+	width: "device-width",
+	initialScale: 1,
+	userScalable: true,
+	colorScheme: "light dark",
+	themeColor: "#000000",
+};
+
 /**
  * This is the Root layout for the every page.
- * 
+ *
  * @param param0 children - children of the component
  * @returns jsx element.
  */
@@ -198,6 +200,7 @@ export default function RootLayout({
 					<Layout>{children}</Layout>
 				</HeaderProvider>
 				<RegisterPWA />
+				<GoogleAnalytics gaId="G-K5LQXQ8CTG" />
 			</body>
 		</html>
 	);

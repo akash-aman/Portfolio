@@ -1,23 +1,20 @@
-# Write your query or mutation here
-query courseSidebar($slug: String!) {
-	course(slug: $slug) {
-		data {
-			attributes {
-				Slug
-				Title
-				Emogi
-				chapters {
-					id
-					Section
-					Emogi
-					chapter {
-						data {
-							attributes {
-								Emogi
-								Slug
-								Title
-							}
-						}
+query courseSidebar($slug: ID!) {
+	course: course(id: $slug, idType: SLUG) {
+		title
+		slug
+		emogi {
+			emogi
+		}
+		chapters {
+			chapters {
+				... on Chapter {
+					title
+					slug
+					section {
+						section
+					}
+					emogi {
+						emogi
 					}
 				}
 			}

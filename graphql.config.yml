@@ -1,5 +1,5 @@
 schema:
-  - "https://strapi.under19.in/graphql"
+  - "https://backend.akash.cx/graphql"
 documents:
   - "./graphql/**/*.graphql"
 generates:

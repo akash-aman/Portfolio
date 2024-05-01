@@ -1,20 +1,17 @@
-query courseRoutes($page: Int = 1, $pageSize: Int = 100) {
-	courses(
-		sort: ["updatedAt:desc"]
-		pagination: { page: $page, pageSize: $pageSize }
+query courseRoutes($first: Int!, $after: String) {
+	courses: courses(
+		where: { orderby: { field: MODIFIED, order: DESC } }
+		first: $first
+		after: $after
 	) {
-		data {
-			attributes {
-				Slug
-				updatedAt
+		nodes {
+			slug
+			modified
+			chapters {
 				chapters {
-					chapter {
-						data {
-							attributes {
-								Slug
-								updatedAt
-							}
-						}
+					... on Chapter {
+						slug
+						modified
 					}
 				}
 			}

@@ -3,13 +3,12 @@ import {
 	HomePageQueryVariables,
 	HomePageDocument,
 } from "/generated/graphql";
-import { request } from "graphql-request";
 import { gqlAPI } from "/lib/constant";
 import HeaderAnimate from "/components/headerAnimationContext";
-import SEO from "/components/SEO";
 import Card from "/components/card";
 import { Metadata } from "next";
 import { baseURL } from "/lib/constant";
+import { wretch } from "/lib/fetchapi";
 
 /**
  * This is the metadata for the page.
@@ -96,15 +95,6 @@ export const metadata: Metadata = {
 		description:
 			"Welcome to the captivating realm of Akash Aman. Witness the fusion of art and technology through full stack dev & transformative web experiences.",
 	},
-	viewport: {
-		width: "device-width",
-		initialScale: 1,
-		userScalable: true,
-	},
-	themeColor: "#000000",
-	manifest: "/manifest.json",
-	category: "technology",
-	colorScheme: "light dark",
 	appLinks: {
 		web: {
 			url: baseURL,
@@ -121,18 +111,19 @@ export const metadata: Metadata = {
 
 /**
  * This function generates the page.
- * 
- * @returns 
+ *
+ * @returns
  */
 const Page = async () => {
-	const { blogs, courses } = await request<
-		HomePageQuery,
-		HomePageQueryVariables
-	>(gqlAPI, HomePageDocument, { page: 1, pageSize: 5 });
+	const { blogs } = await wretch<HomePageQuery, HomePageQueryVariables>(
+		gqlAPI,
+		HomePageDocument,
+		{ first: 5 },
+	);
+	//console.log(blogs);
 
 	return (
 		<>
-			<SEO />
 			<div>
 				<HeaderAnimate
 					data={{
@@ -162,9 +153,9 @@ const Page = async () => {
 				</p>
 				<h3 className="mb-14 text mt-12">Latest Blogs 📝</h3>
 				<div className="grid w-full grid-cols-[repeat(auto-fill,minmax(230px,370px))] justify-center gap-8">
-					{blogs.data.map(({ id, attributes }) => {
+					{blogs.nodes.map(({ slug, ...fields }) => {
 						return (
-							<Card type={"blogs"} key={id} attributes={attributes} id={id} />
+							<Card type={"blogs"} key={slug} slug={slug} fields={fields} />
 						);
 					})}
 				</div>

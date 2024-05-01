@@ -4,7 +4,6 @@ import { useSetHeader } from "/contexts/headercontext";
 import { timeLine } from "/lib/constant";
 import "/styles/timeline.scss";
 
-
 const Page = () => {
 	useSetHeader({ title: "Timeline ⌛" });
 	const timelineRef = useRef([]);
@@ -31,7 +30,9 @@ const Page = () => {
 				return (
 					<>
 						<div
-							ref={(el) => (timelineRef.current[2 * index] = el)}
+							ref={(el) => {
+								timelineRef.current[2 * index] = el;
+							}}
 							className={`${row} t-${index} relative timeline-detail`}
 						>
 							<div className="max-w-[400px] w-[400px] min-w-[60px] rounded-lg p-4 lg:p-10 bg-[#f6f6f6b0] dark:bg-[#292929] hover:shadow-lg ">
@@ -42,7 +43,9 @@ const Page = () => {
 							</div>
 						</div>
 						<div
-							ref={(el) => (timelineRef.current[2 * index + 1] = el)}
+							ref={(el) => {
+								timelineRef.current[2 * index + 1] = el;
+							}}
 							className={`${row} t-${index} relative timeline-year`}
 						>
 							<div className="min-w-[60px]">

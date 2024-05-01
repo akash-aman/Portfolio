@@ -1,81 +1,87 @@
-# Write your query or mutation here
-query coursePage($slug: String!) {
-	course(slug: $slug) {
-		data {
-			attributes {
-				seo {
-					id
-					metaTitle
-					metaDescription
-					metaImage {
-						data {
-							attributes {
-								formats
-								caption
-							}
+query coursePage($slug: ID!) {
+	course: course(id: $slug, idType: SLUG) {
+		title
+		slug
+		modified
+		excerpt
+		contentFiltered
+		tags {
+			nodes {
+				name
+				slug
+				featuredImage {
+					featuredImage {
+						mediaItemUrl
+						sizes
+						caption
+						mediaDetails {
+							height
+							width
 						}
 					}
-					metaSocial {
-						socialNetwork
-						title
-						description
-						image {
-							data {
-								attributes {
-									formats
+				}
+			}
+		}
+		featuredImage {
+			node {
+				caption
+				mediaItemUrl
+				mediaDetails {
+					height
+					width
+				}
+			}
+		}
+
+		chapters {
+			chapters {
+				... on Chapter {
+					title
+					slug
+					modified
+					excerpt
+					contentFiltered
+					tags {
+						nodes {
+							name
+							slug
+							featuredImage {
+								featuredImage {
+									mediaItemUrl
+									sizes
 									caption
+									mediaDetails {
+										height
+										width
+									}
 								}
 							}
 						}
 					}
-					keywords
-					metaRobots
-					structuredData
-					metaViewport
-					canonicalURL
-				}
-				Slug
-				Title
-				Excerpt
-				Description
-				CourseOverview
-				FeaturedImage {
-					data {
-						attributes {
-							formats
-						}
-					}
-				}
-				category {
-					data {
-						attributes {
-							Name
-							Slug
-						}
-					}
-				}
-				tags {
-					data {
-						attributes {
-							Name
-							Slug
-							colour
-							fontColour
-						}
-					}
-				}
-				chapters {
-					Section
-					id
-					chapter {
-						data {
-							attributes {
-								Slug
-								Title
+					featuredImage {
+						node {
+							caption
+							mediaItemUrl
+							mediaDetails {
+								height
+								width
 							}
 						}
 					}
+					author {
+						node {
+							firstName
+							lastName
+						}
+					}
 				}
+			}
+		}
+
+		author {
+			node {
+				firstName
+				lastName
 			}
 		}
 	}

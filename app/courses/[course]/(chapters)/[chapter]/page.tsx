@@ -1,4 +1,5 @@
 import { ParsedUrlQuery } from "querystring";
+import { cache } from "react";
 import Blog from "/components/blog";
 import {
 	CourseRoutesQuery,
@@ -6,12 +7,14 @@ import {
 	CourseRoutesDocument,
 	ChapterPageQuery,
 	ChapterPageDocument,
+	ChapterPageQueryVariables,
 } from "/generated/graphql";
 import { request } from "graphql-request";
 import { gqlAPI } from "/lib/constant";
 import { notFound } from "next/navigation";
 import { Metadata, ResolvingMetadata } from "next";
 import { baseURL, serverURL } from "/lib/constant";
+import { wretch } from "/lib/fetchapi";
 
 type MetaProps = {
 	params: { chapter: string; course: string };
@@ -20,140 +23,53 @@ type MetaProps = {
 
 /**
  * This function generates the metadata for the page.
- * 
+ *
  * @param param0 params - params of the page
  * @param param1 searchParams - searchParams of the page
  * @param parent parent - parent metadata
- * @returns 
+ * @returns
  */
 export async function generateMetadata(
 	{ params, searchParams }: MetaProps,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
-	var myHeaders = new Headers();
-	myHeaders.append("Content-Type", "application/json");
-	const options = {
-		method: "POST",
-		headers: myHeaders,
-		next: { tags: [params.course, params.chapter] },
-		body: JSON.stringify({
-			query: ChapterPageDocument.loc.source.body,
-			variables: { slug: params.chapter },
-		}),
-	};
-	const chapter: ChapterPageQuery = (
-		await (await fetch(gqlAPI, options)).json()
-	).data;
+	const { chapter } = await wretch<ChapterPageQuery, ChapterPageQueryVariables>(
+		gqlAPI,
+		ChapterPageDocument,
+		{ slug: params.chapter },
+		{ tags: [params.chapter, params.course, "chapters"] },
+	);
 
 	return {
-		title:
-			chapter?.chapter?.data?.attributes?.seo?.metaTitle ||
-			chapter?.chapter?.data?.attributes?.Title,
-		description:
-			chapter?.chapter?.data?.attributes?.seo?.metaDescription ||
-			chapter?.chapter?.data?.attributes?.Excerpt ||
-			chapter?.chapter?.data?.attributes?.Description,
+		title: chapter?.title,
+		description: chapter?.excerpt,
 		openGraph: {
-			title:
-				chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[0]?.title ||
-				chapter?.chapter?.data?.attributes?.seo?.metaTitle ||
-				chapter?.chapter?.data?.attributes?.Title,
-			description:
-				chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[0]?.description ||
-				chapter?.chapter?.data?.attributes?.seo?.metaDescription ||
-				chapter?.chapter?.data?.attributes?.Excerpt ||
-				chapter?.chapter?.data?.attributes?.Description,
+			title: chapter?.title,
+			description: chapter?.excerpt,
 			images: [
 				{
-					url:
-						serverURL +
-						(chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[0]?.image
-							?.data?.attributes?.formats?.medium?.url ||
-							chapter?.chapter?.data?.attributes?.seo?.metaImage?.data
-								?.attributes?.formats?.medium?.url ||
-							chapter?.chapter?.data?.attributes?.FeaturedImage?.data
-								?.attributes?.formats?.medium?.url),
-					width:
-						chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[0]?.image
-							?.data?.attributes?.formats?.medium?.width ||
-						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes
-							?.formats?.medium?.width ||
-						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes
-							?.formats?.medium?.width,
-					height:
-						chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[0]?.image
-							?.data?.attributes?.formats?.medium?.height ||
-						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes
-							?.formats?.medium?.height ||
-						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes
-							?.formats?.medium?.height,
-					alt:
-						chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[0]?.image
-							?.data?.attributes?.caption ||
-						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes
-							?.formats?.medium?.caption ||
-						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes
-							?.formats?.medium?.caption,
+					url: chapter?.featuredImage?.node?.mediaItemUrl,
+					width: chapter?.featuredImage?.node?.mediaDetails?.width,
+					height: chapter?.featuredImage?.node?.mediaDetails?.height,
+					alt: chapter?.featuredImage?.node?.caption,
 				},
 			],
 			type: "website",
-			url:
-				baseURL +
-				"/courses/" +
-				params.course +
-				"/" +
-				chapter?.chapter?.data?.attributes?.Slug,
+			url: baseURL + "/courses/" + params.course + "/" + chapter?.slug,
 			countryName: "India",
 		},
 		twitter: {
-			title:
-				chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[1]?.title ||
-				chapter?.chapter?.data?.attributes?.seo?.metaTitle ||
-				chapter?.chapter?.data?.attributes?.Title,
-			description:
-				chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[1]?.description ||
-				chapter?.chapter?.data?.attributes?.seo?.metaDescription ||
-				chapter?.chapter?.data?.attributes?.Excerpt ||
-				chapter?.chapter?.data?.attributes?.Description,
+			title: chapter?.title,
+			description: chapter?.excerpt,
 			images: [
 				{
-					url:
-						serverURL +
-						(chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[1]?.image
-							?.data?.attributes?.formats?.medium?.url ||
-							chapter?.chapter?.data?.attributes?.seo?.metaImage?.data
-								?.attributes?.formats?.medium?.url ||
-							chapter?.chapter?.data?.attributes?.FeaturedImage?.data
-								?.attributes?.formats?.medium?.url),
-					width:
-						chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[1]?.image
-							?.data?.attributes?.formats?.medium?.width ||
-						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes
-							?.formats?.medium?.width ||
-						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes
-							?.formats?.medium?.width,
-					height:
-						chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[1]?.image
-							?.data?.attributes?.formats?.medium?.height ||
-						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes
-							?.formats?.medium?.height ||
-						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes
-							?.formats?.medium?.height,
-					alt:
-						chapter?.chapter?.data?.attributes?.seo?.metaSocial?.[1]?.image
-							?.data?.attributes?.caption ||
-						chapter?.chapter?.data?.attributes?.seo?.metaImage?.data?.attributes
-							?.caption ||
-						chapter?.chapter?.data?.attributes?.FeaturedImage?.data?.attributes
-							?.formats?.medium?.caption,
+					url: chapter?.featuredImage?.node?.mediaItemUrl,
+					width: chapter?.featuredImage?.node?.mediaDetails?.width,
+					height: chapter?.featuredImage?.node?.mediaDetails?.height,
+					alt: chapter?.featuredImage?.node?.caption,
 				},
 			],
-			site:
-				baseURL +
-				"/courses/" +
-				params.course +
-				"/" +
-				chapter?.chapter?.data?.attributes?.Slug,
+			site: baseURL + "/courses/" + params.course + "/" + chapter?.slug,
 		},
 	};
 }
@@ -169,59 +85,49 @@ type Props = {
 
 /**
  * This function generates the page.
- * 
+ *
  * @param param0 params - params of the page
- * @returns 
+ * @returns
  */
 const Chapter = async ({ params }: Props) => {
-	var myHeaders = new Headers();
-	myHeaders.append("Content-Type", "application/json");
-	const options = {
-		method: "POST",
-		headers: myHeaders,
-		next: { tags: [params.course, params.chapter] },
-		body: JSON.stringify({
-			query: ChapterPageDocument.loc.source.body,
-			variables: { slug: params.chapter },
-		}),
-	};
-	const chapter: ChapterPageQuery = (
-		await (await fetch(gqlAPI, options)).json()
-	).data;
+	const { chapter } = await wretch<ChapterPageQuery, ChapterPageQueryVariables>(
+		gqlAPI,
+		ChapterPageDocument,
+		{ slug: params.chapter },
+		{ tags: [params.chapter, params.course, "chapters"] },
+	);
 
-	if (chapter.chapter.data == null) {
+	if (!chapter) {
 		notFound();
 	}
 
 	return (
 		<div className="grid h-fit">
-			<Blog markdown={chapter.chapter.data.attributes.Content} />
+			<Blog markdown={chapter?.contentFiltered} />
 		</div>
 	);
 };
 
 export default Chapter;
 
-
 /**
  * This function generates the static paths for the page.
- * 
+ *
  * @returns array of paths.
  */
 export async function generateStaticParams() {
-	return (
-		await request<CourseRoutesQuery, CourseRoutesQueryVariables>(
-			gqlAPI,
-			CourseRoutesDocument,
-			{ page: 1, pageSize: 40 },
-		)
-	).courses.data.reduce((acc, course) => {
+	const { courses } = await wretch<
+		CourseRoutesQuery,
+		CourseRoutesQueryVariables
+	>(gqlAPI, CourseRoutesDocument, { first: 1000 }, { tags: ["course-routes"] });
+
+	return courses.nodes.reduce((acc, course) => {
 		return [
 			...acc,
-			...course.attributes.chapters.map(({ chapter }) => {
+			...course?.chapters?.chapters?.map(({ slug }) => {
 				return {
-					course: course.attributes.Slug,
-					chapter: chapter.data.attributes.Slug,
+					course: course.slug,
+					chapter: slug,
 				};
 			}),
 		];

@@ -5,10 +5,10 @@ import {
 	BlogsPageQueryVariables,
 	BlogsPageDocument,
 } from "/generated/graphql";
-import { request } from "graphql-request";
 import { gqlAPI } from "/lib/constant";
 import { Metadata } from "next";
 import Card from "/components/card";
+import { wretch } from "/lib/fetchapi";
 
 /**
  * This is the metadata for the page.
@@ -71,22 +71,23 @@ export const metadata: Metadata = {
 
 /**
  * This function generates the page.
- * 
- * @returns 
+ *
+ * @returns
  */
 const Page = async () => {
-	const blogs = await request<BlogsPageQuery, BlogsPageQueryVariables>(
+	const { blogs } = await wretch<BlogsPageQuery, BlogsPageQueryVariables>(
 		gqlAPI,
 		BlogsPageDocument,
-		{ page: 1, pageSize: 10 },
+		{ first: 5 },
+		{ tags: ["blogs-archive"] },
 	);
 
 	return (
 		<div className="grid w-full grid-cols-[repeat(auto-fill,minmax(230px,350px))] justify-center gap-8">
 			<HeaderAnimate data={{ title: "Blog ✅" }} />
-			{blogs.posts.data.map(({ id, attributes }) => {
-				return <Card type={"blogs"} key={id} attributes={attributes} id={id} />;
-			})}
+			{blogs.nodes.map(({ slug, ...fields }) => (
+				<Card type={"blogs"} key={slug} slug={slug} fields={fields} />
+			))}
 		</div>
 	);
 };

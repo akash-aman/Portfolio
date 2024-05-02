@@ -31,7 +31,7 @@ const ImageComponent = ({
 					sizes || "(min-width: 1200px) 45vw, (min-width: 900px) 60vw, 100vw"
 				}
 				src={src}
-				alt={alt}
+				alt={alt || "Image"}
 				width={width || "900"}
 				height={height || "700"}
 				{...fields}

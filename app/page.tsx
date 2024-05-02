@@ -119,8 +119,8 @@ const Page = async () => {
 		gqlAPI,
 		HomePageDocument,
 		{ first: 5 },
+		{ tags: ["home", "home-blog"] },
 	);
-	//console.log(blogs);
 
 	return (
 		<>

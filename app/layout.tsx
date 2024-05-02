@@ -11,7 +11,7 @@ import { RegisterPWA } from "./register-pwa";
 import { Metadata } from "next";
 import { baseURL } from "/lib/constant";
 import localFont from "next/font/local";
-import { GoogleAnalytics } from '@next/third-parties/google'
+import { GoogleAnalytics } from "@next/third-parties/google";
 
 const webFont = localFont({
 	src: [

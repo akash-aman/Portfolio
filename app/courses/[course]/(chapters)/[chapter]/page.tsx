@@ -37,7 +37,7 @@ export async function generateMetadata(
 		gqlAPI,
 		ChapterPageDocument,
 		{ slug: params.chapter },
-		{ tags: [params.chapter, params.course, "chapters"] },
+		{ tags: [params.chapter, params.course, "courses", "chapter-single"] },
 	);
 
 	return {
@@ -94,7 +94,7 @@ const Chapter = async ({ params }: Props) => {
 		gqlAPI,
 		ChapterPageDocument,
 		{ slug: params.chapter },
-		{ tags: [params.chapter, params.course, "chapters"] },
+		{ tags: [params.chapter, params.course, "courses", "chapter-single"] },
 	);
 
 	if (!chapter) {

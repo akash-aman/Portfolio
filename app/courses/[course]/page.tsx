@@ -34,7 +34,7 @@ export async function generateMetadata(
 		gqlAPI,
 		CoursePageDocument,
 		{ slug: params.course },
-		{ tags: [params.course, "courses"] },
+		{ tags: [params.course, "courses", "course-single"] },
 	);
 
 	return {
@@ -90,7 +90,7 @@ const Course = async ({ params }) => {
 		gqlAPI,
 		CoursePageDocument,
 		{ slug: params.course },
-		{ tags: [params.course, "courses"] },
+		{ tags: [params.course, "courses", "course-single"] },
 	);
 
 	if (!course) {

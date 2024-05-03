@@ -26,7 +26,7 @@ export default async function Layout({ children, params }) {
 		gqlAPI,
 		CourseSidebarDocument,
 		{ slug: params.course },
-		{ tags: [params.course, "courses"] },
+		{ tags: [params.course, "courses", "chapter-single"] },
 	);
 
 	if (!course) {

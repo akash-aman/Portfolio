@@ -79,7 +79,7 @@ const Page = async () => {
 		gqlAPI,
 		CoursesPageDocument,
 		{ first: 10 },
-		{ tags: ["courses-archive"] },
+		{ tags: ["courses", "course-archive"] },
 	);
 
 	return (

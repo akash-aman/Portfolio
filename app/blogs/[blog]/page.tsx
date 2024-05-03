@@ -91,7 +91,7 @@ const Blog = async ({ params }: Props) => {
 		gqlAPI,
 		BlogPageDocument,
 		{ slug: params.blog },
-		{ tags: [params.blog, "blogs"] },
+		{ tags: [params.blog, "blogs", "blog-single"] },
 	);
 
 	if (!blog) {

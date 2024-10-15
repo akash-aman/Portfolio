@@ -10,50 +10,34 @@ import { HeaderProvider } from "/contexts/headercontext";
 import { RegisterPWA } from "./register-pwa";
 import { Metadata } from "next";
 import { baseURL } from "/lib/constant";
-import localFont from "next/font/local";
+//import localFont from "next/font/local";
 import { GoogleAnalytics } from "@next/third-parties/google";
+import { Poppins } from "next/font/google";
 
-const webFont = localFont({
-	src: [
-		{
-			path: "../assets/fonts/wt-400.woff2",
-			weight: "400",
-		},
-	],
+const webFont = Poppins({
+	subsets: ["latin"],
+	weight: "400",
 	variable: "--font-content",
 	preload: true,
-});
+  });
 
-const headFont = localFont({
-	src: [
-		{
-			path: "../assets/fonts/GreycliffCF-Heavy.woff2",
-			weight: "900",
-		},
-	],
+const headFont = Poppins({
+	subsets: ["latin"],
+	weight: "900",
 	variable: "--font-heading",
 	preload: true,
 });
 
-const svgFont = localFont({
-	src: [
-		{
-			path: "../assets/fonts/swing-king.woff2",
-			weight: "400",
-		},
-	],
+const svgFont = Poppins({
+	subsets: ["latin"],
+	weight: "400",
 	variable: "--font-svg",
 	preload: false,
 });
 
-const codeFont = localFont({
-	src: [
-		{
-			path: "../assets/fonts/attribute-mono-400.woff2",
-			weight: "400",
-			style: "normal",
-		},
-	],
+const codeFont = Poppins({
+	subsets: ["latin"],
+	weight: "400",
 	variable: "--font-code",
 	preload: false,
 });

@@ -17,6 +17,7 @@
 	"dependencies": {
 		"@apollo/client": "^3.7.17",
 		"@ducanh2912/next-pwa": "^8.3.0",
+		"@next/font": "^14.2.15",
 		"@next/third-parties": "^14.2.3",
 		"@types/node": "18.11.18",
 		"@types/react": "18.0.26",

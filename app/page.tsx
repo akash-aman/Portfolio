@@ -9,7 +9,6 @@ import Card from "/components/card";
 import { Metadata } from "next";
 import { baseURL } from "/lib/constant";
 import { wretch } from "/lib/fetchapi";
-import Head from "next/head";
 
 /**
  * This is the metadata for the page.

@@ -10,7 +10,7 @@ import { HeaderProvider } from "/contexts/headercontext";
 import { RegisterPWA } from "./register-pwa";
 import { Metadata } from "next";
 import { baseURL } from "/lib/constant";
-//import localFont from "next/font/local";
+import localFont from "next/font/local";
 import { GoogleAnalytics } from "@next/third-parties/google";
 import { Poppins } from "next/font/google";
 
@@ -167,16 +167,10 @@ export default function RootLayout({
 	return (
 		<html
 			lang="en"
-			className={
-				webFont.variable +
-				" " +
-				headFont.variable +
-				" " +
-				svgFont.variable +
-				" " +
-				codeFont.variable
-			}
 		>
+			<head>
+			<link rel="stylesheet" href="https://use.typekit.net/kja6uqf.css"></link>
+            </head>
 			<body className="bg-[var(--dev-bg-colour)] scrollbar">
 				<ApplyTheme />
 				<Navigation />

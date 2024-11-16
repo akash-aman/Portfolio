@@ -4,7 +4,6 @@
 //-----------------------------------------------------
 
 import { toc } from "mdast-util-toc";
-import { h } from "hastscript";
 
 type Options = {
 	prefix?: string;

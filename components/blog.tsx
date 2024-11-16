@@ -1,5 +1,6 @@
 import remarkGfm from "remark-gfm";
 import remarkToc from "../plugins/remarkToc";
+import remarkTocRM from "../plugins/remarkTocRM";
 import remarkMath from "remark-math"; //'../plugins/remarkMath'
 import rehypeRaw from "rehype-raw";
 import rehypeSlug from "rehype-slug";
@@ -16,21 +17,33 @@ type BlogProps = {
 };
 
 const MDBlog: FC<BlogProps> = ({ markdown, ...attributes }: BlogProps) => {
+
 	return (
-		<ReactMarkdown
-			{...attributes}
-			// eslint-disable-next-line react/no-children-prop
-			components={elements}
-			children={markdown}
-			remarkPlugins={[remarkMath, remarkToc, remarkGfm]}
-			rehypePlugins={[
-				rehypeKatex,
-				rehypePrism,
-				rehypeSlug,
-				rehypeRaw,
-				rehypeSanitize,
-			]}
-		/>
+		<>
+			<div className="toc">
+				<ReactMarkdown
+					{...attributes}
+					// eslint-disable-next-line react/no-children-prop
+					components={elements}
+					children={markdown}
+					remarkPlugins={[remarkToc]}
+				/>
+			</div>
+			<ReactMarkdown
+				{...attributes}
+				// eslint-disable-next-line react/no-children-prop
+				components={elements}
+				children={markdown}
+				remarkPlugins={[remarkTocRM, remarkMath, remarkGfm]}
+				rehypePlugins={[
+					rehypeKatex,
+					rehypePrism,
+					rehypeSlug,
+					rehypeRaw,
+					rehypeSanitize,
+				]}
+			/>
+		</>
 	);
 };
 

@@ -6,6 +6,8 @@ body {
 	width: 100%;
 	min-height: 100vh;
 	min-width: 100vw;
+	scroll-behavior: smooth;
+    scroll-padding-top: 3rem;
 }
 
 * {
@@ -60,5 +62,12 @@ body {
 
 	100% {
 		background-position: 0% 50%;
+	}
+}
+
+.toc {
+	margin: 2rem 0;
+	ul>li>p {
+		margin: 0;
 	}
 }

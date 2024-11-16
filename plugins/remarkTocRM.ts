@@ -4,7 +4,6 @@
 //-----------------------------------------------------
 
 import { toc } from "mdast-util-toc";
-import { visit } from "unist-util-visit";
 
 type Options = {
     prefix?: string;

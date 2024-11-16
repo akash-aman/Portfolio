@@ -131,6 +131,29 @@ const Blog = async ({ params }: Props) => {
 						</div>
 					))}
 				</div>
+				{blog?.author?.node?.user?.profilePic?.mediaItemUrl && (
+					<div className="flex justify-center my-6 gap-2">
+						<span>
+							<ImageComponent
+								className="w-9 h-[inherit] object-cover rounded-full"
+								src={blog?.author?.node?.user?.profilePic?.mediaItemUrl}
+								alt={
+									"Profile Pic of " +
+									blog?.author?.node?.firstName +
+									" " +
+									blog?.author?.node?.lastName
+								}
+								sizes={blog?.author?.node?.user?.profilePic?.sizes}
+								width={1920}
+								height={952}
+								card={true}
+							/>
+						</span>
+						<span className="align-middle grid items-center text-lg font-thin italic">
+							{blog?.author?.node?.firstName} {blog?.author?.node?.lastName}
+						</span>
+					</div>
+				)}
 			</header>
 			<MDBlog markdown={blog?.contentFiltered} />
 		</div>

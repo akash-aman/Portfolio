@@ -23,9 +23,9 @@ const BasicLayout = ({
 		to: { opacity: 1, transform: "translateY(0)", height: "20rem" },
 		config: {
 			duration: 400,
-			easing: (t) => t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1,
+			easing: (t) =>
+				t < 0.5 ? 4 * t * t * t : (t - 1) * (2 * t - 2) * (2 * t - 2) + 1,
 		},
-
 	}));
 
 	useEffect(() => {
@@ -39,16 +39,18 @@ const BasicLayout = ({
 	return (
 		<div className="sm:ml-24">
 			<animated.header
-                style={{
-                    ...styles,
-                    backgroundImage: validatePath()
-                        ? null
-                        : `url(/${pathname.replaceAll("/", "-")}.svg)`,
-                }}
-				className={'bg-[var(--light-theme-500)] dark:bg-[var(--dark-theme-100)] w-full z-20 md-h:sticky relative top-0 bg-blend-overlay'}
-            >
-                <Header />
-            </animated.header>
+				style={{
+					...styles,
+					backgroundImage: validatePath()
+						? null
+						: `url(/${pathname.replaceAll("/", "-")}.svg)`,
+				}}
+				className={
+					"bg-[var(--light-theme-500)] dark:bg-[var(--dark-theme-100)] w-full z-20 md-h:sticky relative top-0 bg-blend-overlay"
+				}
+			>
+				<Header />
+			</animated.header>
 			<main
 				className={clsx(
 					"mb-24 sm:mb-0 bg-[var(--light-theme-400)] dark:bg-[var(--dark-theme-200)] fade relative z-40 grid gap-8",

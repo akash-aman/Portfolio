@@ -36,6 +36,25 @@ query blogPage($slug: ID!) {
 			node {
 				firstName
 				lastName
+				user {
+					profilePic {
+						mediaItemUrl
+						sizes
+						mediaDetails {
+							height
+							width
+						}
+					}
+				}
+				mediaItems {
+					edges {
+						node {
+							id
+						}
+					}
+				}
+				firstName
+				lastName
 			}
 		}
 	}

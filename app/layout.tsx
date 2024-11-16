@@ -19,7 +19,7 @@ const webFont = Poppins({
 	weight: "400",
 	variable: "--font-content",
 	preload: true,
-  });
+});
 
 const headFont = Poppins({
 	subsets: ["latin"],
@@ -165,12 +165,13 @@ export default function RootLayout({
 	children: React.ReactNode;
 }) {
 	return (
-		<html
-			lang="en"
-		>
+		<html lang="en">
 			<head>
-			<link rel="stylesheet" href="https://use.typekit.net/kja6uqf.css"></link>
-            </head>
+				<link
+					rel="stylesheet"
+					href="https://use.typekit.net/kja6uqf.css"
+				></link>
+			</head>
 			<body className="bg-[var(--dev-bg-colour)] scrollbar">
 				<ApplyTheme />
 				<Navigation />

@@ -15,7 +15,7 @@ type Options = {
  *
  * @type {import('unified').Plugin<[Options?]|void[], Root>}
  */
-export default function remarkToc(
+export default function remarkTocRM(
     options: Options = { prefix: "user-content-" },
 ) {
     return (node) => {
@@ -32,11 +32,9 @@ export default function remarkToc(
             result.index === -1 ||
             !result.map
         ) {
-			node.children = []
-            return
+            return;
         }
 
-		
         // Wrap the TOC with a div element
         // const tocWrapper = {
         //     type: "element",
@@ -48,14 +46,10 @@ export default function remarkToc(
 		// 	],
         // };
 
-
         node.children = [
-			//...node.children.slice(0, result.index-1),
+			...node.children.slice(0, result.index-1),
 			//tocWrapper,
-			//...node.children.slice(result.endIndex)
-			// -----------
-			...node.children.slice(result.index-1, result.index), // Heading element of TOC
-			result.map,
+			...node.children.slice(result.endIndex)
 		];
     };
 }

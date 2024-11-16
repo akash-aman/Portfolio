@@ -1,25 +1,25 @@
 import React from "react";
 
-export const H1 = ({ children }) => {
-	return <h1 className="h1">{children}</h1>;
+export const H1 = (props) => {
+	return <h1 id={props.id} className={`h1 ${props.className}`}>{props.children}</h1>;
 };
 
-export const H2 = ({ children }) => {
-	return <h2 className="h2">{children}</h2>;
+export const H2 = (props) => {
+	return <h2 id={props.id} className={`h2 ${props.className}`}>{props.children}</h2>;
 };
 
-export const H3 = ({ children }) => {
-	return <h3 className="h3">{children}</h3>;
+export const H3 = (props) => {
+	return <h3 id={props.id} className={`h3 ${props.className}`}>{props.children}</h3>;
 };
 
-export const H4 = ({ children }) => {
-	return <h4 className="h4">{children}</h4>;
+export const H4 = (props) => {
+	return <h4 id={props.id} className={`h4 ${props.className}`}>{props.children}</h4>;
 };
 
-export const H5 = ({ children }) => {
-	return <h5 className="h5">{children}</h5>;
+export const H5 = (props) => {
+	return <h5 id={props.id} className={`h5 ${props.className}`}>{props.children}</h5>;
 };
 
-export const H6 = ({ children }) => {
-	return <h6 className="h6">{children}</h6>;
+export const H6 = (props) => {
+	return <h6 id={props.id} className={`h6 ${props.className}`}>{props.children}</h6>;
 };

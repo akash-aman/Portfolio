@@ -11243,7 +11243,7 @@ export type BlogPageQueryVariables = Exact<{
 }>;
 
 
-export type BlogPageQuery = { __typename?: 'RootQuery', blog?: { __typename?: 'Post', title?: string | null, slug?: string | null, modified?: string | null, excerpt?: string | null, contentFiltered?: string | null, tags?: { __typename?: 'PostToTagConnection', nodes: Array<{ __typename?: 'Tag', name?: string | null, slug?: string | null, featuredImage?: { __typename?: 'Tag_Featuredimage', featuredImage?: { __typename?: 'MediaItem', mediaItemUrl?: string | null, sizes?: string | null, caption?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } | null } | null }> } | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', caption?: string | null, mediaItemUrl?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null, author?: { __typename?: 'NodeWithAuthorToUserConnectionEdge', node: { __typename?: 'User', firstName?: string | null, lastName?: string | null, user?: { __typename?: 'User_User', profilePic?: { __typename?: 'MediaItem', mediaItemUrl?: string | null, sizes?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } | null } | null, mediaItems?: { __typename?: 'UserToMediaItemConnection', edges: Array<{ __typename?: 'UserToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', id: string } }> } | null } } | null } | null };
+export type BlogPageQuery = { __typename?: 'RootQuery', blog?: { __typename?: 'Post', title?: string | null, slug?: string | null, modified?: string | null, date?: string | null, excerpt?: string | null, contentFiltered?: string | null, tags?: { __typename?: 'PostToTagConnection', nodes: Array<{ __typename?: 'Tag', name?: string | null, slug?: string | null, featuredImage?: { __typename?: 'Tag_Featuredimage', featuredImage?: { __typename?: 'MediaItem', mediaItemUrl?: string | null, sizes?: string | null, caption?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } | null } | null }> } | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', caption?: string | null, mediaItemUrl?: string | null, sizes?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null, author?: { __typename?: 'NodeWithAuthorToUserConnectionEdge', node: { __typename?: 'User', firstName?: string | null, lastName?: string | null, user?: { __typename?: 'User_User', profilePic?: { __typename?: 'MediaItem', mediaItemUrl?: string | null, sizes?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } | null } | null, mediaItems?: { __typename?: 'UserToMediaItemConnection', edges: Array<{ __typename?: 'UserToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', id: string } }> } | null } } | null } | null };
 
 export type BlogRoutesQueryVariables = Exact<{
   first: Scalars['Int']['input'];
@@ -11313,6 +11313,7 @@ export const BlogPageDocument = gql`
     title
     slug
     modified
+    date
     excerpt
     contentFiltered
     tags {
@@ -11336,6 +11337,7 @@ export const BlogPageDocument = gql`
       node {
         caption
         mediaItemUrl
+        sizes
         mediaDetails {
           height
           width

@@ -3,6 +3,7 @@ query blogPage($slug: ID!) {
 		title
 		slug
 		modified
+		date
 		excerpt
 		contentFiltered
 		tags {
@@ -26,6 +27,7 @@ query blogPage($slug: ID!) {
 			node {
 				caption
 				mediaItemUrl
+				sizes
 				mediaDetails {
 					height
 					width

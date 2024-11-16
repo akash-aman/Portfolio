@@ -10,6 +10,7 @@ import { FC } from "react";
 import ReactMarkdown from "react-markdown";
 import { elements } from "./components";
 import rehypePrism from "rehype-prism-plus";
+import Toc from "../components/element/toc";
 
 type BlogProps = {
 	markdown?: string;
@@ -17,17 +18,19 @@ type BlogProps = {
 };
 
 const MDBlog: FC<BlogProps> = ({ markdown, ...attributes }: BlogProps) => {
-
+	const isExist = markdown?.includes("## Table of Contents") as boolean;
 	return (
 		<>
 			<div className="toc">
-				<ReactMarkdown
-					{...attributes}
-					// eslint-disable-next-line react/no-children-prop
-					components={elements}
-					children={markdown}
-					remarkPlugins={[remarkToc]}
-				/>
+				<Toc isExist={isExist}>
+					<ReactMarkdown
+						{...attributes}
+						// eslint-disable-next-line react/no-children-prop
+						components={elements}
+						children={markdown}
+						remarkPlugins={[remarkToc]}
+					/>
+				</Toc>
 			</div>
 			<ReactMarkdown
 				{...attributes}

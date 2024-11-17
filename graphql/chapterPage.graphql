@@ -3,6 +3,7 @@ query chapterPage($slug: ID!) {
 		title
 		slug
 		modified
+		date
 		excerpt
 		contentFiltered
 		tags {
@@ -25,6 +26,7 @@ query chapterPage($slug: ID!) {
 		featuredImage {
 			node {
 				caption
+				sizes
 				mediaItemUrl
 				mediaDetails {
 					height
@@ -34,6 +36,16 @@ query chapterPage($slug: ID!) {
 		}
 		author {
 			node {
+				user {
+					profilePic {
+						mediaItemUrl
+						sizes
+						mediaDetails {
+							height
+							width
+						}
+					}
+				}
 				firstName
 				lastName
 			}

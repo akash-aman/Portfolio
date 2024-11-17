@@ -4,6 +4,7 @@ query coursePage($slug: ID!) {
 		slug
 		modified
 		excerpt
+		date
 		contentFiltered
 		tags {
 			nodes {
@@ -24,6 +25,7 @@ query coursePage($slug: ID!) {
 		}
 		featuredImage {
 			node {
+				sizes
 				caption
 				mediaItemUrl
 				mediaDetails {
@@ -32,7 +34,22 @@ query coursePage($slug: ID!) {
 				}
 			}
 		}
-
+		author {
+			node {
+				user {
+					profilePic {
+						mediaItemUrl
+						sizes
+						mediaDetails {
+							height
+							width
+						}
+					}
+				}
+				firstName
+				lastName
+			}
+		}
 		chapters {
 			chapters {
 				... on Chapter {

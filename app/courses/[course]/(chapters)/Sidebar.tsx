@@ -39,12 +39,12 @@ const Sidebar = ({ children, course, params }: SidebarProps): JSX.Element => {
 
 	return (
 		<section
-			className={clsx("grid lg:grid-flow-row xl:grid-flow-col", {
-				"xl:grid-cols-[330px_1fr] xl:gap-8": show,
-				"xl:grid-cols-[100px_1fr] xl:gap-4": !show,
+			className={clsx("grid grid-flow-row grid-cols-1 lg:grid-cols-[960px]", {
+				"2xl:grid-cols-[330px_960px] xl:gap-8 justify-center": show,
+				"2xl:grid-cols-[0rem_960px] xl:gap-4 justify-center": !show,
 			})}
 		>
-			<aside className={clsx("row-start-2 xl:row-start-1")}>
+			<aside className={clsx("row-start-2 2xl:row-start-1 2xl:row-span-2")}>
 				<button {...props} />
 				<section className="max-h-[90vh] min-h-max py-5 bg-opacity-90 sticky top-20 overflow-scroll scrollbar overflow-x-hidden overflow-y-auto">
 					{course.course?.chapters?.chapters?.map(

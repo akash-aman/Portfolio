@@ -1,5 +1,7 @@
 import { ParsedUrlQuery } from "querystring";
 import MDBlog from "/components/blog";
+import Link from "next/link";
+import Image from "next/image";
 import {
 	BlogRoutesQuery,
 	BlogRoutesQueryVariables,
@@ -14,7 +16,8 @@ import { notFound } from "next/navigation";
 import { baseURL } from "/lib/constant";
 import { wretch } from "/lib/fetchapi";
 import ImageComponent from "/components/image";
-
+import Home from "/assets/icons/home2.svg";
+import arrow from "/assets/icons/right-arrow.svg";
 type MetaProps = {
 	params: { blog: string };
 	searchParams: { [key: string]: string | string[] | undefined };
@@ -109,6 +112,22 @@ const Blog = async ({ params }: Props) => {
 	return (
 		<div className="grid h-fit">
 			<header className="w-full mb-10">
+				<div className=" grid grid-flow-col gap-2 justify-start items-center text-sm tk-attribute-mono mb-8">
+					<Link href="/" className="tk-attribute-mono mb-1">
+						<Image src={Home} className="w-5 inline-block" alt="home" />
+					</Link>
+					<Image src={arrow} className="w-5 inline-block" alt="arrow" />
+					<Link href="/blogs" className="tk-attribute-mono">
+						Blogs
+					</Link>
+					<Image src={arrow} className="w-5 inline-block" alt="arrow" />
+					<Link
+						href={`/blogs/${params.blog}`}
+						className="tk-attribute-mono text-black dark:text-white "
+					>
+						{blog.title}
+					</Link>
+				</div>
 				<p className="text-center">{formattedDate}</p>
 				<h1 className="text-5xl md:text-6xl text-center">{blog?.title}</h1>
 				<div className="p-0 leading-3 text-center m-auto max-w-[60%] mt-4">
@@ -159,7 +178,6 @@ const Blog = async ({ params }: Props) => {
 							<p className="text-center m-0 text-lg font-thin italic">
 								Updated:{" "}
 								{new Date(blog.modified).toLocaleDateString(undefined, {
-									
 									year: "numeric",
 									month: "long",
 								})}
@@ -179,6 +197,7 @@ const Blog = async ({ params }: Props) => {
 						card={true}
 					/>
 				)}
+				<div className="mx-auto w-48 h-1 mt-12 bg-gradient-to-r from-cyan-200 to-cyan-100 dark:from-cyan-400 dark:to-cyan-600 rounded-full"></div>
 			</header>
 			<MDBlog markdown={blog?.contentFiltered} />
 		</div>

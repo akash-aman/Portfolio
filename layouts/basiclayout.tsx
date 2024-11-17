@@ -55,7 +55,7 @@ const BasicLayout = ({
 				className={clsx(
 					"mb-24 sm:mb-0 bg-[var(--light-theme-400)] dark:bg-[var(--dark-theme-200)] fade relative z-40 grid gap-8",
 					{
-						"p-8 md:p-4 xl:pr-[calc(7rem_+_2.5rem)] xl:p-10 lg:p-20 min-h-[calc(100vh-29rem)] sm:min-h-[calc(100vh-21rem)] lg:grid-cols-[minmax(calc(1024px_-_21rem),1500px)]":
+						"p-8 md:p-4 lg:pr-20 2xl:pr-[calc(7rem_+_2.5rem)] xl:p-10 lg:p-20 min-h-[calc(100vh-29rem)] sm:min-h-[calc(100vh-21rem)] lg:grid-cols-[minmax(calc(1024px_-_21rem),1500px)] justify-center":
 							pathArray[1] === "courses" && pathArray[3],
 						"p-8 md:p-8 lg:pr-20 lg:py-20 lg:pl-20 min-h-[calc(100vh-49rem)] grid-cols-1 sm:min-h-[calc(100vh-41rem)] lg:grid-cols-[960px] justify-center":
 							pathArray[1] === "blogs" && pathArray[2],

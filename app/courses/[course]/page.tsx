@@ -12,6 +12,12 @@ import { notFound } from "next/navigation";
 import { Metadata, ResolvingMetadata } from "next";
 import { baseURL, serverURL } from "/lib/constant";
 import { wretch } from "/lib/fetchapi";
+import ImageComponent from "/components/image";
+import Image from "next/image";
+import arrow from "/assets/icons/right-arrow.svg";
+import Home from "/assets/icons/home2.svg";
+import MDBlog from "/components/blog";
+import { CardMini } from "/components/card";
 
 type MetaProps = {
 	params: { course: string };
@@ -97,16 +103,114 @@ const Course = async ({ params }) => {
 		notFound();
 	}
 
+	const formattedDate = new Date(course.date).toLocaleDateString(undefined, {
+		weekday: "long",
+		year: "numeric",
+		month: "long",
+		day: "numeric",
+	});
+
 	return (
 		<div>
-			<h1 className="mb-10">{course?.title}</h1>
-			<div className="grid w-full grid-cols-[repeat(auto-fill,minmax(230px,350px))] justify-center gap-8">
-				{course.chapters.chapters.map(({ slug, title }) => (
-					<Link key={slug} href={`${course.slug}/${slug}`}>
-						<div className="bg-[var(--light-theme-500)] dark:bg-[var(--dark-theme-100)]  rounded-lg p-10">
-							<p>{title}</p>
-						</div>
+			<header className="w-full mb-10">
+				<div className=" grid grid-flow-col gap-2 justify-start items-center text-sm tk-attribute-mono mb-8">
+					<Link href="/" className="tk-attribute-mono mb-1">
+						<Image src={Home} className="w-5 inline-block" alt="home" />
 					</Link>
+					<Image src={arrow} className="w-5 inline-block" alt="arrow" />
+					<Link href="/courses" className="tk-attribute-mono">
+						Courses
+					</Link>
+					<Image src={arrow} className="w-5 inline-block" alt="arrow" />
+					<Link
+						href={`/courses/${params.course}`}
+						className="tk-attribute-mono text-black dark:text-white "
+					>
+						{course.title}
+					</Link>
+				</div>
+				<p className="text-center">{formattedDate}</p>
+				<h1 className="text-5xl md:text-6xl text-center">{course?.title}</h1>
+				<div className="p-0 leading-3 text-center m-auto max-w-[60%] mt-4">
+					{course.tags.nodes.map(({ name, slug, featuredImage }) => (
+						<div key={slug} className="inline-block">
+							<i className="leading-2 grid items-center bg-[var(--light-theme-500)] dark:bg-[rgba(255,255,255,0.05)]  dark:bg-opacity-5 grid-flow-col gap-1 rounded-md not-italic m-[4px] py-[2px] p-1">
+								<ImageComponent
+									className="w-full h-[inherit] object-cover"
+									src={featuredImage?.featuredImage?.mediaItemUrl}
+									alt={featuredImage?.featuredImage?.caption}
+									sizes={featuredImage?.featuredImage?.sizes}
+									width={32}
+									height={32}
+									card={true}
+								/>
+								<span className="font-light text-sm text-[rgba(0,0,0,0.55)] dark:text-[rgba(255,255,255,0.4)]">
+									{name}
+								</span>
+							</i>
+						</div>
+					))}
+				</div>
+				{course?.author?.node?.user?.profilePic?.mediaItemUrl && (
+					<div className="flex justify-around my-10">
+						<div className="flex gap-2">
+							<span>
+								<ImageComponent
+									className="w-9 h-[inherit] object-cover rounded-full"
+									src={course?.author?.node?.user?.profilePic?.mediaItemUrl}
+									alt={
+										"Profile Pic of " +
+										course?.author?.node?.firstName +
+										" " +
+										course?.author?.node?.lastName
+									}
+									sizes={course?.author?.node?.user?.profilePic?.sizes}
+									width={1920}
+									height={952}
+									card={true}
+								/>
+							</span>
+							<span className="align-middle grid items-center text-lg font-thin italic">
+								{course?.author?.node?.firstName}{" "}
+								{course?.author?.node?.lastName}
+							</span>
+						</div>
+						<div>
+							{/* modified date  */}
+							<p className="text-center m-0 text-lg font-thin italic">
+								Updated:{" "}
+								{new Date(course.modified).toLocaleDateString(undefined, {
+									year: "numeric",
+									month: "long",
+								})}
+							</p>
+						</div>
+					</div>
+				)}
+
+				{course?.featuredImage?.node?.mediaItemUrl && (
+					<ImageComponent
+						className="w-full h-[inherit] object-cover"
+						src={course?.featuredImage?.node?.mediaItemUrl}
+						alt={course?.featuredImage?.node?.caption}
+						sizes={course?.featuredImage?.node?.sizes}
+						width={1920}
+						height={952}
+						card={true}
+					/>
+				)}
+				<div className="mx-auto w-48 h-1 mt-12 bg-gradient-to-r from-cyan-200 to-cyan-100 dark:from-cyan-400 dark:to-cyan-600 rounded-full"></div>
+			</header>
+			<MDBlog markdown={course?.contentFiltered} />
+
+			<div className="grid w-full grid-cols-[repeat(auto-fill,minmax(230px,350px))] justify-center gap-8">
+				{course.chapters.chapters.map((related) => (
+					<CardMini
+						key={related.slug}
+						type="courses"
+						slug={`${course.slug}/${related.slug}`}
+						fields={related}
+					/>
 				))}
 			</div>
 		</div>

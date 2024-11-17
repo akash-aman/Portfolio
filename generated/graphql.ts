@@ -11266,14 +11266,14 @@ export type ChapterPageQueryVariables = Exact<{
 }>;
 
 
-export type ChapterPageQuery = { __typename?: 'RootQuery', chapter?: { __typename?: 'Chapter', title?: string | null, slug?: string | null, modified?: string | null, excerpt?: string | null, contentFiltered?: string | null, tags?: { __typename?: 'ChapterToTagConnection', nodes: Array<{ __typename?: 'Tag', name?: string | null, slug?: string | null, featuredImage?: { __typename?: 'Tag_Featuredimage', featuredImage?: { __typename?: 'MediaItem', mediaItemUrl?: string | null, sizes?: string | null, caption?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } | null } | null }> } | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', caption?: string | null, mediaItemUrl?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null, author?: { __typename?: 'NodeWithAuthorToUserConnectionEdge', node: { __typename?: 'User', firstName?: string | null, lastName?: string | null } } | null } | null };
+export type ChapterPageQuery = { __typename?: 'RootQuery', chapter?: { __typename?: 'Chapter', title?: string | null, slug?: string | null, modified?: string | null, date?: string | null, excerpt?: string | null, contentFiltered?: string | null, tags?: { __typename?: 'ChapterToTagConnection', nodes: Array<{ __typename?: 'Tag', name?: string | null, slug?: string | null, featuredImage?: { __typename?: 'Tag_Featuredimage', featuredImage?: { __typename?: 'MediaItem', mediaItemUrl?: string | null, sizes?: string | null, caption?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } | null } | null }> } | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', caption?: string | null, sizes?: string | null, mediaItemUrl?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null, author?: { __typename?: 'NodeWithAuthorToUserConnectionEdge', node: { __typename?: 'User', firstName?: string | null, lastName?: string | null, user?: { __typename?: 'User_User', profilePic?: { __typename?: 'MediaItem', mediaItemUrl?: string | null, sizes?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } | null } | null } } | null } | null };
 
 export type CoursePageQueryVariables = Exact<{
   slug: Scalars['ID']['input'];
 }>;
 
 
-export type CoursePageQuery = { __typename?: 'RootQuery', course?: { __typename?: 'Course', title?: string | null, slug?: string | null, modified?: string | null, excerpt?: string | null, contentFiltered?: string | null, tags?: { __typename?: 'CourseToTagConnection', nodes: Array<{ __typename?: 'Tag', name?: string | null, slug?: string | null, featuredImage?: { __typename?: 'Tag_Featuredimage', featuredImage?: { __typename?: 'MediaItem', mediaItemUrl?: string | null, sizes?: string | null, caption?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } | null } | null }> } | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', caption?: string | null, mediaItemUrl?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null, chapters?: { __typename?: 'Course_Chapters', chapters?: Array<{ __typename?: 'Chapter', title?: string | null, slug?: string | null, modified?: string | null, excerpt?: string | null, contentFiltered?: string | null, tags?: { __typename?: 'ChapterToTagConnection', nodes: Array<{ __typename?: 'Tag', name?: string | null, slug?: string | null, featuredImage?: { __typename?: 'Tag_Featuredimage', featuredImage?: { __typename?: 'MediaItem', mediaItemUrl?: string | null, sizes?: string | null, caption?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } | null } | null }> } | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', caption?: string | null, mediaItemUrl?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null, author?: { __typename?: 'NodeWithAuthorToUserConnectionEdge', node: { __typename?: 'User', firstName?: string | null, lastName?: string | null } } | null } | null> | null } | null, author?: { __typename?: 'NodeWithAuthorToUserConnectionEdge', node: { __typename?: 'User', firstName?: string | null, lastName?: string | null } } | null } | null };
+export type CoursePageQuery = { __typename?: 'RootQuery', course?: { __typename?: 'Course', title?: string | null, slug?: string | null, modified?: string | null, excerpt?: string | null, date?: string | null, contentFiltered?: string | null, tags?: { __typename?: 'CourseToTagConnection', nodes: Array<{ __typename?: 'Tag', name?: string | null, slug?: string | null, featuredImage?: { __typename?: 'Tag_Featuredimage', featuredImage?: { __typename?: 'MediaItem', mediaItemUrl?: string | null, sizes?: string | null, caption?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } | null } | null }> } | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', sizes?: string | null, caption?: string | null, mediaItemUrl?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null, author?: { __typename?: 'NodeWithAuthorToUserConnectionEdge', node: { __typename?: 'User', firstName?: string | null, lastName?: string | null, user?: { __typename?: 'User_User', profilePic?: { __typename?: 'MediaItem', mediaItemUrl?: string | null, sizes?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } | null } | null } } | null, chapters?: { __typename?: 'Course_Chapters', chapters?: Array<{ __typename?: 'Chapter', title?: string | null, slug?: string | null, modified?: string | null, excerpt?: string | null, contentFiltered?: string | null, tags?: { __typename?: 'ChapterToTagConnection', nodes: Array<{ __typename?: 'Tag', name?: string | null, slug?: string | null, featuredImage?: { __typename?: 'Tag_Featuredimage', featuredImage?: { __typename?: 'MediaItem', mediaItemUrl?: string | null, sizes?: string | null, caption?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } | null } | null }> } | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', caption?: string | null, mediaItemUrl?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null, author?: { __typename?: 'NodeWithAuthorToUserConnectionEdge', node: { __typename?: 'User', firstName?: string | null, lastName?: string | null } } | null } | null> | null } | null } | null };
 
 export type CourseRoutesQueryVariables = Exact<{
   first: Scalars['Int']['input'];
@@ -11296,7 +11296,7 @@ export type CoursesPageQueryVariables = Exact<{
 }>;
 
 
-export type CoursesPageQuery = { __typename?: 'RootQuery', courses?: { __typename?: 'RootQueryToCourseConnection', nodes: Array<{ __typename?: 'Course', title?: string | null, slug?: string | null, modified?: string | null, excerpt?: string | null, contentFiltered?: string | null, tags?: { __typename?: 'CourseToTagConnection', nodes: Array<{ __typename?: 'Tag', name?: string | null, slug?: string | null, featuredImage?: { __typename?: 'Tag_Featuredimage', featuredImage?: { __typename?: 'MediaItem', mediaItemUrl?: string | null, sizes?: string | null, caption?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } | null } | null }> } | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', caption?: string | null, mediaItemUrl?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null, author?: { __typename?: 'NodeWithAuthorToUserConnectionEdge', node: { __typename?: 'User', firstName?: string | null, lastName?: string | null } } | null }> } | null };
+export type CoursesPageQuery = { __typename?: 'RootQuery', courses?: { __typename?: 'RootQueryToCourseConnection', nodes: Array<{ __typename?: 'Course', title?: string | null, slug?: string | null, date?: string | null, modified?: string | null, excerpt?: string | null, contentFiltered?: string | null, tags?: { __typename?: 'CourseToTagConnection', nodes: Array<{ __typename?: 'Tag', name?: string | null, slug?: string | null, featuredImage?: { __typename?: 'Tag_Featuredimage', featuredImage?: { __typename?: 'MediaItem', mediaItemUrl?: string | null, sizes?: string | null, caption?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } | null } | null }> } | null, featuredImage?: { __typename?: 'NodeWithFeaturedImageToMediaItemConnectionEdge', node: { __typename?: 'MediaItem', caption?: string | null, mediaItemUrl?: string | null, mediaDetails?: { __typename?: 'MediaDetails', height?: number | null, width?: number | null } | null } } | null, author?: { __typename?: 'NodeWithAuthorToUserConnectionEdge', node: { __typename?: 'User', firstName?: string | null, lastName?: string | null } } | null }> } | null };
 
 export type HomePageQueryVariables = Exact<{
   first: Scalars['Int']['input'];
@@ -11515,6 +11515,7 @@ export const ChapterPageDocument = gql`
     title
     slug
     modified
+    date
     excerpt
     contentFiltered
     tags {
@@ -11537,6 +11538,7 @@ export const ChapterPageDocument = gql`
     featuredImage {
       node {
         caption
+        sizes
         mediaItemUrl
         mediaDetails {
           height
@@ -11546,6 +11548,16 @@ export const ChapterPageDocument = gql`
     }
     author {
       node {
+        user {
+          profilePic {
+            mediaItemUrl
+            sizes
+            mediaDetails {
+              height
+              width
+            }
+          }
+        }
         firstName
         lastName
       }
@@ -11588,6 +11600,7 @@ export const CoursePageDocument = gql`
     slug
     modified
     excerpt
+    date
     contentFiltered
     tags {
       nodes {
@@ -11608,12 +11621,29 @@ export const CoursePageDocument = gql`
     }
     featuredImage {
       node {
+        sizes
         caption
         mediaItemUrl
         mediaDetails {
           height
           width
         }
+      }
+    }
+    author {
+      node {
+        user {
+          profilePic {
+            mediaItemUrl
+            sizes
+            mediaDetails {
+              height
+              width
+            }
+          }
+        }
+        firstName
+        lastName
       }
     }
     chapters {
@@ -11811,6 +11841,7 @@ export const CoursesPageDocument = gql`
     nodes {
       title
       slug
+      date
       modified
       excerpt
       contentFiltered

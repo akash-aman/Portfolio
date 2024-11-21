@@ -7,10 +7,9 @@ import {
 	CoursePageQueryVariables,
 } from "/generated/graphql";
 import { gqlAPI } from "/lib/constant";
-import { request } from "graphql-request";
 import { notFound } from "next/navigation";
 import { Metadata, ResolvingMetadata } from "next";
-import { baseURL, serverURL } from "/lib/constant";
+import { baseURL } from "/lib/constant";
 import { wretch } from "/lib/fetchapi";
 import ImageComponent from "/components/image";
 import Image from "next/image";

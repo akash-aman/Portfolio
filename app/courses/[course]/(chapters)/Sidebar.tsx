@@ -100,12 +100,12 @@ const Sidebar = ({ children, course, params }: SidebarProps): JSX.Element => {
 									</>
 								)}
 								<div
-									className={clsx("p-[6px] flex justify-between", {
+									className={clsx(`p-[6px] flex justify-between div-${slug}`, {
 										"hidden xz": !show,
 									})}
 								>
 									<Link
-										className="text-base sidebar-subheading"
+										className={clsx(`text-base sidebar-subheading ${slug}`)}
 										href={`/courses/${course?.course?.slug}/${slug}`}
 									>
 										{title}
@@ -115,6 +115,9 @@ const Sidebar = ({ children, course, params }: SidebarProps): JSX.Element => {
 									<div className="text-xs dark:text-gray-500 text-gray-400 items-end flex">
 										{formatISODuration(readTime)}
 									</div>
+									<span className="text-base text-white items-end hidden">
+										🔥
+									</span>
 								</div>
 							</div>
 						),

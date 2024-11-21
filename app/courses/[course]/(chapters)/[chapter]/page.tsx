@@ -120,6 +120,20 @@ const Chapter = async ({ params }: Props) => {
 
 	return (
 		<>
+			<style>
+				{`.dark .${params.chapter} {
+					color: #fff;
+				}
+				.${params.chapter} {
+					color: #000;
+				}
+				.div-${params.chapter} > div {
+					display: none;
+				}
+				.div-${params.chapter} > span {
+					display: flex;
+				}`}
+			</style>
 			<header className="w-full mb-10 2xl:col-span-1 2xl:col-start-2">
 				<div className=" grid grid-flow-col gap-2 justify-start items-center text-sm tk-attribute-mono mb-8">
 					<Link href="/" className="tk-attribute-mono mb-1">

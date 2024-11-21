@@ -243,7 +243,6 @@ const Blog = async ({ params }: Props) => {
 						</div>
 					)}
 
-
 					{blog?.featuredImage?.node?.mediaItemUrl && (
 						<ImageComponent
 							className="w-full h-[inherit] object-cover"
@@ -263,7 +262,7 @@ const Blog = async ({ params }: Props) => {
 							title="Share on Twitter"
 							className="social-icon"
 						>
-							<Image className="w-8"  src={twitter} alt="Twitter" />
+							<Image className="w-8" src={twitter} alt="Twitter" />
 						</a>
 						<a
 							href={`https://www.reddit.com/submit?url=https://akash.cx/blogs/${params.blog}&title=${blog.title}`}
@@ -272,7 +271,7 @@ const Blog = async ({ params }: Props) => {
 							title="Share on Reddit"
 							className="social-icon"
 						>
-							<Image className="w-8"  src={reddit} alt="Reddit" />
+							<Image className="w-8" src={reddit} alt="Reddit" />
 						</a>
 						<a
 							href={`https://www.facebook.com/sharer/sharer.php?u=https://akash.cx/blogs/${params.blog}`}
@@ -281,7 +280,7 @@ const Blog = async ({ params }: Props) => {
 							title="Share on Facebook"
 							className="social-icon"
 						>
-							<Image className="w-8"  src={facebook} alt="Facebook" />
+							<Image className="w-8" src={facebook} alt="Facebook" />
 						</a>
 						<a
 							href={`https://www.linkedin.com/shareArticle?mini=true&url=https://akash.cx/blogs/${params.blog}&title=${blog.title}`}
@@ -290,7 +289,7 @@ const Blog = async ({ params }: Props) => {
 							title="Share on LinkedIn"
 							className="social-icon"
 						>
-							<Image className="w-8"  src={linkedin} alt="LinkedIn" />
+							<Image className="w-8" src={linkedin} alt="LinkedIn" />
 						</a>
 						<a
 							href={`mailto:?subject=${blog.title}&body=https://akash.cx/blogs/${params.blog}`}
@@ -299,7 +298,7 @@ const Blog = async ({ params }: Props) => {
 							rel="noopener noreferrer"
 							className="social-icon"
 						>
-							<Image className="w-8"  src={email} alt="Email" />
+							<Image className="w-8" src={email} alt="Email" />
 						</a>
 					</div>
 					<div className="mx-auto w-48 h-1 mt-12 bg-gradient-to-r from-cyan-200 to-cyan-100 dark:from-cyan-400 dark:to-cyan-600 rounded-full"></div>

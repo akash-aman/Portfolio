@@ -203,7 +203,7 @@ const Course = async ({ params }) => {
 			</header>
 			<MDBlog markdown={course?.contentFiltered} />
 
-			<div className="grid w-full grid-cols-[repeat(auto-fill,minmax(230px,350px))] justify-center gap-8">
+			<div className="grid w-full grid-cols-[repeat(auto-fill,minmax(230px,350px))] justify-center gap-8 mt-8">
 				{course.chapters.chapters.map((related) => (
 					<CardMini
 						key={related.slug}

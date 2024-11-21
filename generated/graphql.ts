@@ -623,6 +623,8 @@ export type Chapter = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
   /** Whether the object is a node in the preview state */
   previewRevisionId?: Maybe<Scalars['ID']['output']>;
+  /** The reading time of the post */
+  readTime?: Maybe<Scalars['String']['output']>;
   /** Added to the GraphQL Schema because the ACF Field Group &quot;Section&quot; was set to Show in GraphQL. */
   section?: Maybe<Chapter_Section>;
   /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
@@ -1939,6 +1941,8 @@ export type Course = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node 
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
   /** Whether the object is a node in the preview state */
   previewRevisionId?: Maybe<Scalars['ID']['output']>;
+  /** The reading time of the post */
+  readTime?: Maybe<Scalars['String']['output']>;
   /** The uri slug for the post. This is equivalent to the WP_Post-&gt;post_name field and the post_name column in the database for the &quot;post_objects&quot; table. */
   slug?: Maybe<Scalars['String']['output']>;
   /** The current status of the object */
@@ -5150,6 +5154,8 @@ export type Post = ContentNode & DatabaseIdentifier & MenuItemLinkable & Node & 
   previewRevisionDatabaseId?: Maybe<Scalars['Int']['output']>;
   /** Whether the object is a node in the preview state */
   previewRevisionId?: Maybe<Scalars['ID']['output']>;
+  /** The reading time of the post */
+  readTime?: Maybe<Scalars['String']['output']>;
   /** If the current node is a revision, this field exposes the node this is a revision of. Returns null if the node is not a revision of another node. */
   revisionOf?: Maybe<NodeWithRevisionsToContentNodeConnectionEdge>;
   /** Connection between the Post type and the post type */
@@ -11288,7 +11294,7 @@ export type CourseSidebarQueryVariables = Exact<{
 }>;
 
 
-export type CourseSidebarQuery = { __typename?: 'RootQuery', course?: { __typename?: 'Course', title?: string | null, slug?: string | null, emogi?: { __typename?: 'Course_Emogi', emogi?: string | null } | null, chapters?: { __typename?: 'Course_Chapters', chapters?: Array<{ __typename?: 'Chapter', title?: string | null, slug?: string | null, section?: { __typename?: 'Chapter_Section', section?: string | null } | null, emogi?: { __typename?: 'Chapter_Emogi', emogi?: string | null } | null } | null> | null } | null } | null };
+export type CourseSidebarQuery = { __typename?: 'RootQuery', course?: { __typename?: 'Course', title?: string | null, slug?: string | null, emogi?: { __typename?: 'Course_Emogi', emogi?: string | null } | null, chapters?: { __typename?: 'Course_Chapters', chapters?: Array<{ __typename?: 'Chapter', title?: string | null, slug?: string | null, readTime?: string | null, section?: { __typename?: 'Chapter_Section', section?: string | null } | null, emogi?: { __typename?: 'Chapter_Emogi', emogi?: string | null } | null } | null> | null } | null } | null };
 
 export type CoursesPageQueryVariables = Exact<{
   first: Scalars['Int']['input'];
@@ -11791,6 +11797,7 @@ export const CourseSidebarDocument = gql`
         ... on Chapter {
           title
           slug
+          readTime
           section {
             section
           }

@@ -5,7 +5,6 @@ import useKeyboard from "/hooks/useKeyboard";
 import { CourseSidebarQuery } from "/generated/graphql";
 import { notFound } from "next/navigation";
 import React from "react";
-
 type SidebarProps = {
 	children: React.ReactNode;
 	course: CourseSidebarQuery;
@@ -37,43 +36,85 @@ const Sidebar = ({ children, course, params }: SidebarProps): JSX.Element => {
 		setShow(!show);
 	};
 
+	const formatISODuration = (isoDuration) => {
+		const match = isoDuration.match(/PT(\d+M)?(\d+S)?/);
+		if (!match) {
+			return "00:00";
+		}
+		const minutes = match[1] ? parseInt(match[1].replace("M", "")) : 0;
+		const seconds = match[2] ? parseInt(match[2].replace("S", "")) : 0;
+		return `${minutes < 10 ? "0" : ""}${minutes}:${
+			seconds < 10 ? "0" : ""
+		}${seconds}`;
+	};
+
 	return (
 		<section
-			className={clsx("grid grid-flow-row grid-cols-1 lg:grid-cols-[960px]", {
-				"2xl:grid-cols-[330px_960px] xl:gap-8 justify-center": show,
-				"2xl:grid-cols-[0rem_960px] xl:gap-4 justify-center": !show,
-			})}
+			className={clsx(
+				"grid grid-flow-row grid-cols-1 sm:grid-cols-[1fr_3rem] xl:grid-cols-[960px_3rem] xl:gap-y-0 gap-x-8",
+				{
+					"2xl:grid-cols-[360px_930px_3rem] 2xl:gap-4 xl:gap-8 justify-center":
+						show,
+					"2xl:grid-cols-[45px_960px_3rem] 2xl:gap-2 xl:gap-4 justify-center":
+						!show,
+				},
+			)}
 		>
-			<aside className={clsx("row-start-2 2xl:row-start-1 2xl:row-span-2")}>
+			<aside
+				className={clsx("row-start-2 2xl:row-start-1 2xl:row-span-2", {
+					"xl:pr-6": show,
+					"xl:gap-4": !show,
+				})}
+			>
 				<button {...props} />
-				<section className="max-h-[90vh] min-h-max py-5 bg-opacity-90 sticky top-20 overflow-scroll scrollbar overflow-x-hidden overflow-y-auto">
+				<section
+					className={clsx(
+						"2xl:max-h-[90vh] max-h-[50vh] py-5 bg-opacity-90 sticky top-20 overflow-scroll scrollbar overflow-x-hidden overflow-y-auto pr-4",
+						{ "xl:pr-6": show, "xl:gap-4": !show },
+					)}
+				>
 					{course.course?.chapters?.chapters?.map(
-						({ slug, title, emogi, section }) => (
+						({ slug, title, emogi, readTime, section }, index) => (
 							<div key={slug}>
 								{section.section && (
-									<li className="flex gap-2 p-1">
-										<span
-											className="max-w-fit emogi hover:cursor-pointer"
-											onClick={toggle}
-										>
-											{emogi.emogi}
-										</span>
-										<h5
-											className={clsx("mt-1 italic font-extrabold uppercase", {
-												hidden: !show,
-											})}
-										>
-											{section?.section}
-										</h5>
-									</li>
+									<>
+										<li className="flex gap-2 p-1 pt-4">
+											<span
+												className="max-w-fit emogi hover:cursor-pointer text-lg"
+												onClick={toggle}
+											>
+												{emogi.emogi}
+											</span>
+											<h5
+												className={clsx(
+													"mt-1 italic font-extrabold uppercase text-lg",
+													{
+														hidden: !show,
+													},
+												)}
+											>
+												{section?.section}
+											</h5>
+										</li>
+										<div className="mx-auto w-full my-2 h-1 bg-gradient-to-r from-orange-300 to-orange-200 dark:from-orange-300 dark:to-orange-500 rounded-full"></div>
+									</>
 								)}
-								<div className={clsx("p-1", { "hidden xz": !show })}>
+								<div
+									className={clsx("p-[6px] flex justify-between", {
+										"hidden xz": !show,
+									})}
+								>
 									<Link
-										className="text-lg sidebar-subheading"
+										className="text-base sidebar-subheading"
 										href={`/courses/${course?.course?.slug}/${slug}`}
 									>
 										{title}
 									</Link>
+
+									{/* Readtime */}
+									<div className="text-xs dark:text-gray-500 text-gray-400 items-end flex">
+										{formatISODuration(readTime)}
+									</div>
 								</div>
 							</div>
 						),

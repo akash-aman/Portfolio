@@ -10,6 +10,7 @@ query courseSidebar($slug: ID!) {
 				... on Chapter {
 					title
 					slug
+					readTime
 					section {
 						section
 					}

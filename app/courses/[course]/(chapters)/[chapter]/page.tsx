@@ -21,6 +21,11 @@ import ImageComponent from "/components/image";
 import Home from "/assets/icons/home2.svg";
 import arrow from "/assets/icons/right-arrow.svg";
 
+import facebook from "/assets/icons/facebook.svg";
+import twitter from "/assets/icons/twitter.svg";
+import reddit from "/assets/icons/redit.svg";
+import linkedin from "/assets/icons/linkedin.svg";
+import email from "/assets/icons/mail.svg";
 type MetaProps = {
 	params: { chapter: string; course: string };
 	searchParams: { [key: string]: string | string[] | undefined };
@@ -115,7 +120,7 @@ const Chapter = async ({ params }: Props) => {
 
 	return (
 		<>
-			<header className="w-full mb-10">
+			<header className="w-full mb-10 2xl:col-span-1 2xl:col-start-2">
 				<div className=" grid grid-flow-col gap-2 justify-start items-center text-sm tk-attribute-mono mb-8">
 					<Link href="/" className="tk-attribute-mono mb-1">
 						<Image src={Home} className="w-5 inline-block" alt="home" />
@@ -209,10 +214,106 @@ const Chapter = async ({ params }: Props) => {
 						card={true}
 					/>
 				)}
+				<div className="sm:hidden grid grid-flow-col align-middle justify-center my-10 gap-4">
+					<a
+						href={`https://twitter.com/intent/tweet?url=https://akash.cx/courses/${params.course}/${params.chapter}&text=${chapter.title}`}
+						target="_blank"
+						rel="noopener noreferrer"
+						title="Share on Twitter"
+						className="social-icon"
+					>
+						<Image className="w-8" src={twitter} alt="Twitter" />
+					</a>
+					<a
+						href={`https://www.reddit.com/submit?url=https://akash.cx/courses/${params.course}/${params.chapter}&title=${chapter.title}`}
+						target="_blank"
+						rel="noopener noreferrer"
+						title="Share on Reddit"
+						className="social-icon"
+					>
+						<Image className="w-8" src={reddit} alt="Reddit" />
+					</a>
+					<a
+						href={`https://www.facebook.com/sharer/sharer.php?u=https://akash.cx/courses/${params.course}/${params.chapter}`}
+						target="_blank"
+						rel="noopener noreferrer"
+						title="Share on Facebook"
+						className="social-icon"
+					>
+						<Image className="w-8" src={facebook} alt="Facebook" />
+					</a>
+					<a
+						href={`https://www.linkedin.com/shareArticle?mini=true&url=https://akash.cx/courses/${params.course}/${params.chapter}&title=${chapter.title}`}
+						target="_blank"
+						rel="noopener noreferrer"
+						title="Share on LinkedIn"
+						className="social-icon"
+					>
+						<Image className="w-8" src={linkedin} alt="LinkedIn" />
+					</a>
+					<a
+						href={`mailto:?subject=${chapter.title}&body=https://akash.cx/courses/${params.course}/${params.chapter}`}
+						target="_blank"
+						title="Share by Email"
+						rel="noopener noreferrer"
+						className="social-icon"
+					>
+						<Image className="w-8" src={email} alt="Email" />
+					</a>
+				</div>
 				<div className="mx-auto w-48 h-1 mt-12 bg-gradient-to-r from-cyan-200 to-cyan-100 dark:from-cyan-400 dark:to-cyan-600 rounded-full"></div>
 			</header>
 			<div className="grid h-fit 2xl:col-span-1 2xl:col-start-2">
 				<Blog markdown={chapter?.contentFiltered} />
+			</div>
+			<div className="2xl:col-span-1 2xl:col-start-3 row-span-2 row-start-1 hidden sm:block pl-0 2xl:pl-4">
+				<div className="w-10 grid gap-8 sticky top-[40%]">
+					<a
+						href={`https://twitter.com/intent/tweet?url=https://akash.cx/courses/${params.course}/${params.chapter}&text=${chapter.title}`}
+						target="_blank"
+						rel="noopener noreferrer"
+						title="Share on Twitter"
+						className="social-icon"
+					>
+						<Image src={twitter} alt="Twitter" />
+					</a>
+					<a
+						href={`https://www.reddit.com/submit?url=https://akash.cx/courses/${params.course}/${params.chapter}&title=${chapter.title}`}
+						target="_blank"
+						rel="noopener noreferrer"
+						title="Share on Reddit"
+						className="social-icon"
+					>
+						<Image src={reddit} alt="Reddit" />
+					</a>
+					<a
+						href={`https://www.facebook.com/sharer/sharer.php?u=https://akash.cx/courses/${params.course}/${params.chapter}`}
+						target="_blank"
+						rel="noopener noreferrer"
+						title="Share on Facebook"
+						className="social-icon"
+					>
+						<Image src={facebook} alt="Facebook" />
+					</a>
+					<a
+						href={`https://www.linkedin.com/shareArticle?mini=true&url=https://akash.cx/courses/${params.course}/${params.chapter}&title=${chapter.title}`}
+						target="_blank"
+						rel="noopener noreferrer"
+						title="Share on LinkedIn"
+						className="social-icon"
+					>
+						<Image src={linkedin} alt="LinkedIn" />
+					</a>
+					<a
+						href={`mailto:?subject=${chapter.title}&body=https://akash.cx/courses/${params.course}/${params.chapter}`}
+						target="_blank"
+						title="Share by Email"
+						rel="noopener noreferrer"
+						className="social-icon"
+					>
+						<Image src={email} alt="Email" />
+					</a>
+				</div>
 			</div>
 		</>
 	);

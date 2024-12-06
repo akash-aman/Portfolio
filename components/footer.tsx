@@ -165,7 +165,7 @@ const footer = ({ footer }: FooterProps) => {
             mt-3"
 			>
 				<p className="text-center text-lg copyright">
-					Copyright © 2023 Akash Aman{" "}
+					Copyright © 2024 Akash Aman{" "}
 					<i className="md:inline copyright not-italic hidden">|</i>{" "}
 					<br className="block md:hidden" />
 					<Link href="/terms">Terms & Conditions </Link>

@@ -280,7 +280,7 @@ const Chapter = async ({ params }: Props) => {
 			<div className="grid h-fit 2xl:col-span-1 2xl:col-start-2">
 				<Blog markdown={chapter?.contentFiltered} />
 			</div>
-			<div className="2xl:col-span-1 2xl:col-start-3 row-span-2 row-start-1 hidden sm:block pl-0 2xl:pl-4">
+			<div className="2xl:col-span-1 2xl:col-start-3 row-span-3 row-start-1 hidden sm:block pl-0 2xl:pl-4">
 				<div className="w-10 grid gap-8 sticky top-[40%]">
 					<a
 						href={`https://twitter.com/intent/tweet?url=https://akash.cx/courses/${params.course}/${params.chapter}&text=${chapter.title}`}

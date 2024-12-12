@@ -346,16 +346,26 @@ export async function generateStaticParams() {
 		CourseRoutesQueryVariables
 	>(gqlAPI, CourseRoutesDocument, { first: 1000 }, { tags: ["course-routes"] });
 
+	if (!courses?.nodes || !Array.isArray(courses.nodes)) {
+		return [];
+	}
+
 	return courses.nodes.reduce((acc, course) => {
-		return [
-			...acc,
-			...course?.chapters?.chapters?.map(({ slug }) => {
-				return {
-					course: course.slug,
-					chapter: slug,
-				};
-			}),
-		];
+		if (
+			!course?.chapters?.chapters ||
+			!Array.isArray(course.chapters.chapters)
+		) {
+			return acc;
+		}
+
+		const chapterParams = course.chapters.chapters
+			.filter((chapter) => chapter?.slug)
+			.map(({ slug }) => ({
+				course: course.slug,
+				chapter: slug!,
+			}));
+
+		return [...acc, ...chapterParams];
 	}, []);
 }
 

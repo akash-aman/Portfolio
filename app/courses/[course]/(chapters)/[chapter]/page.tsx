@@ -26,6 +26,7 @@ import twitter from "/assets/icons/twitter.svg";
 import reddit from "/assets/icons/redit.svg";
 import linkedin from "/assets/icons/linkedin.svg";
 import email from "/assets/icons/mail.svg";
+import Style from "./Style";
 type MetaProps = {
 	params: { chapter: string; course: string };
 	searchParams: { [key: string]: string | string[] | undefined };
@@ -120,20 +121,7 @@ const Chapter = async ({ params }: Props) => {
 
 	return (
 		<>
-			<style>
-				{`.dark .${params.chapter} {
-					color: #fff;
-				}
-				.${params.chapter} {
-					color: #000;
-				}
-				.div-${params.chapter} > div {
-					display: none;
-				}
-				.div-${params.chapter} > span {
-					display: flex;
-				}`}
-			</style>
+			<Style params={params} />
 			<header className="w-full mb-10 2xl:col-span-1 2xl:col-start-2">
 				<div className=" grid grid-flow-col gap-2 justify-start items-center text-sm tk-attribute-mono mb-8">
 					<Link href="/" className="tk-attribute-mono mb-1">

@@ -22,7 +22,7 @@ const Toc = (props) => {
 				<>
 					<nav className="toc-details mb-0">
 						<div
-							className="toc-heading flex justify-between"
+							className="toc-heading my-4 flex justify-between"
 							onClick={toggleToc}
 						>
 							<h2 className="inline-block">Table of Contents</h2>
@@ -32,7 +32,7 @@ const Toc = (props) => {
 						</div>
 						<animated.div
 							style={animationProps}
-							className="toc-content max-h-80 overflow-y-auto"
+							className="toc-content scrollbar max-h-80 overflow-y-auto"
 						>
 							{children}
 						</animated.div>

@@ -32,7 +32,7 @@ const Toc = (props) => {
 						</div>
 						<animated.div
 							style={animationProps}
-							className="toc-content scrollbar max-h-80 overflow-y-auto"
+							className="toc-content scrollbar max-h-80 mr overflow-y-auto xl:mr-6"
 						>
 							{children}
 						</animated.div>

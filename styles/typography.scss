@@ -149,7 +149,7 @@ strong {
 	color: var(--content-bold-font-color);
 }
 
-p code {
+p code, li code {
 	@apply bg-[var(--light-theme-500)] dark:bg-[rgba(64,64,64,0.8)] rounded-md p-1;
 	color: var(--content-bold-font-color);
 }

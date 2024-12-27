@@ -34,3 +34,19 @@
 .remote-content > *:first-child {
 	margin-top: 0;
 }
+
+
+	
+table {
+	width: 100%;
+	//border-collapse: collapse;
+	border: 2px solid var(--dev-text-color6);
+	border-radius: 8px; // Added border radius
+
+
+	th, td {
+		border: 2px solid var(--dev-text-color6);
+		padding: 0.5rem;
+		border-radius: 15px;
+	}
+}

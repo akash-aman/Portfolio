@@ -149,7 +149,10 @@ strong {
 	color: var(--content-bold-font-color);
 }
 
-p code, li code {
+p code, li code, h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
 	@apply bg-[var(--light-theme-500)] dark:bg-[rgba(64,64,64,0.8)] rounded-md p-1;
 	color: var(--content-bold-font-color);
+	font-family: 'attribute-mono';
 }
+
+

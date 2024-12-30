@@ -52,7 +52,7 @@ const MDBlog: FC<BlogProps> = ({ markdown, ...attributes }: BlogProps) => {
 				isMermaid && <Script
 					type="module"
 					id="mermaid"
-					strategy="lazyOnload"
+					strategy="afterInteractive"
 					dangerouslySetInnerHTML={{
 						__html: `
 						import mermaid from "/mermaid/mermaid.esm.min.mjs";

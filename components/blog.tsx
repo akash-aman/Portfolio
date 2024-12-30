@@ -11,6 +11,7 @@ import ReactMarkdown from "react-markdown";
 import { elements } from "./components";
 import rehypePrism from "rehype-prism-plus";
 import Toc from "../components/element/toc";
+import Script from "next/script";
 
 type BlogProps = {
 	markdown?: string;
@@ -19,6 +20,7 @@ type BlogProps = {
 
 const MDBlog: FC<BlogProps> = ({ markdown, ...attributes }: BlogProps) => {
 	const isExist = markdown?.includes("## Table of Contents") as boolean;
+	const isMermaid = markdown?.includes("mermaid") as boolean;
 	return (
 		<>
 			<div className="toc">
@@ -46,6 +48,20 @@ const MDBlog: FC<BlogProps> = ({ markdown, ...attributes }: BlogProps) => {
 					rehypeSanitize,
 				]}
 			/>
+			{
+				isMermaid && <Script
+					type="module"
+					id="mermaid"
+					strategy="lazyOnload"
+					dangerouslySetInnerHTML={{
+						__html: `
+						import mermaid from "/mermaid/mermaid.esm.min.mjs";
+						mermaid.initialize({startOnLoad: true});
+						mermaid.contentLoaded();
+						`,
+					}}
+				/>
+			}
 		</>
 	);
 };

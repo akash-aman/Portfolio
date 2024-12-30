@@ -5,6 +5,11 @@ const Pre = ({ node, children, className }) => {
 		return <pre className={className}>{children}</pre>;
 	}
 
+	// check if class has name mermaid.
+	if (className?.split(" ").includes("mermaid")) {
+		return <pre className="mermaid">{children}</pre>;
+	}
+
 	return <>{children}</>;
 };
 

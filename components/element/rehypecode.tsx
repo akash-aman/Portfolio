@@ -29,6 +29,10 @@ const Code: FC<CodeProps> = ({ children, className, inline }) => {
 		}
 	};
 
+	if (match === null) {
+		return <code>{children}</code>;
+	}
+
 	return (
 		<>
 			<div className="single-tab rounded-t-xl py-1 px-4  bg-[var(--light-theme-500)] dark:bg-[rgba(64,64,64,0.8)] flex max-w-min">

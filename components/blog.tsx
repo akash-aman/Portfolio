@@ -11,7 +11,7 @@ import ReactMarkdown from "react-markdown";
 import { elements } from "./components";
 import rehypePrism from "rehype-prism-plus";
 import Toc from "../components/element/toc";
-import Script from "next/script";
+import Mermaid from "./mermaid";
 
 type BlogProps = {
 	markdown?: string;
@@ -49,18 +49,7 @@ const MDBlog: FC<BlogProps> = ({ markdown, ...attributes }: BlogProps) => {
 				]}
 			/>
 			{
-				isMermaid && <Script
-					type="module"
-					id="mermaid"
-					strategy="afterInteractive"
-					dangerouslySetInnerHTML={{
-						__html: `
-						import mermaid from "/mermaid/mermaid.esm.min.mjs";
-						mermaid.initialize({startOnLoad: true});
-						mermaid.contentLoaded();
-						`,
-					}}
-				/>
+				<Mermaid isMermaid={isMermaid} />
 			}
 		</>
 	);

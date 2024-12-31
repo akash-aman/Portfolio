@@ -7,7 +7,11 @@ const Pre = ({ node, children, className }) => {
 
 	// check if class has name mermaid.
 	if (className?.split(" ").includes("mermaid")) {
-		return <pre className="mermaid">{children}</pre>;
+		return <div className="overflow-x-auto my-16">
+			<pre className="mermaid">
+				{children}
+			</pre>
+		</div>;
 	}
 
 	return <>{children}</>;

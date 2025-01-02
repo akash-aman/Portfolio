@@ -39,17 +39,32 @@
 	margin: auto;
 }
 
-	
 table {
 	width: 100%;
 	//border-collapse: collapse;
 	border: 2px solid var(--dev-text-color6);
 	border-radius: 8px; // Added border radius
 
-
-	th, td {
+	th,
+	td {
 		border: 2px solid var(--dev-text-color6);
 		padding: 0.5rem;
 		border-radius: 15px;
 	}
+}
+
+.edgeLabel {
+	background-color:  var(--dev-text-color6) !important;;
+	padding: 4px 8px !important;
+	border-radius: 7.5px !important;
+}
+
+.labelBkg {
+	background-color: transparent !important;
+} 
+
+.edgePaths .relation {
+	color: var(--dev-text-color7) !important;
+	stroke-width: 2px !important;
+	stroke: var(--code-color-1) !important;
 }

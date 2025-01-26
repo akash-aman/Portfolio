@@ -76,7 +76,7 @@ const Page = () => {
 				information. By accessing or using our website, you agree to the terms
 				of this Privacy Policy.
 			</p>
-			<h5 className="mt-6 mb-4">Information Collection</h5>
+			<h2 className="mt-6 mb-4">Information Collection</h2>
 
 			<p className="MyCodeFont">
 				We collect personal information from our website visitors through the
@@ -84,7 +84,7 @@ const Page = () => {
 				Analytics. This information may include your IP address, browser type,
 				operating system, and browsing behavior on our website.
 			</p>
-			<h5 className="mt-6 mb-4">Information Usage</h5>
+			<h2 className="mt-6 mb-4">Information Usage</h2>
 			<p className="MyCodeFont">
 				We use the information collected to analyze website traffic, improve
 				our website's performance, and enhance user experience. Google
@@ -92,7 +92,7 @@ const Page = () => {
 				which pages are most popular, and how we can improve our content and
 				services.
 			</p>
-			<h5 className="mt-6 mb-4">Content Protection</h5>
+			<h2 className="mt-6 mb-4">Content Protection</h2>
 			<p className="MyCodeFont">
 				All content available on our Site, including but not limited to text,
 				images, videos, graphics, and logos, is the property of akash.cx and is
@@ -100,14 +100,14 @@ const Page = () => {
 				reproduction, modification, distribution, or any other unauthorized use
 				of the content on our Site is strictly prohibited.
 			</p>
-			<h5 className="mt-6 mb-4">Third-Party Links</h5>
+			<h2 className="mt-6 mb-4">Third-Party Links</h2>
 			<p className="MyCodeFont">
 				Our website may contain links to third-party websites for your
 				convenience. We are not responsible for the privacy practices or the
 				content of those websites. We recommend that you review the privacy
 				policies of any third-party websites you visit.
 			</p>
-			<h5 className="mt-6 mb-4">Changes to the Privacy Policy</h5>
+			<h2 className="mt-6 mb-4">Changes to the Privacy Policy</h2>
 			<p className="MyCodeFont">
 				We reserve the right to update or modify this Privacy Policy at any time
 				without prior notice. Any changes to this Privacy Policy will be posted
@@ -115,7 +115,7 @@ const Page = () => {
 				review this Privacy Policy periodically to stay informed about how we
 				are protecting your information.
 			</p>
-			<h5 className="mt-6 mb-4">Contact Information</h5>
+			<h2 className="mt-6 mb-4">Contact Information</h2>
 			<p className="MyCodeFont">
 				If you have any questions or concerns about our Privacy Policy or our
 				practices regarding your personal information, please contact us at

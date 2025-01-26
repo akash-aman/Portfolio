@@ -79,15 +79,18 @@ const Page = () => {
 			<h5 className="mt-6 mb-4">Information Collection</h5>
 
 			<p className="MyCodeFont">
-				We do not collect any personal information or data from our website
-				visitors. We do not use cookies or any other tracking technologies to
-				gather information about your browsing behavior.
+				We collect personal information from our website visitors through the
+				use of cookies and other tracking technologies, including Google
+				Analytics. This information may include your IP address, browser type,
+				operating system, and browsing behavior on our website.
 			</p>
 			<h5 className="mt-6 mb-4">Information Usage</h5>
 			<p className="MyCodeFont">
-				Since we do not collect any personal information, we do not use it for
-				any purpose. We do not analyze or sell any user data, and we do not
-				engage in any targeted advertising.
+				We use the information collected to analyze website traffic, improve
+				our website's performance, and enhance user experience. Google
+				Analytics helps us understand how visitors interact with our website,
+				which pages are most popular, and how we can improve our content and
+				services.
 			</p>
 			<h5 className="mt-6 mb-4">Content Protection</h5>
 			<p className="MyCodeFont">

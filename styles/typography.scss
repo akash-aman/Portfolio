@@ -134,6 +134,10 @@ br {
 li {
 	list-style: disc;
 	padding: 0 0 0 0.75rem;
+	p {
+		margin-bottom: 0.5rem !important;
+		margin-top: 1rem !important;
+	}
 }
 
 li,
@@ -149,10 +153,15 @@ strong {
 	color: var(--content-bold-font-color);
 }
 
-p code, li code, h1 code, h2 code, h3 code, h4 code, h5 code, h6 code {
+p code,
+li code,
+h1 code,
+h2 code,
+h3 code,
+h4 code,
+h5 code,
+h6 code {
 	@apply bg-[var(--light-theme-500)] dark:bg-[rgba(64,64,64,0.8)] rounded-md p-1;
 	color: var(--content-bold-font-color);
-	font-family: 'attribute-mono';
+	font-family: "attribute-mono";
 }
-
-

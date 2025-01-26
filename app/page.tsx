@@ -2,6 +2,9 @@ import {
 	HomePageQuery,
 	HomePageQueryVariables,
 	HomePageDocument,
+	CoursesPageQuery,
+	CoursesPageQueryVariables,
+	CoursesPageDocument,
 } from "/generated/graphql";
 import { gqlAPI } from "/lib/constant";
 import HeaderAnimate from "/components/headerAnimationContext";
@@ -122,6 +125,13 @@ const Page = async () => {
 		{ tags: ["home", "home-blog"] },
 	);
 
+	const { courses } = await wretch<CoursesPageQuery, CoursesPageQueryVariables>(
+		gqlAPI,
+		CoursesPageDocument,
+		{ first: 10 },
+		{ tags: ["home", "home-courses"] },
+	);
+
 	return (
 		<>
 			<div>
@@ -159,14 +169,12 @@ const Page = async () => {
 						);
 					})}
 				</div>
-				{/* <h3 className="mb-14 text mt-12">Latest Courses 📖</h3>
+				<h3 className="mb-14 text mt-12">Latest Courses 📖</h3>
 				<div className="grid w-full grid-cols-[repeat(auto-fill,minmax(230px,370px))] justify-center gap-8">
-					{courses.data.map(({ id, attributes }) => {
-						return (
-							<Card type={"courses"} key={id} attributes={attributes} id={id} />
-						);
-					})}
-				</div> */}
+					{courses.nodes.map(({ slug, ...fields }) => (
+						<Card type={"courses"} key={slug} slug={slug} fields={fields} />
+					))}
+				</div>
 			</div>
 		</>
 	);

@@ -43,13 +43,13 @@ const Navigation = ({ nav }: NavigationProps) => {
 		//   title: 'About',
 		//   onClick: null
 		// },
-		// {
-		// 	icon: course,
-		// 	link: "/courses",
-		// 	className: "xsm-h:grid hidden",
-		// 	title: "Courses",
-		// 	onClick: null,
-		// },
+		{
+			icon: course,
+			link: "/courses",
+			className: "xsm-h:grid hidden",
+			title: "Courses",
+			onClick: null,
+		},
 		{
 			icon: blog,
 			link: "/blogs",
@@ -102,13 +102,13 @@ const Navigation = ({ nav }: NavigationProps) => {
 		//   title: 'Home',
 		//   description: 'Home',
 		// },
-		// {
-		//   icon: course,
-		//   link: '/courses',
-		//   name: 'Courses',
-		//   title: 'Courses',
-		//   description: 'Courses',
-		// },
+		{
+			icon: course,
+			link: "/courses",
+			name: "Courses",
+			title: "Courses",
+			description: "Courses",
+		},
 		// {
 		//   icon: blog,
 		//   link: '/blogs',

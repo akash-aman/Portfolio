@@ -253,7 +253,9 @@ const Course = async ({ params }) => {
 				</div>
 				<div className="mx-auto w-48 h-1 mt-12 bg-gradient-to-r from-cyan-200 to-cyan-100 dark:from-cyan-400 dark:to-cyan-600 rounded-full"></div>
 			</header>
-			<MDBlog markdown={course?.contentFiltered} />
+			<div>
+				<MDBlog markdown={course?.contentFiltered} />
+			</div>
 
 			<div className="col-start-1 grid w-full grid-cols-[repeat(auto-fill,minmax(230px,350px))] justify-center gap-8 mt-8">
 				{course.chapters.chapters?.map(

@@ -256,14 +256,17 @@ const Course = async ({ params }) => {
 			<MDBlog markdown={course?.contentFiltered} />
 
 			<div className="col-start-1 grid w-full grid-cols-[repeat(auto-fill,minmax(230px,350px))] justify-center gap-8 mt-8">
-				{course.chapters.chapters?.map((related) => (
-					<CardMini
-						key={related.slug}
-						type="courses"
-						slug={`${course.slug}/${related.slug}`}
-						fields={related}
-					/>
-				))}
+				{course.chapters.chapters?.map(
+					(related) =>
+						related && (
+							<CardMini
+								key={related.slug}
+								type="courses"
+								slug={`${course.slug}/${related.slug}`}
+								fields={related}
+							/>
+						),
+				)}
 			</div>
 			<div className="col-start-2 row-span-4 row-start-1 hidden sm:block">
 				<div className="w-10 grid gap-8 sticky top-[40%]">

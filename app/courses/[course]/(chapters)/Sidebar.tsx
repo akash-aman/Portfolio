@@ -73,55 +73,62 @@ const Sidebar = ({ children, course, params }: SidebarProps): JSX.Element => {
 						{ "xl:pr-6": show, "xl:gap-4": !show },
 					)}
 				>
-					{course.course?.chapters?.chapters?.map(
-						({ slug, title, emogi, readTime, section }, index) => (
-							<div key={slug}>
-								{section.section && (
-									<>
-										<li className="flex gap-2 p-1 pt-4">
-											<span
-												className="max-w-fit emogi hover:cursor-pointer text-lg"
-												onClick={toggle}
-											>
-												{emogi.emogi}
-											</span>
-											<h5
-												className={clsx(
-													"mt-1 italic font-extrabold uppercase text-lg",
-													{
-														hidden: !show,
-													},
-												)}
-											>
-												{section?.section}
-											</h5>
-										</li>
-										<div className="mx-auto w-full my-2 h-1 bg-gradient-to-r from-orange-300 to-orange-200 dark:from-orange-300 dark:to-orange-500 rounded-full"></div>
-									</>
-								)}
-								<div
-									className={clsx(`p-[6px] flex justify-between div-${slug}`, {
-										"hidden xz": !show,
-									})}
-								>
-									<Link
-										className={clsx(`text-base sidebar-subheading ${slug}`)}
-										href={`/courses/${course?.course?.slug}/${slug}`}
-									>
-										{title}
-									</Link>
+					{course.course?.chapters?.chapters?.map((chapter, index) => {
+						const { title, slug, readTime, section, emogi } = chapter || {};
 
-									{/* Readtime */}
-									<div className="text-xs dark:text-gray-500 text-gray-400 items-end flex">
-										{formatISODuration(readTime)}
+						return (
+							chapter && (
+								<div key={slug}>
+									{section.section && (
+										<>
+											<li className="flex gap-2 p-1 pt-4">
+												<span
+													className="max-w-fit emogi hover:cursor-pointer text-lg"
+													onClick={toggle}
+												>
+													{emogi.emogi}
+												</span>
+												<h5
+													className={clsx(
+														"mt-1 italic font-extrabold uppercase text-lg",
+														{
+															hidden: !show,
+														},
+													)}
+												>
+													{section?.section}
+												</h5>
+											</li>
+											<div className="mx-auto w-full my-2 h-1 bg-gradient-to-r from-orange-300 to-orange-200 dark:from-orange-300 dark:to-orange-500 rounded-full"></div>
+										</>
+									)}
+									<div
+										className={clsx(
+											`p-[6px] flex justify-between div-${slug}`,
+											{
+												"hidden xz": !show,
+											},
+										)}
+									>
+										<Link
+											className={clsx(`text-base sidebar-subheading ${slug}`)}
+											href={`/courses/${course?.course?.slug}/${slug}`}
+										>
+											{title}
+										</Link>
+
+										{/* Readtime */}
+										<div className="text-xs dark:text-gray-500 text-gray-400 items-end flex">
+											{formatISODuration(readTime)}
+										</div>
+										<span className="text-base text-white items-end hidden">
+											🔥
+										</span>
 									</div>
-									<span className="text-base text-white items-end hidden">
-										🔥
-									</span>
 								</div>
-							</div>
-						),
-					)}
+							)
+						);
+					})}
 				</section>
 			</aside>
 			{children}

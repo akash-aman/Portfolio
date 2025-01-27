@@ -74,8 +74,16 @@
 // 	font-style: normal;
 // }
 
+@font-face {
+	font-family: "Virgil";
+	src: url("../assets/fonts/Virgil.woff2");
+	font-weight: 400;
+	font-style: normal;
+}
+
 :root {
-	--font-svg: "swing-king", sans-serif;
+	--font-swing: "swing-king", sans-serif;
+	--font-svg: "Virgil", sans-serif;
 	--font-code: "attribute-mono", sans-serif;
 	--font-content: "sofia-pro", sans-serif;
 	--font-heading: "greycliff-cf", sans-serif;
@@ -96,7 +104,7 @@
 		}
 
 		.Swing-King {
-			font-family: var(--font-svg);
+			font-family: var(--font-swing);
 		}
 	}
 }

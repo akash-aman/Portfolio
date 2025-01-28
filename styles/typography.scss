@@ -140,6 +140,17 @@ li {
 	}
 }
 
+.toc-content {
+	li {
+		list-style: disc;
+		padding: 0 0 0 0.75rem;
+		p {
+			margin-bottom: 0.4rem !important;
+			margin-top: 0rem !important;
+		}
+	}
+}
+
 li,
 ul,
 ol,

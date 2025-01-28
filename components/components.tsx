@@ -10,6 +10,7 @@ import { H1, H2, H3, H4, H5, H6 } from "/components/element/heading";
 import { Span } from "/components/element/span";
 import { U } from "/components/element/html";
 import ImageComponent from "/components/image";
+import A from "./element/a";
 
 export const elements: { [key: string]: React.ElementType | Components } = {
 	h1: H1,
@@ -29,4 +30,5 @@ export const elements: { [key: string]: React.ElementType | Components } = {
 	code: Code,
 	multicode: MultiCode,
 	blockquote: Blockquote,
+	a: A,
 };

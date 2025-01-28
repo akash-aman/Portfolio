@@ -176,3 +176,15 @@ h6 code {
 	color: var(--content-bold-font-color);
 	font-family: "attribute-mono";
 }
+
+.medium {
+	@apply dark:bg-sky-700 bg-sky-300;
+}
+
+.hard {
+	@apply dark:bg-orange-700 bg-orange-300;
+}
+
+.easy {
+	@apply dark:bg-green-700 bg-green-300;
+}

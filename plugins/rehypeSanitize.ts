@@ -99,7 +99,7 @@ const defaultSchema = {
 		"iframe",
 	],
 	attributes: {
-		a: ["href"],
+		a: ["href","level","checkbox"],
 		img: ["src", "longDesc"],
 		input: [[Array], [Array]],
 		li: [[Array]],

@@ -20,9 +20,7 @@ const A = ({ children, className, href, level }) => {
 	}
 
 	return (
-		<a className="a" href={href}>
-			{children}
-		</a>
+		children
 	);
 };
 

@@ -46,10 +46,18 @@ export default function remarkTocRM(
 		// 	],
 		// };
 
-		node.children = [
-			...node.children.slice(0, result.index - 1),
-			//tocWrapper,
-			...node.children.slice(result.endIndex),
-		];
+		if (node.children[result.endIndex - 1].type == "html") {
+			node.children = [
+				...node.children.slice(0, result.index - 1),
+				// tocWrapper,
+				...node.children.slice(result.endIndex - 1),
+			];
+		} else {
+			node.children = [
+				...node.children.slice(0, result.index - 1),
+				// tocWrapper,
+				...node.children.slice(result.endIndex),
+			];
+		}
 	};
 }

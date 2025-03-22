@@ -144,7 +144,7 @@ const Page = async () => {
 				/>
 				<h3 className="mb-4">About Me 😎</h3>
 				<p>
-					I am a Software Engineer working at{" "}
+					I am a Senior Software Engineer working at{" "}
 					<i className="not-italic animate-gradient font-extrabold text-transparent bg-clip-text bg-gradient-to-r from-purple-400  to-pink-600">
 						rtCamp, India
 					</i>

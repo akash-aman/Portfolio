@@ -21,7 +21,9 @@ import { wretch } from "/lib/fetchapi";
  *
  * @returns
  */
-export default async function Layout({ children, params }) {
+export default async function Layout(props: { children: React.ReactNode; params: Promise<any> }) {
+	const params = await props.params;
+	const { children } = props;
 	const course = await wretch<CourseSidebarQuery, CourseSidebarQueryVariables>(
 		gqlAPI,
 		CourseSidebarDocument,

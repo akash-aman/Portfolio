@@ -37,7 +37,7 @@ export async function POST(req: NextRequest) {
 
 	for (const tag of body.tags) {
 		try {
-			await revalidateTag(tag);
+			await revalidateTag(tag, "max");
 		} catch (error) {
 			console.error(error);
 			return NextResponse.json(

@@ -63,6 +63,6 @@ export const metadata: Metadata = {
  * @param param0 children - children of the component
  * @returns jsx element.
  */
-export default async function Layout({ children, params }) {
+export default async function Layout({ children }) {
 	return <>{children}</>;
 }

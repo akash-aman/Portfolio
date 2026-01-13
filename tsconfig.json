@@ -1,58 +1,103 @@
 {
-	"compilerOptions": {
-		"baseUrl": ".",
-		"paths": {
-			"*": ["/*"],
-			"/components/*": ["components/*"],
-			"/interfaces/*": ["interfaces/*"],
-			"/contexts/*": ["contexts/*"],
-			"/states/*": ["states/*"],
-			"/styles/*": ["styles/*"],
-			"/layouts/*": ["layouts/*"],
-			"/features/*": ["features/*"],
-			"/app/*": ["app/*"],
-			"/hooks/*": ["hooks/*"],
-			"/redux/*": ["redux/*"],
-			"/fonts/*": ["fonts/*"],
-			"/icons/*": ["assets/icons/*"],
-			"/assets/*": ["assets/*"],
-			"/images/*": ["assets/images/*"],
-			"/generated/*": ["generated/*"],
-			"/graphql/*": ["graphql/*"],
-			"/ui/*": ["ui/*"],
-			"/lib/*": ["lib/*"]
-		},
-		"target": "es5",
-		"lib": ["dom", "dom.iterable", "esnext"],
-		"allowJs": true,
-		"skipLibCheck": true,
-		"strict": false,
-		"forceConsistentCasingInFileNames": true,
-		"noEmit": true,
-		"incremental": true,
-		"esModuleInterop": true,
-		"module": "esnext",
-		"moduleResolution": "node",
-		"resolveJsonModule": true,
-		"isolatedModules": true,
-		"jsx": "preserve",
-		"plugins": [
-			{
-				"name": "next"
-			}
-		],
-		"strictNullChecks": false
-	},
-	"include": [
-		"next-env.d.ts",
-		"**/*.ts",
-		"**/*.tsx",
-		".next/types/**/*.ts",
-		".vscode/blog/layout.js",
-		".vscode/blog/page.js",
-		"app/layout.js",
-		"app/page.js",
-		"scripts/script.js"
-	],
-	"exclude": ["node_modules"]
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "*": [
+        "/*"
+      ],
+      "/components/*": [
+        "components/*"
+      ],
+      "/interfaces/*": [
+        "interfaces/*"
+      ],
+      "/contexts/*": [
+        "contexts/*"
+      ],
+      "/states/*": [
+        "states/*"
+      ],
+      "/styles/*": [
+        "styles/*"
+      ],
+      "/layouts/*": [
+        "layouts/*"
+      ],
+      "/features/*": [
+        "features/*"
+      ],
+      "/app/*": [
+        "app/*"
+      ],
+      "/hooks/*": [
+        "hooks/*"
+      ],
+      "/redux/*": [
+        "redux/*"
+      ],
+      "/fonts/*": [
+        "fonts/*"
+      ],
+      "/icons/*": [
+        "assets/icons/*"
+      ],
+      "/assets/*": [
+        "assets/*"
+      ],
+      "/images/*": [
+        "assets/images/*"
+      ],
+      "/generated/*": [
+        "generated/*"
+      ],
+      "/graphql/*": [
+        "graphql/*"
+      ],
+      "/ui/*": [
+        "ui/*"
+      ],
+      "/lib/*": [
+        "lib/*"
+      ]
+    },
+    "target": "es5",
+    "lib": [
+      "dom",
+      "dom.iterable",
+      "esnext"
+    ],
+    "allowJs": true,
+    "skipLibCheck": true,
+    "strict": false,
+    "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "module": "esnext",
+    "moduleResolution": "node",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "jsx": "react-jsx",
+    "plugins": [
+      {
+        "name": "next"
+      }
+    ],
+    "strictNullChecks": false
+  },
+  "include": [
+    "next-env.d.ts",
+    "**/*.ts",
+    "**/*.tsx",
+    ".next/types/**/*.ts",
+    ".vscode/blog/layout.js",
+    ".vscode/blog/page.js",
+    "app/layout.js",
+    "app/page.js",
+    "scripts/script.js",
+    ".next/dev/types/**/*.ts"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }

@@ -273,7 +273,7 @@ const Navigation = ({ nav }: NavigationProps) => {
 				mt-3"
 					>
 						<p className="text-center text-lg copyright">
-							Copyright © 2025 Akash Aman{" "}
+							Copyright © 2026 Akash Aman{" "}
 							<i className="md:inline copyright hidden">|</i>{" "}
 							<br className="block md:hidden" />
 							<Link href="/terms">Terms & Conditions </Link>

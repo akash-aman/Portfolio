@@ -9,7 +9,7 @@ import {
 	ChapterPageDocument,
 	ChapterPageQueryVariables,
 } from "/generated/graphql";
-import { request } from "graphql-request";
+
 import { gqlAPI } from "/lib/constant";
 import { notFound } from "next/navigation";
 import { Metadata, ResolvingMetadata } from "next";
@@ -28,8 +28,7 @@ import linkedin from "/assets/icons/linkedin.svg";
 import email from "/assets/icons/mail.svg";
 import Style from "./Style";
 type MetaProps = {
-	params: { chapter: string; course: string };
-	searchParams: { [key: string]: string | string[] | undefined };
+	params: Promise<{ chapter: string; course: string }>;
 };
 
 /**
@@ -41,9 +40,11 @@ type MetaProps = {
  * @returns
  */
 export async function generateMetadata(
-	{ params, searchParams }: MetaProps,
+	props: MetaProps,
 	parent: ResolvingMetadata,
 ): Promise<Metadata> {
+	const params = await props.params;
+
 	const { chapter } = await wretch<ChapterPageQuery, ChapterPageQueryVariables>(
 		gqlAPI,
 		ChapterPageDocument,
@@ -91,7 +92,7 @@ interface Params extends ParsedUrlQuery {
 }
 
 type Props = {
-	params: Params;
+	params: Promise<Params>;
 };
 
 /**
@@ -100,7 +101,8 @@ type Props = {
  * @param param0 params - params of the page
  * @returns
  */
-const Chapter = async ({ params }: Props) => {
+const Chapter = async (props: Props) => {
+	const params = await props.params;
 	const { chapter } = await wretch<ChapterPageQuery, ChapterPageQueryVariables>(
 		gqlAPI,
 		ChapterPageDocument,

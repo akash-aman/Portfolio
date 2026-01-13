@@ -8,6 +8,6 @@ export const metadata: Metadata = {
 	},
 };
 
-export default async function Layout({ children, params }) {
+export default async function Layout({ children }) {
 	return <>{children}</>;
 }

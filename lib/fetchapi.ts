@@ -20,5 +20,17 @@ export async function wretch<T, V>(
 		}),
 	});
 
-	return (await data.json()).data as T;
+	if (!data.ok) {
+		const text = await data.text();
+		throw new Error(`API Error: ${data.status} ${data.statusText}\nBody: ${text}`);
+	}
+
+	const text = await data.text();
+	try {
+		return JSON.parse(text).data as T;
+	} catch (e) {
+		console.error("Error parsing JSON:", e);
+		console.error("Response text:", text);
+		throw e;
+	}
 }

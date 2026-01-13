@@ -1,4 +1,4 @@
-import request from "graphql-request";
+
 import Sidebar from "./Sidebar";
 import {
 	CourseSidebarQuery,

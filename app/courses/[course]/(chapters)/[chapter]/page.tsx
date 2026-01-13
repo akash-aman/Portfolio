@@ -9,7 +9,7 @@ import {
 	ChapterPageDocument,
 	ChapterPageQueryVariables,
 } from "/generated/graphql";
-import { request } from "graphql-request";
+
 import { gqlAPI } from "/lib/constant";
 import { notFound } from "next/navigation";
 import { Metadata, ResolvingMetadata } from "next";

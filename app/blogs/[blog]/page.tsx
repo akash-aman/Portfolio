@@ -123,7 +123,7 @@ const Blog = async (props: Props) => {
 			<div className="col-start-2 row-span-2 hidden sm:block">
 				<div className="w-10 grid gap-8 sticky top-[40%]">
 					<a
-						href={`https://twitter.com/intent/tweet?url=https://akash.cx/blogs/${params.blog}&text=${blog.title}`}
+						href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://akash.cx/blogs/${params.blog}`)}&text=${encodeURIComponent(blog.title)}`}
 						target="_blank"
 						rel="noopener noreferrer"
 						title="Share on Twitter"
@@ -132,7 +132,7 @@ const Blog = async (props: Props) => {
 						<Image src={twitter} alt="Twitter" />
 					</a>
 					<a
-						href={`https://www.reddit.com/submit?url=https://akash.cx/blogs/${params.blog}&title=${blog.title}`}
+						href={`https://www.reddit.com/submit?url=${encodeURIComponent(`https://akash.cx/blogs/${params.blog}`)}&title=${encodeURIComponent(blog.title)}`}
 						target="_blank"
 						rel="noopener noreferrer"
 						title="Share on Reddit"
@@ -141,7 +141,7 @@ const Blog = async (props: Props) => {
 						<Image src={reddit} alt="Reddit" />
 					</a>
 					<a
-						href={`https://www.facebook.com/sharer/sharer.php?u=https://akash.cx/blogs/${params.blog}`}
+						href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://akash.cx/blogs/${params.blog}`)}`}
 						target="_blank"
 						rel="noopener noreferrer"
 						title="Share on Facebook"
@@ -150,7 +150,7 @@ const Blog = async (props: Props) => {
 						<Image src={facebook} alt="Facebook" />
 					</a>
 					<a
-						href={`https://www.linkedin.com/shareArticle?mini=true&url=https://akash.cx/blogs/${params.blog}&title=${blog.title}`}
+						href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(`https://akash.cx/blogs/${params.blog}`)}&title=${encodeURIComponent(blog.title)}`}
 						target="_blank"
 						rel="noopener noreferrer"
 						title="Share on LinkedIn"
@@ -159,7 +159,7 @@ const Blog = async (props: Props) => {
 						<Image src={linkedin} alt="LinkedIn" />
 					</a>
 					<a
-						href={`mailto:?subject=${blog.title}&body=https://akash.cx/blogs/${params.blog}`}
+						href={`mailto:?subject=${encodeURIComponent(blog.title)}&body=${encodeURIComponent(`https://akash.cx/blogs/${params.blog}`)}`}
 						target="_blank"
 						title="Share by Email"
 						rel="noopener noreferrer"
@@ -258,7 +258,7 @@ const Blog = async (props: Props) => {
 					)}
 					<div className="sm:hidden grid grid-flow-col align-middle justify-center my-10 gap-4">
 						<a
-							href={`https://twitter.com/intent/tweet?url=https://akash.cx/blogs/${params.blog}&text=${blog.title}`}
+							href={`https://twitter.com/intent/tweet?url=${encodeURIComponent(`https://akash.cx/blogs/${params.blog}`)}&text=${encodeURIComponent(blog.title)}`}
 							target="_blank"
 							rel="noopener noreferrer"
 							title="Share on Twitter"
@@ -267,7 +267,7 @@ const Blog = async (props: Props) => {
 							<Image className="w-8" src={twitter} alt="Twitter" />
 						</a>
 						<a
-							href={`https://www.reddit.com/submit?url=https://akash.cx/blogs/${params.blog}&title=${blog.title}`}
+							href={`https://www.reddit.com/submit?url=${encodeURIComponent(`https://akash.cx/blogs/${params.blog}`)}&title=${encodeURIComponent(blog.title)}`}
 							target="_blank"
 							rel="noopener noreferrer"
 							title="Share on Reddit"
@@ -276,7 +276,7 @@ const Blog = async (props: Props) => {
 							<Image className="w-8" src={reddit} alt="Reddit" />
 						</a>
 						<a
-							href={`https://www.facebook.com/sharer/sharer.php?u=https://akash.cx/blogs/${params.blog}`}
+							href={`https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(`https://akash.cx/blogs/${params.blog}`)}`}
 							target="_blank"
 							rel="noopener noreferrer"
 							title="Share on Facebook"
@@ -285,7 +285,7 @@ const Blog = async (props: Props) => {
 							<Image className="w-8" src={facebook} alt="Facebook" />
 						</a>
 						<a
-							href={`https://www.linkedin.com/shareArticle?mini=true&url=https://akash.cx/blogs/${params.blog}&title=${blog.title}`}
+							href={`https://www.linkedin.com/shareArticle?mini=true&url=${encodeURIComponent(`https://akash.cx/blogs/${params.blog}`)}&title=${encodeURIComponent(blog.title)}`}
 							target="_blank"
 							rel="noopener noreferrer"
 							title="Share on LinkedIn"
@@ -294,7 +294,7 @@ const Blog = async (props: Props) => {
 							<Image className="w-8" src={linkedin} alt="LinkedIn" />
 						</a>
 						<a
-							href={`mailto:?subject=${blog.title}&body=https://akash.cx/blogs/${params.blog}`}
+							href={`mailto:?subject=${encodeURIComponent(blog.title)}&body=${encodeURIComponent(`https://akash.cx/blogs/${params.blog}`)}`}
 							target="_blank"
 							title="Share by Email"
 							rel="noopener noreferrer"
